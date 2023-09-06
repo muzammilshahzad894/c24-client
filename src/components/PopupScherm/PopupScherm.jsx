@@ -36,6 +36,7 @@ const PopupScherm = () => {
               <div className="country_lang">
               <select
                   name="Country"
+                  
                 >
                   <option value="">select Country</option>
                   <option value="India">India</option>
@@ -70,9 +71,13 @@ const PopupScherm = () => {
                 </div>
                 <select
                   name="Country"
+                  onChange={(e) => {
+                    localStorage.setItem("language", e.target.value);
+                    }
+                  }
                 >
                   <option value="">select language</option>
-                  <option value="Dutch-English">Dutch-English</option>
+                  <option value="dutch">Dutch-English</option>
                   <option value="German-English">German-English</option>
                   <option value="English-Portuguese">English-Portuguese</option>
                   <option value="English-Spanisch">English-Spanisch</option>

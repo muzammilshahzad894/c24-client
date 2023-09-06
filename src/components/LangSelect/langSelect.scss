@@ -1,0 +1,80 @@
+.fav_lang{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    margin-top: 10px;
+    button{
+        border-radius: 100%;
+        border: none;
+        height: 50px;
+        width: 50px;
+        background: #70b157;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+        position: absolute;
+        right: 10px;
+        &:hover{
+            background-color: #28a745 ;
+        }
+        svg{
+            font-size: 29px;
+            color: white;
+        }
+    }
+    .check_lang{
+        width: 25%;
+        div{
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            margin-right: 10px;
+            span{
+                font-size: 18px;
+            }
+            input{
+                width: 15px !important;
+                height: 15px !important;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+    .lang_select{
+        width: 50%;
+        .select_lang_elt{
+            display: grid ;
+            grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: 1fr;
+            grid-gap: 10px;
+            select{
+                border: #ccc 1px solid;
+                border-radius: 3px;
+                height: 34px;
+                transition: .3s ease-in-out;
+                cursor: pointer;
+                width: 100%;
+                margin: 5px 0 !important;
+                &:focus{
+                    outline: none;
+                    border-color: #66afe9;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                }
+            }
+            div{
+                display: flex !important;
+                align-items: center !important;
+                svg{
+                    color: rgb(248, 40, 40) !important;
+                    font-size: 22px !important;
+                    cursor: pointer !important;
+                    background-color: transparent !important;
+                    position: initial!important;
+                }
+            }
+        }
+    }
+}

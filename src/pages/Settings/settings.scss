@@ -1,0 +1,111 @@
+.settings{
+    .content{
+        margin-top: 150px;
+        margin-bottom: 10%;
+        margin-left: 10px;
+        margin-right: 10px;
+        .title{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            border-bottom: none;      
+            position: relative;
+            h1{
+                width: 100%;
+                border-bottom: 2px black solid;
+                padding-bottom: 5px;
+            }
+            .settings-message-box{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                a{
+                    text-decoration: none;
+                    cursor: default;
+                    width: 100%;
+                }
+            }
+            .curant-and-image{
+                width: 40%;
+                display: flex;
+                align-content: center;
+                justify-content: space-around;
+                img{
+                    height: 100px;
+                }
+                div{
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    a{
+                        color: #0d6f32;
+                        font-size: 18px;
+                        text-decoration: none;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                    span{
+                        font-size: 30px;
+                        font-weight: 800;
+                    }
+                }
+            }
+            .reserve-img{
+                position: absolute;
+                right: 0;
+                top: 150px;
+                display: flex;
+                cursor: pointer;
+                h3{
+                    color: rgb(248, 34, 34);
+                }
+            }
+        }
+        .links{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 40vh;
+            margin: 40px;
+            .link{
+                display: flex;
+                align-items: center;
+                svg{
+                    font-size: 25px;
+                    margin-right: 10px;
+                    color: #0d6f32;
+                }
+                a{
+                    color: #0d6f32;
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .deleteProfile{
+            button{
+                font-size: 14px;
+                height: 30px;
+                width: 130px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                background-color: #d9534f;
+                border: 1px solid #d9534f;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-left: 10px;
+                svg{
+                    font-size: 20px;
+                }
+                &:hover{
+                    background-color: #ac2925;
+                }
+            }
+        }
+    }
+}

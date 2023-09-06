@@ -1,0 +1,17 @@
+.my_applications{
+    .my_applications_container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: flex-start;
+        padding: 20px;
+        padding-top: 100px;
+        .my_applications_label{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .my_applications_elements{
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+.join{
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Roboto';
+    .background{
+        width: 50%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        position: fixed;
+        background-color: #e6e6e6;
+    }
+    .accType {
+        h3{
+            font-weight: 400;
+        }
+    }
+    .twoTypes{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        .freelancer,.client{
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            padding:2rem;
+            background: white;
+            h3{
+                font-weight: 400;
+                font-size: 14px;
+                margin-bottom: 2.5rem;
+            }
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                color: white;
+                height: 40px;
+                width: 30%;
+                background: rgb(31, 119, 54);
+                color: white;
+                border: rgb(31, 119, 54) 1px solid;
+                cursor: pointer;
+                transition: .3s ease-in-out;
+                border-radius: 5px;
+                &:hover{
+                    color: rgb(31, 119, 54);
+                    background: white;
+                }
+            }
+        }
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 10%;
+        p{
+            margin: 5px;
+            font-size: 14px;
+
+            span{   
+                cursor: pointer;
+                color: rgb(31, 119, 54);
+            }
+        }
+    }
+}
+@media (max-width:500px){
+    .join{
+        justify-content: space-between;
+        .background{
+            height: 100vh;
+        }
+        .accType{
+            font-size: 12px;
+        }
+        .twoTypes{
+            flex-direction: column;
+            margin-bottom: 20px;
+            button{
+                width: 50% !important;
+            }
+        }
+    }
+}

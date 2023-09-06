@@ -1,0 +1,40 @@
+.complete-registration{
+    .complete-registration-content{
+        margin-top: 150px;
+        padding: 0 5%;
+        .complete-registration-header{
+            border-bottom: 2px solid;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .complete-registration-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            padding: 0 5%;
+            a{
+                text-decoration: none;
+            }
+            .registration-item{
+                display: flex;
+                cursor: pointer;
+                background-color: rgb(125, 215, 225);
+                color: white;
+                width: 70%;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                padding: 10px;
+                &.done{
+                    background-color: rgb(131, 175, 179);
+                }
+                h4{
+                    margin-top: 0;
+                }
+                svg{
+                    font-size: 40px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

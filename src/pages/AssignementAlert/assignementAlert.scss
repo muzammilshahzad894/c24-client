@@ -1,0 +1,164 @@
+.assignement-alerts{
+    .assignement-alert-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 60%;
+        margin: 0 20%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        button{
+            height: 50px;
+            width: 150px;
+            background-color: #337ab7;
+            color: #fff;
+            border: 1px solid #337ab7;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+            &.back{
+                color: #333;
+                border: 1px solid #ccc;
+                background-color: #fff;
+                margin: 10px;
+                &:hover{
+                    background-color: #e6e6e6;
+                    color: #555;
+                }
+            }
+            &:hover{
+                background-color: #2e6da4;
+            }
+        }
+        div{
+            width: 100%;
+            height: 100%;
+        }
+        .back-link{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+        }
+        .create-assignement-alert{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            .create-assignement-info,.create-assignement-alert-options{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                div{
+                    display: grid;
+                    grid-template-columns: 1fr 3fr;
+                    margin: 10px;
+                    h2{
+                        color: #2e6da4;
+                    }
+                    span{
+                        width: 150px;
+                    }
+                    input,select{
+                        height: 30px;
+                        border-radius: 5px;
+                        border: 1px #ccc solid;
+                        margin-left: 30px;
+                        width: 70%;
+                        transition: .3s ease-in-out;
+                        &:focus{
+                            outline: 0;
+                            border: 1px #66afe9 solid;
+                            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                        }
+                    }
+                }
+            }
+            .create-assignement-alert-options{
+                margin-top: 40px;
+                border-top:  1px #ccc solid;
+                padding-top: 20px;
+            }
+            .create-assignement-alerts-save{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                div{
+                    display: flex;
+                    align-items: center;
+                    width: 450px;
+                    font-size: 16px;
+                    span{
+                        color: #337ab7;
+                        display: flex;
+                        align-items: flex-start;
+                        position: relative;
+                        svg{
+                            font-size: 30px;
+                            position: absolute;
+                            display: flex;
+                            align-items: flex-start;
+                            left: -30px;
+                        }
+                        &:hover{
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
+                    }
+                    a{
+                        width: 100px;
+                        margin: 0;
+                        button{
+                            width: 100px;
+                        }
+                    }
+                }
+            }
+        }
+        .create-assignement-alert-success{
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            padding: 15px 0;
+            margin-top: 50px;
+            width: 500px;
+            div{
+                padding: 0 15px;
+                margin-top: 10px;
+                p{
+                    margin: 0;
+                }
+            }
+            .create-assignement-alert-success-header{
+                color: #337ab7;
+                b{
+                    margin-right: 4px;
+                    color: #2e6da4;
+                }
+            }
+            .create-assignement-alert-success-msg{
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                background-color: rgb(255, 243, 220);
+                a{
+                    margin-left: 5px;
+                }
+                svg{
+                    font-size: 20px;
+                    color: #70b157;
+                    margin-right: 3px;
+                }
+            }
+            .create-assignement-alert-success-buttons{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                button{
+
+                }
+            }
+        }
+    }
+}

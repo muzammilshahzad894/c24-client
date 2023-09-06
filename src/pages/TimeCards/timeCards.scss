@@ -1,0 +1,44 @@
+.timecards-wrapper{
+    margin-bottom: 15%;
+    .timecards-header{
+        margin: 14px;
+        margin-top: 120px;
+        border-bottom: 1px solid;
+        display: flex;
+        .timecards-header-title{
+            color: rgb(232, 43, 43);
+        }
+        p{
+            color: rgb(232, 43, 43);
+        }
+    }
+    .timecards-content{
+        margin: 14px;
+        .timecards-content-header{
+            display: grid !important;
+            h3{
+                width: 200px;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &.status{
+                    width: 100px;
+                }
+            }
+        }
+        .empty_timecard_text{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(220, 220, 220, 0.932);
+            padding: 10px;
+            div{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 200px;
+                //color: rgb(243, 34, 34);
+            }
+        }
+    }
+}

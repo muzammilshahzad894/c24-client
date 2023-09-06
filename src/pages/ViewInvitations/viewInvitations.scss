@@ -1,0 +1,175 @@
+.search_results_container{
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    button{
+        height: 35px;
+        width: 100px;
+        background-color: #337ab7;
+        color: #fff;
+        border: 1px solid #337ab7;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover{
+            background-color: #2e6da4;
+        }
+    }
+    select{
+        cursor: pointer;
+    }
+    .search_results{
+        padding: 0 5%;
+        .search_results_filter{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0%;
+            .search_results_filter_inputs{
+                .search_result_filter_hours_trigger{
+                    width: 160px;
+                    cursor: pointer;
+                }
+                .search_result_filter_hours_week,.search_result_show_assignment_type,.search_result_show_estimated_time{
+                    position: absolute;
+                    background-color: white;
+                    bottom: -200px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 650px;
+                    z-index: 4;
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+                    padding:10px 15px  50px 15px;
+                    div{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        p{
+                            font-size: 22px;
+                        }
+                        label{
+                            margin: 0;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+                .search_result_show_assignment_type{
+                    width: auto;
+                    padding-bottom: 10px;
+                    bottom: -120px;
+                    div{
+                        p{
+                            font-size: 17px;
+                            margin-right: 5px;
+                        }
+                        input{
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .search_result_show_estimated_time{
+                    width: 200px;
+                    padding-bottom: 10px;
+                    bottom: -150px;
+                    div{
+                        p{
+                            font-size: 17px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                div{
+                    display: flex;
+                    align-items: center;
+                    margin-right: 1%;
+                    position: relative;
+                    p{
+                        margin: 0;
+                    }
+                    div{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        width: 100%;
+                        padding: 5px;
+                        svg{
+                            margin-right: 5px;
+                        }
+                    }
+                    select{
+                        height: 25px;
+                        width: 130px;
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+            .search_results_layout{
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    svg{
+                        font-size: 22px;
+                        margin-right: 5px;
+                        margin-bottom: 5px;
+                        cursor: pointer;
+                        transition: .3s ease-in-out;
+                        &.selected{
+                            color: #337ab7;
+                        }
+                    }
+                    a{
+                        font-size: 17px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+        .search_results_elements_container{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            transition: .4s ease-in-out;
+        }
+    }
+    .delete-all-invitations-freelancers{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px;
+        margin-bottom: 20px;
+        p{
+            font-size: 22px;
+            cursor: pointer;
+        }
+    }
+    .search_result_footer{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin: 10px 10%;
+        border-top: 1px #ccc solid;
+        button{
+            transition: .3s ease-in-out;
+            width: 120px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(31, 119, 54);
+            color: white;
+            &:hover{
+                background: white;
+                border: rgb(31, 119, 54) 1px solid;
+                color: rgb(31, 119, 54);
+            }
+        }
+    }
+}

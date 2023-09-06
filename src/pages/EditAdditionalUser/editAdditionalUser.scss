@@ -1,0 +1,76 @@
+.edit-additional-user{
+    margin: 10px;
+    margin-top: 200px;
+    margin-bottom: 150px;
+    .edit-additional-user-content{
+        .edit-additional-user-header{
+            border-bottom: 1px #000 solid;
+        }
+        .edit-additional-user-info{
+            margin-top: 50px;
+            form{
+                margin: 0 20%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .row{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    margin-bottom: 5px;
+                    h1{
+                        margin: 0;
+                        margin-right: 5px;
+                        width: 20%;
+                        font-size: 17px;
+                    }
+                    input{
+                        width: 100%;
+                        height: 34px;
+                        border-radius: 4px;
+                        border: 1px solid #ccc;
+                        color: #555;
+                        transition: .3s ease-in-out;
+                        &:focus{
+                            outline: none;
+                            border-color: #66afe9;
+                            box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                        }
+                    }
+    
+                    .save-back-buttons{
+                        width: 60%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 80px;
+                        button{
+                            height: 35px;
+                            color: white;
+                            background-color: #337ab7;
+                            border: none;
+                            border-radius:4px;
+                            width: 70px;
+                            cursor: pointer;
+                            &:hover{
+                                background-color: #3b5998;
+                            }
+                            &.back{
+                                color: #333;
+                                border: 1px solid #ccc;
+                                background-color: #fff;
+                                margin: 10px;
+                                &:hover{
+                                    background-color: #e6e6e6;
+                                    color: #555;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

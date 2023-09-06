@@ -1,0 +1,205 @@
+.assignements{
+    margin: 10px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    a{
+        color: black;
+        &:hover{
+            text-decoration: none;
+            color: black;
+        }
+    }
+    input,textarea,select{
+        border: #ccc 1px solid;
+        border-radius: 3px;
+        width: 50%;
+        height: 34px;
+        transition: .3s ease-in-out;
+        &:focus{
+            outline: none;
+            border-color: #66afe9;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        }
+    }
+    .assignements-header{
+        border-bottom: 1px #000 solid;
+        b{
+            color: #147536;
+        }
+    }
+    .assignements-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .assignements-search{
+            margin-top: 50px;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            div{
+                width: 100%;
+                margin: 5px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                input{
+                    width: 100%;
+                }
+                select{
+                    width: 80%;
+                    margin-left: 20%;
+                    cursor: pointer;
+                    background-color: #fff;
+                }
+                svg{
+                    position: absolute;
+                    right: 2%;
+                    width: 20px;
+                    height: 20px;
+                    color: #555;
+                }
+            }
+        }
+        .place-order-bar{
+            padding: 0 5%;
+            margin-top: 40px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .weeks{
+                display: flex;
+                align-items: center;
+                .nav-week{
+                    margin: 1px;
+                    border: 1px #ddd solid;
+                    background-color: white;
+                    color: #337ab7;
+                    cursor: pointer;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 5px;
+                    &.middle{
+                        color: white;
+                        background-color: #337ab7;
+                    }
+                    &:hover{
+                        color: #23527c;
+                        background-color: #eee;
+                        border-color: #ddd;
+                        &.middle{
+                            color: white;
+                            background-color: #337ab7;
+                            cursor: default;
+                        }
+                    }
+
+                    span{
+                        margin: 5px;
+                    }
+                }
+                .week-arrow{
+                    font-size: 25px;
+                    color: #337ab7;
+                    cursor: pointer;
+                }
+            }
+            div{
+                button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 35px;
+                    width: 110px;
+                    background-color: #337ab7;
+                    color: #fff;
+                    border: 1px solid #337ab7;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #2e6da4;
+                    }
+                    p{
+                        margin: 0;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+        /*.assignements-info{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 20px;
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            .assignement-elt{
+                width: 200px;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3,1fr);
+                margin: 20px 0;
+                padding: 10px;
+                background-color: rgb(240, 240, 240);
+                border-radius: 4px;
+                border: #ccc 1px solid;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+                p{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    svg{
+                        height: 15px;
+                        width: 15px;
+                        margin-right: 5px                        
+                    }
+                }
+            }
+        }*/
+        .assignements-info{
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin-top: 20px;
+            .assignement-elt{
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                margin: 20px 0;
+                padding: 10px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+                p{
+                    display: flex;
+                    align-items: center;
+                    svg{
+                        height: 15px;
+                        width: 15px;
+                        margin-right: 5px                        
+                    }
+                }
+            }
+        }
+        .back-button{
+            button{
+                height: 40px;
+                width: 80px;
+                cursor: pointer;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                color: #333;
+                border-radius: 4px;
+                font-size: 17px;
+                &:hover{
+                    background-color: #e6e6e6;
+                }
+            }
+        }
+    }
+}

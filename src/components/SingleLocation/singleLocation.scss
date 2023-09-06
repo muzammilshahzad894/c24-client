@@ -1,0 +1,54 @@
+.single-location{
+    display: flex;
+    margin: 10px;
+    .single-location-content{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(8,1fr);
+        height: 550px;
+        justify-content: center;
+        align-items: center;
+        border: 1px #ccc solid;
+        border-radius: 3px;
+        padding: 15px;
+        input,textarea{
+            border: #ccc 1px solid;
+            border-radius: 3px;
+            height: 34px;
+            margin: 5px 0;
+            width: 95%;
+            transition: .3s ease-in-out;
+            &:focus{
+                outline: none;
+                border-color: #66afe9;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+            }
+        }
+        textarea{
+            width: 250px;
+            height: 150px;
+            max-width: 250px;
+            max-height: 150px;
+        }
+        .delete-button{
+            font-size: 14px;
+            height: 30px;
+            width: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background-color: #d9534f;
+            border: 1px solid #d9534f;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            svg{
+                font-size: 20px;
+            }
+            &:hover{
+                background-color: #ac2925;
+            }
+        }
+    }
+}

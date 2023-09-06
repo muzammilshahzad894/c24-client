@@ -1,0 +1,39 @@
+.contact-header{
+    background-color: darkblue;
+    color: white;
+    padding: 0 10%;
+    padding-bottom: 20px;
+    div{
+        margin-bottom: 10px;
+    }
+    button{
+        border: #fff 1px solid;
+        transition: .3s ease-in-out;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        background-color: transparent;
+        color: white;
+    }
+    .contact-header-link{
+        display: flex;
+        align-items: center;
+        p{
+            margin-left: 10px;
+        }
+    }
+    .contact-header-banner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        h1{
+            font-size: 50px;
+        }
+    }
+}

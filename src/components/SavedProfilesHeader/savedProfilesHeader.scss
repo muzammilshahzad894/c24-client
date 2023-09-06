@@ -1,0 +1,16 @@
+.saved-profiles-header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 5px;
+    div{
+        display: flex;
+        align-items: center;
+        a{
+            color: white;
+            margin: 10px;
+        }
+    }
+}

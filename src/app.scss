@@ -1,0 +1,37 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import 'react-image-crop/src/ReactCrop.scss';
+
+.bootstrap-datetimepicker-widget a{
+    color: #333;
+    .glyphicon{
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+    }
+    .glyphicon-chevron-up::before{
+        content: "\e113";
+    }
+    .glyphicon-chevron-down::before{
+        content: "\e114";
+    }
+}
+.bootstrap-datetimepicker-widget table :nth-child(2) {
+    :nth-child(1),:nth-child(3){
+        margin-left: 10px;
+    }
+}
+
+html{
+    scroll-behavior: smooth;
+}
+#noop{
+    display: none;
+}
+*{
+    .row{
+        &::before,&::after{
+            content: none;
+        }
+    }
+}

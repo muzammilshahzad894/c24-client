@@ -1,0 +1,72 @@
+.locations{
+    margin: 10px;
+    margin-top: 200px;
+    margin-bottom: 150px;
+    .locations-content{
+        .locations-header{
+            border-bottom: 1px solid #000;
+        }
+        .locations-text{
+            margin-left: 5%;
+            margin-top: 30px;
+            color: rgb(240, 67, 67);
+            font-size: 18px;
+        }
+        .locations-form{
+            margin-top: 50px;
+            form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                fieldset{
+                    border: 1px #ccc solid;
+                    width: 90%;
+                    padding: 20px;
+                    border-radius: 3px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .single-locations{
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                    legend{
+                        border: 1px #ccc solid;
+                        border-radius: 4px;
+                        width: auto;
+                        padding: 0 10px;
+                    }
+                    .back-save-buttons{
+                        button{
+                            height: 35px;
+                            width: 80px;
+                            background-color: #337ab7;
+                            color: #fff;
+                            border: 1px solid #337ab7;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            a{
+                                text-decoration: none;
+                            }
+                            &.back{
+                                color: #333;
+                                border: 1px solid #ccc;
+                                background-color: #fff;
+                                margin: 10px;
+                                &:hover{
+                                    background-color: #e6e6e6;
+                                    color: #555;
+                                }
+                            }
+                            &:hover{
+                                background-color: #2e6da4;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.company-details{
+    .content{
+        margin-top: 160px;
+        margin-bottom: 10%;
+        margin-left: 10px;
+        margin-right: 10px;
+        .title{
+            h1{
+                border-bottom: 1px solid black;
+                padding-left: 10px;
+                padding-bottom: 10px;
+            }
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            .row{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 100%;
+                svg{
+                    position: absolute;
+                    font-size: 22px;
+                    cursor: pointer;
+                }
+                .cancel-add-industry{
+                    position: absolute;
+                    bottom: -5px;
+                    left: 30%;
+                }
+                .red{
+                    color: rgb(231, 42, 42);
+                }
+                input,select{
+                    width: 70%;
+                    margin-left: 20px;
+                    height: 30px;
+                    color: #555;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    transition: .3s ease-in-out;
+                    font-size: 17px;
+                    &:focus{
+                        border-color: #66afe9;
+                        outline: 0;
+                        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    }
+                }
+                select{
+                    cursor: pointer;
+                }
+                .hourly-rate-avg{
+                    width: 65%;
+                    justify-content: center;
+                    color: #555;
+                }
+                .back-save{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    button{
+                        height: 35px;
+                        width: 60px;
+                        font-size: 15px;
+                        margin: 3px;
+                        cursor: pointer;
+                        border-radius: 4px;
+                    }
+                    .back{
+                        color: #333;
+                        border: 1px solid #ccc;
+                        background-color: #fff;
+                        &:hover{
+                            background-color: #e6e6e6;
+                            color: #555;
+                        }
+                    }
+                    .save{
+                        color: #fff;
+                        border: 1px solid #ccc;
+                        background-color: #337ab7;
+                        &:hover{
+                            background-color: #286090;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

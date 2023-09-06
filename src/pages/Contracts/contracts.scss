@@ -1,0 +1,36 @@
+.contracts-wrapper{
+    .contracts-content{
+        margin-top: 130px;
+        margin-bottom: 100px;
+        .header{
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+            border-bottom: 1px solid black;
+            span{
+                color: rgb(255, 70, 70);
+                font-size: 14px;
+                margin-left: 15px;
+            }
+            button{
+                border-radius: 100%;
+                border: none;
+                height: 50px;
+                width: 50px;
+                background: #70b157;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: .3s ease-in-out;
+                &:hover{
+                    background-color: #28a745 ;
+                }
+                svg{
+                    font-size: 29px;
+                    color: white;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,156 @@
+.favorites{
+    padding-top: 150px;
+    .favorites-header{
+        border-bottom: 1px solid;
+        padding: 10px ;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    button{
+        transition: .3s ease-in-out;
+        width: 220px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(0, 103, 158);
+        border: none;
+        color: white;
+        &:hover{
+            background: white;
+            border: rgb(0, 103, 158) 1px solid;
+            color: rgb(0, 103, 158);    
+        }
+        &.back{
+            color: #333;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin: 10px;
+            &:hover{
+                background-color: #e6e6e6;
+                color: #555;
+            }
+        }
+        svg{
+            font-size: 22px;
+            margin-right: 5px;
+        }
+       }
+    .favorite-wrapper{
+        padding: 0 50px;
+        div{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            p{
+                margin-left: 8px;
+                height: 20px;
+            }
+            a{
+                height: 20px;
+                display: flex;
+                align-items: center;
+                margin: 0;
+            }
+        }
+        .favorite-wrapper-header{
+            padding: 10px 0;
+            border-bottom: 1px #ccc solid;
+            border-top: 1px #ccc solid;
+            align-items: center;
+            
+        }
+        margin-top: 10px;
+        z-index: 3;
+    }
+    .favorite-pop-up{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        z-index: 5;
+        .pop-up-bg{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f1f1f1;
+            opacity: .5;
+            z-index: 5;
+        }
+        .favorite-professionals-window{
+            z-index: 6;
+            border: 1px #ccc solid;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: -1px 3px 22px 0px rgba(158, 158, 158, 0.75);
+            margin-bottom: 100px;
+            background-color: #fff;
+            .favorite-professionals-window-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                border-bottom: 1px #ccc solid;
+                padding-bottom: 5px;
+                h2{
+                    margin: 0;
+                    margin-right: 10px;
+                }
+                svg{
+                    font-size: 22px;    
+                    margin-left: 30px;
+                    align-self: flex-start;
+                    cursor: pointer;
+                }
+            }
+            .favorite-professionals-window-content{
+                margin-bottom: 40px;
+                position: relative;
+                input{
+                    width: 100%;
+                    border-radius: 5px;
+                    border: 1px #ccc solid;
+                    height: 34px;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                .favorite-professionals-list{
+                    position: absolute;
+                    width: 100%;
+                    ul{
+                        list-style: none;
+                        padding-left: 0;
+                        li{
+                            background-color: #fff;
+                            padding: 10px;
+                            width: 100%;
+                            border: 1px #ccc solid;
+                            box-shadow:inset 0 1px 1px rgba(213, 211, 211, 0.848);
+                            cursor: pointer;
+                            text-align: left;
+                            &:hover{
+                                background-color: #f1f1f1;
+                            }
+                        }
+                    }
+                }
+            }
+            .favorite-professionals-window-footer{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                button{
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

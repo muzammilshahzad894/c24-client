@@ -1,0 +1,25 @@
+.faq-header{
+    .faq-header-search-bar{
+        background-color: white;
+        height: 32px;
+        border: none;
+        width: 550px;
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        input{
+            height: 32px;
+            width: 90%;
+            border: none;
+            color: black;
+            &:focus{
+                outline: none;
+            }
+        }
+        svg{
+            color: #555;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+.hourly-rates{
+    margin: 10px;
+    margin-top: 200px;
+    margin-bottom: 150px;
+    .hourly-rates-header{
+        border-bottom: 1px solid #000;
+    }
+    .hourly-rates-info{
+        margin: 50px;
+        .row{
+            margin: 15px 0;
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            &::before{
+                content: none;
+            }
+            &::after{
+                content: none;
+            }
+            &.back-save-buttons{
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                button{
+                    height: 35px;
+                    width: 80px;
+                    background-color: #337ab7;
+                    color: #fff;
+                    border: 1px solid #337ab7;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    a{
+                        text-decoration: none;
+                    }
+                    &.back{
+                        color: #333;
+                        border: 1px solid #ccc;
+                        background-color: #fff;
+                        margin: 10px;
+                        &:hover{
+                            background-color: #e6e6e6;
+                            color: #555;
+                        }
+                    }
+                    &:hover{
+                        background-color: #2e6da4;
+                    }
+                }
+            }
+        }
+    }
+}

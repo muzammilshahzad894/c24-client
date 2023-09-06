@@ -1,0 +1,279 @@
+.contact{
+    .contact-can-we-help-you{
+        padding: 0 10%;
+        display: flex;
+        margin-top: 20px;
+        div{
+            margin-right: 15px;
+            margin-bottom: 50px;
+            p{
+                font-size: 16px;
+            }
+            h3{
+                margin-top: 0;
+            }
+            button{
+                background: white;
+                border: rgb(0, 103, 158) 1px solid;
+                transition: .3s ease-in-out;
+                width: 140px;
+                height: 40px;
+                border-radius: 5px;
+                color: rgb(0, 103, 158);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:hover{
+                    background-color: rgb(0, 103, 158);
+                    color: white;
+                }
+               }
+            }
+    }
+    .contact-faq{
+        .contact-faq-bar{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 20%;
+            h3{
+                text-align: center;
+            }
+            .contact-faq-bar-search{
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                input{
+                    border-radius: 15px;
+                    padding: 5px;
+                    border: 3px rgb(126, 203, 229) solid;
+                }
+                button{
+                    border-radius: 15px;
+                    padding: 5px;
+                    background-color: rgb(126, 203, 229);
+                    color: white;
+                    border: none;
+                    margin-left: 1px;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+            .contact-faq-bar-faqs{
+                .faq-question{
+                    width: auto;
+                }
+            }
+        }
+    }
+    .contact-social{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        padding: 0 10%;
+        padding-top: 50px;
+        margin-bottom: 50px;
+        border-top: 2px  rgb(0, 103, 158) solid;
+        .contact-social-links{
+            width: 80%;
+            div{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                p{
+                    color:  rgb(0, 103, 158);
+                    display: flex;
+                    align-items: center;
+                    margin-top: 10px;
+                }
+            }
+        }
+        h3{
+            margin: 0;
+        }
+    }
+    .contact-sign-up-here{
+        position: relative;
+        height: 600px;
+        margin: 100px 0;
+        .contact-sign-up-here-bg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            img{
+                width: 50% !important;
+                height: 100%;
+                position: absolute;
+                object-fit: cover;
+                &.blur{
+                    position: relative;
+                    width: 50% !important;
+                    transform: rotate(180deg);
+                    object-fit: none;
+                    backdrop-filter: blur(1px) !important;
+                    -webkit-filter: blur(1px) !important;
+                    -moz-filter: blur(1px) !important;
+                    -ms-filter: blur(1px) !important;
+                    -o-filter: blur(1px) !important;
+                    filter: blur(1px) !important;
+                }
+            }
+        }
+        .contact-sign-up-here-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            width: 50% !important;
+            color: white;
+            padding-left: 100px;
+            padding-bottom: 10%;
+            h1{
+                font-size: 55px;
+            }
+            a{
+                text-decoration: none;
+                width: 140px;
+            }
+            p{
+                font-size: 18px;
+            }
+            button{
+                background: white;
+                border: rgb(0, 103, 158) 1px solid;
+                transition: .3s ease-in-out;
+                width: 140px;
+                height: 40px;
+                border-radius: 5px;
+                color: rgb(0, 103, 158);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+                &:hover{
+                    background-color: rgb(0, 103, 158);
+                    color: white;
+                }
+            }
+        }
+    }
+    .contact-contact-us-container{
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .contact-contact-us{
+            padding: 10px 10%;
+            width: 100%;
+            .contact-contact-us-buttons{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                margin-top: 50px;
+                margin-bottom: 100px;
+                button{
+                    transition: .3s ease-in-out;
+                    width: 150px;
+                    height: 40px;
+                    border-radius: 5px;
+                    border: none;
+                    background-color: rgb(31, 119, 54);
+                    color: white;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    &:hover{
+                        background: white;
+                        border: rgb(31, 119, 54) 1px solid;
+                        color: rgb(31, 119, 54);
+                    }
+                }
+            }
+        }
+    }
+    .contact-texts{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding: 100px 50px;
+        .contact-us-text{
+            width: 70%;
+            .contact-us-text-elt{
+                border-bottom: 1px rgb(198, 210, 216) solid;
+                max-height: 60px;
+                overflow: hidden;
+                transition: max-height .3s ease-in-out ;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                width: 100%;
+                height: auto;
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    border-bottom: none !important;
+                }
+                &.active{
+                    max-height: 800px;
+                }
+                svg{
+                    font-size: 22px;
+                }
+                p{
+                    font-size: 18px;
+                    margin: 0;
+                    margin-right: 5px;
+                    span{
+                        font-size: 16px;
+                    }
+                }
+            }
+            /*div{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px rgb(0, 103, 158) solid;
+                height: 60px;
+                svg{
+                    font-size: 22px;
+                }
+                p{
+                    margin: 0;
+                    margin-right: 5px;
+                }
+            }*/
+        }
+    }
+    .contact-useful-links{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding-left: 50px;
+        background-color: rgb(15, 121, 179) !important;
+        color: white !important;
+        height: 200px;
+        .contact-links{
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 150px;
+            width: 70%;
+            div{
+                cursor: pointer;
+            }
+            a{
+                text-decoration: none;
+                margin-top: 15px;
+                color: white;
+                height: 35px !important;
+                padding-bottom: 15px !important;
+                border-bottom: 2px rgb(20, 20, 150) solid !important;
+                height: 30px;
+                font-size: 18px;
+            }
+        }
+    }
+}

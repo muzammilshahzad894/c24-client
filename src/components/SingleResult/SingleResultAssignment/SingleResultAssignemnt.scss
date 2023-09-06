@@ -1,0 +1,77 @@
+.single_result_assignment{
+    height: 100%;
+    .single_result_assignment_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        h3{
+            margin-top: 0;
+        }
+        .single_result_assignment_buttons{
+            button{
+                width: 130px !important;
+            }
+        }
+        .single_result_assignment_info_container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            .single_result_assignment_header{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                position: relative;
+            }
+            .shareAssignement{
+                position: absolute;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                background-color: white;
+                z-index: 99;
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                }
+                width: 300px;
+                button{
+                    margin: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                svg{
+                    margin: 0;
+                }
+            }
+            .single_result_assignment_info{
+                margin-top: 50px;
+                width: 100%;
+                .single_result_assignment_info_items{
+                    flex-direction: column;
+                    div{
+                        min-width: 150px;
+                        justify-content: flex-start;
+                        margin-left: 0;
+                    }
+                }
+                div{
+                    display: flex;
+                    align-items: center;
+                    margin: 5px;
+                    p{
+                        margin: 0;
+                        margin-left: 5px;
+                        font-size: 19px;
+                    }
+                    svg{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

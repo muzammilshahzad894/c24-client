@@ -1,0 +1,27 @@
+.messageBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    width: 100%;
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    z-index: 99;
+    .closeBtn{
+        cursor: pointer;
+    }
+    &.success{
+        border-color: #d6e9c6;
+        background-color: #dff0d8;    
+        .message-content{
+            color: #3c763d;
+        }
+    }
+    &.failure{
+        border-color: #d6e9c6;
+        background-color: #c33826;    
+        .message-content{
+            color: #dff0d8;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.single_result{
+    border: 1px #ccc solid;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 10px 0;
+    padding: 10px;
+
+    .single_result_user_love_share{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 5px;
+        border-bottom: #555 1px solid;
+        height: 41px;
+        margin:0 10px;
+        svg{
+            font-size: 26px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+    }
+}

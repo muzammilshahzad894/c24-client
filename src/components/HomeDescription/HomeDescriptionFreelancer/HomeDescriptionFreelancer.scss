@@ -1,0 +1,163 @@
+.home-description-freelancer-wrapper{
+    .home-description-freelancer-element{
+        padding: 10px;
+        padding-bottom: 25px;
+        border-bottom: 1px rgb(223, 16, 16) solid;
+        position: relative;
+        .bg-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 90%;
+            height: 100%;
+            z-index: -1;
+            img{
+                width: 25%;
+            }
+        }
+        .home-description-freelancer-buttons{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            a{
+                text-decoration: none;
+            }
+            button{
+                border: rgb(31, 119, 54) 1px solid;
+                transition: .3s ease-in-out;
+                width: 140px;
+                height: 40px;
+                border-radius: 5px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(31, 119, 54);
+                color: white;
+                &:hover{
+                    background: white;
+                    color: rgb(31, 119, 54);
+                }
+            }
+        }
+        .home-description-freelancer-second-elt{
+            padding: 15px 10%;
+            .home-description-freelancer-elt-wrapper{
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                .home-description-freelancer-elt-column-wrapper{
+                    strong{
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+        .home-description-freelancer-childcare{
+            padding: 10px 10%;
+            .home-description-freelancer-childcare-diploma-check{
+                border-radius: 4px;
+                background-color: rgb(239, 236, 156);
+                padding: 20px 10%;
+                .home-description-freelancer-childcare-diploma-check-inputs{
+                    display: grid;
+                    grid-template-columns: 3fr 1fr;
+                    input{
+                        border-radius: 15px;
+                        padding: 5px;
+                        border: 3px rgb(126, 203, 229) solid;
+                    }
+                    button{
+                        border-radius: 15px;
+                        padding: 5px;
+                        background-color: rgb(126, 203, 229);
+                        color: white;
+                        border: none;
+                        margin-left: 1px;
+                        &:focus{
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+        .home-description-freelancer-element-form{
+            display: flex;
+            justify-content: space-evenly;
+            .home-description-freelancer-element-form-inputs{
+                div{
+                    display: flex;
+                    input{
+
+                    }
+                }
+            }
+        }
+        .home-description-freelancer-third-elt{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .home-description-freelancer-third-elt-container{
+                width: 100%;
+                margin-top: 10px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-evenly;
+                .home-description-freelancer-third-elt-container-elt{
+                    width: 250px;
+                    img{
+                        width: 250px;
+                        height: 150px;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+        .home-description-freelancer-fourth-elt{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 20%;
+            h3{
+                text-align: center;
+            }
+            .home-description-freelancer-fourth-elt-search{
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                input{
+                    border-radius: 15px;
+                    padding: 5px;
+                    border: 3px rgb(126, 203, 229) solid;
+                }
+                button{
+                    border-radius: 15px;
+                    padding: 5px;
+                    background-color: rgb(126, 203, 229);
+                    color: white;
+                    border: none;
+                    margin-left: 1px;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+            .home-description-freelancer-fourth-elt-faqs{
+                .faq-question{
+                    width: auto;
+                }
+            }
+        }
+        .home-description-freelancer-fifth-elt{
+            padding: 10px 10%;
+            .home-description-freelancer-buttons{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                button{
+                    width: 150px;
+                }
+            }
+        }
+    }
+}

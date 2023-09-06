@@ -1,0 +1,41 @@
+.management-password{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(238, 238, 238);
+    .management-link-to-admin-invoices{
+        background-color: rgb(217, 252, 164);
+        height: 100vh;
+        width: 100vw;
+        padding-top: 50px;
+        display: flex ;
+        flex-direction: column;
+        
+        a,h1{
+            color: green;
+            margin-left: 50px;  
+            font-size: 20px;
+        }
+        h1{
+            font-size: 33px;
+            color: black;
+            margin-bottom: 25px;
+        }
+    }
+    .management-password-form{
+        .management-password-input{
+            input{
+                width: 50px;
+                height: 30px;
+                border-radius: 4px;
+                margin: 0 10px;
+                border: 1px #555 solid;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+    }
+}

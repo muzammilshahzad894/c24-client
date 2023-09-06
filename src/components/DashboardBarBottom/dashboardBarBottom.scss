@@ -1,0 +1,62 @@
+.bottomBar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 88;
+    .elements{
+        height: 120px;
+        /*display: flex;
+        align-items: center;
+        justify-content: space-evenly;*/
+        display: grid;
+        background-color: #70b157;
+        padding-top: 10px;
+        .element{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 17px;
+            padding: 0 10px;
+            cursor: pointer;
+            a{
+                height: 3em;
+                display: flex;
+            }
+            p{
+                color: white;
+                margin: 0;
+            }
+            img,svg{
+                width: 3em;
+                height: 3em;
+            }
+            svg{
+                color: white !important;
+            }
+        }
+    }
+}
+
+@media (max-width:500px){
+    .bottomBar{
+        .elements{
+            margin: auto;
+            .element{
+                padding: 0;
+                img,svg{
+                    width: 2em;
+                    height: 2em;
+                }
+                p{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

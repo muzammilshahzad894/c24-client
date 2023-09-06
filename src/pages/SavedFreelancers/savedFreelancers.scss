@@ -1,0 +1,92 @@
+.saved_profiles_container{
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    button{
+        height: 35px;
+        width: 100px;
+        background-color: #337ab7;
+        color: #fff;
+        border: 1px solid #337ab7;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover{
+            background-color: #2e6da4;
+        }
+    }
+    .saved_profiles_layout{
+        margin: 10px 10%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            svg{
+                font-size: 22px;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                cursor: pointer;
+                transition: .3s ease-in-out;
+                &.selected{
+                    color: #337ab7;
+                }
+            }
+            a{
+                font-size: 17px;
+                margin-top: 5px;
+            }
+        }
+    }
+    .saved_profiles{
+        padding: 0 5%;
+        .saved_profiles_elements_container{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            transition: .4s ease-in-out;
+        }
+    }
+    .delete-all-saved-profiles{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px;
+        margin-bottom: 20px;
+        p{
+            font-size: 22px;
+            cursor: pointer;
+        }
+    }
+    .saved_profiles_footer{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin: 10px 10%;
+        border-top: 1px #ccc solid;
+        button{
+            transition: .3s ease-in-out;
+            width: 120px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(31, 119, 54);
+            color: white;
+            &:hover{
+                background: white;
+                border: rgb(31, 119, 54) 1px solid;
+                color: rgb(31, 119, 54);
+            }
+        }
+    }
+}

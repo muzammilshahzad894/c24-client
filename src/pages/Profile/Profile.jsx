@@ -21,7 +21,8 @@ import jsPDF from 'jspdf'
 import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { MdEmail } from 'react-icons/md';
-import {lang} from '../../languages_data'
+import {lang} from '../../languages_data';
+import { ImLocation } from "react-icons/im";
 
 export default function Profile() {
     const user_info = useSelector(state=>state.user_info)
@@ -43,6 +44,7 @@ export default function Profile() {
     const get_lang = useSelector(state=>state.get_lang);
 
     const user = profile_ratings.profile_ratings&&profile_ratings.profile_ratings.user?profile_ratings.profile_ratings.user:{};
+    // console.log('address is ',user.address)
     const [switcher, setSwitcher] = useState(user_info.user?.account_type==="freelancer"?1:3)
     const [imageToCrop, setImageToCrop] = useState(undefined);
     const [croppedImage, setCroppedImage] = useState(undefined);
@@ -585,7 +587,21 @@ export default function Profile() {
                                 )
                             }
                         </div>
+                        {/* here show the location  */}
+                        
                     </div>
+                    <div className="location">
+                            <p>
+                                <ImLocation/>
+                                <span className=''>
+                                {get_profile_ratings.profile_ratings?.user?.city||""},
+
+                                </span>
+                            </p>
+                            <p>
+                                {get_profile_ratings.profile_ratings?.user?.address||""}
+                            </p>
+                            </div>
                     <div className="info-prf">
                         <div className="row">
                             <div>

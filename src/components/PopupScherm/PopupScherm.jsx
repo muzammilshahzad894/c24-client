@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./PopupScherm.scss";
 
 const PopupScherm = () => {
-  const [showPanel, setShowPanel] = useState(true);
+  const [showPanel, setShowPanel] = useState(false);
 
   return (
     <div

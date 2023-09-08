@@ -85,16 +85,16 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="col-lg-8">
+        <div className="col-lg-1">
           <div className="footer-lan">
-            <h4>You can always change your location and language</h4>
+            {/* <h4>You can always change your location and language</h4> */}
             <div className="language-change-box">
               <div className="input-label">
-                <p className="loc-p">Choose your location</p>
-                <p className="lag-p">Choose your language</p>
+                {/* <p className="loc-p">Choose your location</p> */}
+                {/* <p className="lag-p">Choose your language</p> */}
               </div>
               <div className="contentInput">
-                <select
+                {/* <select
                   name="Country"
                 >
                   <option value="">select Country</option>
@@ -118,8 +118,8 @@ export default function Footer() {
                   <option value="Estland">Estland</option>
                   <option value="Zwitserland">Zwitserland</option>
                   <option value="Finland">Finland</option>
-                </select>
-                <div className="country">
+                </select> */}
+                {/* <div className="country">
                   <div style={{ cursor: "pointer" }}>
                     <img
                       src="/images/netherland_flag.png"
@@ -127,7 +127,7 @@ export default function Footer() {
                       alt
                     />
                   </div>
-                </div>
+                </div> */}
                 <select
                   name="Country"
                 >

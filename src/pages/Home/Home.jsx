@@ -38,10 +38,12 @@ export default function Home() {
   const [showLoading, setShowLoading] = useState(true);
   const [showChangeCountry, setShowChangeCountry] = useState(false);
   const [showCountryList, setShowCountryList] = useState(false);
+  const [showcountryPopup, setShowcountryPopup] = useState(false);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [hourlyRate, setHourlyRate] = useState(50);
   const [sortBy, setSortBy] = useState("");
   const [country, setCountry] = useState("Netherlands - NL");
+  const [selectCountry, setSelectCountry] = useState("Nederland");
   const [countryImg, setCountryImg] = useState("/images/netherland_flag.png");
   const [countrymail, setCountryMail] = useState("www.curant.nl");
   const [temp, setTemp] = useState(0);
@@ -198,9 +200,20 @@ export default function Home() {
 
   //change country handler
   const changeCountryHandler = (countryName, countryImage, countryEmail) => {
-    setCountry(countryName);
-    setCountryImg(countryImage);
-    setCountryMail(countryEmail);
+    if (countryName === "dutch") {
+      setCountry("Nederland - NL");
+      setCountryImg(countryImage);
+      setCountryMail(countryEmail);
+      setShowCountryList(false);
+      localStorage.setItem("language", countryName);
+    } else {
+      setCountry(countryName);
+      setCountryImg(countryImage);
+      setCountryMail(countryEmail);
+      setShowCountryList(false);
+      localStorage.setItem("language", countryName);
+    }
+
   };
   //getting cities within the radius
   function getCitiesWithinRadius(referenceLat, referenceLng, radius) {
@@ -216,9 +229,9 @@ export default function Home() {
       const a =
         Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
         Math.cos((referenceLat * Math.PI) / 180) *
-          Math.cos((cityLat * Math.PI) / 180) *
-          Math.sin(lngDiff / 2) *
-          Math.sin(lngDiff / 2);
+        Math.cos((cityLat * Math.PI) / 180) *
+        Math.sin(lngDiff / 2) *
+        Math.sin(lngDiff / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       const distance = R * c;
 
@@ -361,7 +374,7 @@ export default function Home() {
                 <option value="nl">Dutch</option>
             </select> */}
       <PopupScherm />
-      <Cookies/>
+      <Cookies />
       <div className="images">
         <Swiper
           spaceBetween={30}
@@ -546,11 +559,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Construction"
-                            )
+                            "Construction"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Construction"
-                            )
+                            "Construction"
+                          )
                       }
                     >
                       Construction
@@ -560,11 +573,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Electrical"
-                            )
+                            "Electrical"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Electrical"
-                            )
+                            "Electrical"
+                          )
                       }
                     >
                       Electrical
@@ -574,11 +587,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Installation"
-                            )
+                            "Installation"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Installation"
-                            )
+                            "Installation"
+                          )
                       }
                     >
                       Installation
@@ -588,11 +601,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Infrastructure"
-                            )
+                            "Infrastructure"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Infrastructure"
-                            )
+                            "Infrastructure"
+                          )
                       }
                     >
                       Infrastructure
@@ -602,11 +615,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Industrial"
-                            )
+                            "Industrial"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Industrial"
-                            )
+                            "Industrial"
+                          )
                       }
                     >
                       Industrial
@@ -616,11 +629,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Health care and well being"
-                            )
+                            "Health care and well being"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Health care and well being"
-                            )
+                            "Health care and well being"
+                          )
                       }
                     >
                       Health care and well being
@@ -630,11 +643,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Trade and services"
-                            )
+                            "Trade and services"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Trade and services"
-                            )
+                            "Trade and services"
+                          )
                       }
                     >
                       Trade and services
@@ -644,11 +657,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "IT"
-                            )
+                            "IT"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "IT"
-                            )
+                            "IT"
+                          )
                       }
                     >
                       IT
@@ -658,11 +671,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Justice, security and public administration"
-                            )
+                            "Justice, security and public administration"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Justice, security and public administration"
-                            )
+                            "Justice, security and public administration"
+                          )
                       }
                     >
                       Justice, security and public administration
@@ -672,11 +685,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Environment and Agriculture"
-                            )
+                            "Environment and Agriculture"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Environment and Agriculture"
-                            )
+                            "Environment and Agriculture"
+                          )
                       }
                     >
                       Environment and Agriculture
@@ -686,11 +699,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Media and communication"
-                            )
+                            "Media and communication"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Media and communication"
-                            )
+                            "Media and communication"
+                          )
                       }
                     >
                       Media and communication
@@ -700,11 +713,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Education, culture and science"
-                            )
+                            "Education, culture and science"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Education, culture and science"
-                            )
+                            "Education, culture and science"
+                          )
                       }
                     >
                       Education, culture and science
@@ -714,11 +727,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Engineering, production and construction"
-                            )
+                            "Engineering, production and construction"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Engineering, production and construction"
-                            )
+                            "Engineering, production and construction"
+                          )
                       }
                     >
                       Engineering, production and construction
@@ -728,11 +741,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Tourism, recreation and catering"
-                            )
+                            "Tourism, recreation and catering"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Tourism, recreation and catering"
-                            )
+                            "Tourism, recreation and catering"
+                          )
                       }
                     >
                       Tourism, recreation and catering
@@ -742,11 +755,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Transport and Logistics"
-                            )
+                            "Transport and Logistics"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Transport and Logistics"
-                            )
+                            "Transport and Logistics"
+                          )
                       }
                     >
                       Transport and Logistics
@@ -756,11 +769,11 @@ export default function Home() {
                       selected={
                         !searchProjects
                           ? data.current?.freelancer?.competency?.values.includes(
-                              "Childcare"
-                            )
+                            "Childcare"
+                          )
                           : data.current?.assignment?.industry?.values.includes(
-                              "Childcare"
-                            )
+                            "Childcare"
+                          )
                       }
                     >
                       Childcare
@@ -787,25 +800,426 @@ export default function Home() {
                   {showChangeCountry && (
                     <div className="change-country-container">
                       <div className="change-country-header">
-                        <h5>Change language</h5>
-                        <div>
-                          <h5>{country}</h5>
-                          <Link
-                            to=""
-                            onClick={() => setShowCountryList(!showCountryList)}
-                          >
-                            Change
-                          </Link>
+                        <div className="d-flex justify-content-between pr-4 items-center">
+                          <h5>Change language</h5>
+                          <p className="cursor-pointer" onClick={() => setShowChangeCountry(false)}><AiOutlineClose /></p>
                         </div>
-                        <div
-                          style={{
-                            height: "120px",
-                            position: "relative",
-                            overflowY: showCountryList ? "scroll" : "hidden",
-                            overflowX: "hidden",
-                          }}
-                        >
-                          {showCountryList && (
+                        <p className="text-center font-size">In which country are you looking for an assignment</p>
+                        <div>
+                          <input type="submit" className="country-input" value={selectCountry} onClick={() => setShowcountryPopup(!showcountryPopup)} />
+                        </div>
+                        <p className="text-align-center  font-size mt-4">Choose your language</p>
+                        <div>
+                          <input type="button" className="country-input" value={country} onClick={() => setShowCountryList(!showCountryList)} />
+                        </div>
+                        {showcountryPopup && (
+                          <div
+                            style={{
+                              height: "420px",
+                              position: "absolute",
+                              right: "-320px",
+                              backgroundColor: "white",
+                              width: "300px",
+
+                              overflowY: showcountryPopup ? "scroll" : "hidden",
+                              overflowX: "hidden",
+                            }}
+                          >
+                            <ul className="countries_list">
+                              <li value="India" onClick={() => {
+                                setSelectCountry("India");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>India</p>
+                              </li >
+                              <li value="Nederland" onClick={() => {
+                                setSelectCountry("Nederland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Nederland</p>
+                              </li>
+                              <li value="Duitsland" onClick={() => {
+                                setSelectCountry("Duitsland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Duitsland</p>
+                              </li>
+                              <li value="UK" onClick={() => {
+                                setSelectCountry("UK");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>UK</p>
+                              </li>
+                              <li value="België" onClick={() => {
+                                setSelectCountry("België");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>België</p>
+                              </li>
+                              <li value="Portugal" onClick={() => {
+                                setSelectCountry("Portugal");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Portugal</p>
+                              </li>
+                              <li value="Spanje" onClick={() => {
+                                setSelectCountry("Spanje");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Spanje</p>
+                              </li>
+                              <li value="Frankrijk" onClick={() => {
+                                setSelectCountry("Frankrijk");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Frankrijk</p>
+                              </li>
+                              <li value="Italie" onClick={() => {
+                                setSelectCountry("Italie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Italie</p>
+                              </li>
+                              <li value="Oostenrijk" onClick={() => {
+                                setSelectCountry("Oostenrijk");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Oostenrijk</p>
+                              </li>
+                              <li value="Polen" onClick={() => {
+                                setSelectCountry("Polen");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Polen</p>
+                              </li>
+                              <li value="Tsjechië" onClick={() => {
+                                setSelectCountry("Tsjechië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Tsjechië</p>
+                              </li>
+                              <li value="Slovenië" onClick={() => {
+                                setSelectCountry("Slovenië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Ierland</p>
+                              </li>
+                              <li value="Denemarken" onClick={() => {
+                                setSelectCountry("Denemarken");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Denemarken</p>
+                              </li>
+                              <li value="Slowakije" onClick={() => {
+                                setSelectCountry("Slowakije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Slowakije</p>
+                              </li>
+                              <li value="Hongarije" onClick={() => {
+                                setSelectCountry("Hongarije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Hongarije</p>
+                              </li>
+                              <li value="Roemenie" onClick={() => {
+                                setSelectCountry("Roemenie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Roemenie</p>
+                              </li>
+                              <li value="Bulgarije" onClick={() => {
+                                setSelectCountry("Bulgarije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Griekenland</p>
+                              </li>
+                              <li value="Zweden" onClick={() => {
+                                setSelectCountry("Zweden");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Zweden</p>
+                              </li>
+                              <li value="Noorwegen" onClick={() => {
+                                setSelectCountry("Noorwegen");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Noorwegen</p>
+                              </li>
+                              <li value="Finland" onClick={() => {
+
+                                setSelectCountry("Finland");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>Finland</p>
+                              </li>
+                              <li value="Litouwen" onClick={() => {
+                                setSelectCountry("Litouwen");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>Litouwen</p>
+                              </li>
+                              <li value="Letland" onClick={() => {
+                                setSelectCountry("Letland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Letland</p>
+                              </li>
+                              <li value="Estland" onClick={() => {
+                                setSelectCountry("Estland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Estland</p>
+                              </li>
+                              <li value="Zwitserland" onClick={() => {
+                                setSelectCountry("Zwitserland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Zwitserland</p>
+                              </li>
+                              <li value="Luxemburg" onClick={() => {
+                                setSelectCountry("Luxemburg");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Luxemburg</p>
+                              </li>
+                              <li value="Ijsland" onClick={() => {
+                                setSelectCountry("Ijsland");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>Ijsland</p>
+                              </li>
+                              <li value="Kroatie" onClick={() => {
+                                setSelectCountry("Kroatie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Kroatie</p>
+                              </li>
+                              <li value="Servië" onClick={() => {
+                                setSelectCountry("Servië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Servië</p>
+                              </li>
+                              <li value="Macedonië" onClick={() => {
+                                setSelectCountry("Macedonië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Macedonië</p>
+                              </li>
+                              <li value="Bosnië en Herzegovina" onClick={() => {
+                                setSelectCountry("Bosnië en Herzegovina");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Bosnië en Herzegovina</p>
+                              </li>
+                              <li value="Montenegro" onClick={() => {
+                                setSelectCountry("Montenegro");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Montenegro</p>
+                              </li>
+                              <li value="Kosovo" onClick={() => {
+                                setSelectCountry("Kosovo");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Kosovo</p>
+                              </li>
+                              <li value="Rusland" onClick={() => {
+                                setSelectCountry("Rusland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Rusland</p>
+                              </li>
+                              <li value="Turkije" onClick={() => {
+                                setSelectCountry("Turkije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Turkije</p>
+                              </li>
+                              <li value="China" onClick={() => {
+                                setSelectCountry("China");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>China</p>
+                              </li>
+                              <li value="Japan" onClick={() => {
+                                setSelectCountry("Japan");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Japan</p>
+                              </li>
+                              <li value="Pakistan" onClick={() => {
+                                setSelectCountry("Pakistan");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Pakistan</p>
+                              </li>
+                              <li value="Zuid-Korea" onClick={() => {
+                                setSelectCountry("Zuid-Korea");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Zuid-Korea</p>
+                              </li>
+                              <li value="Vietman" onClick={() => {
+                                setSelectCountry("Vietman");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Vietman</p>
+                              </li>
+                              <li value="UAE" onClick={() => {
+                                setSelectCountry("UAE");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>UAE</p>
+                              </li>
+                              <li value="Saudi arabia" onClick={() => {
+                                setSelectCountry("Saudi arabia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Saudi arabia</p>
+                              </li>
+                              <li value="Iran" onClick={() => {
+                                setSelectCountry("Iran");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Irak</p>
+                              </li>
+                              <li value="Quatar" onClick={() => {
+                                setSelectCountry("Quatar");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Quatar</p>
+                              </li>
+                              <li value="Brazilie" onClick={() => {
+                                setSelectCountry("Brazilie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Brazilie</p>
+                              </li>
+                              <li value="Bolivia" onClick={() => {
+                                setSelectCountry("Bolivia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Bolivia </p>
+                              </li>
+                              <li value="Argentinie" onClick={() => {
+                                setSelectCountry("Argentinie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Argentina</p>
+                              </li>
+                              <li value="Chile" onClick={() => {
+                                setSelectCountry("Chile");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Chile</p>
+                              </li>
+                              <li value="USA" onClick={() => {
+                                setSelectCountry("USA");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>USA</p>
+                              </li>
+                              <li value="Colombia" onClick={() => {
+                                setSelectCountry("Colombia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Colombia</p>
+                              </li>
+                              <li value="Peru" onClick={() => {
+                                setSelectCountry("Peru");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Peru</p>
+                              </li>
+                              <li value="Venezuela" onClick={() => {
+                                setSelectCountry("Venezuela");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Venezuela</p>
+                              </li>
+                              <li value="Paraguay" onClick={() => {
+                                setSelectCountry("Paraguay");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Paraguay</p>
+                              </li>
+                              <li value="Uruguay" onClick={() => {
+                                setSelectCountry("Uruguay");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Uruguay</p>
+                              </li>
+                              <li value="Mexico" onClick={() => {
+                                setSelectCountry("Mexico");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Mexico</p>
+                              </li>
+                              <li value="Australia" onClick={() => {
+                                setSelectCountry("Australia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Australia</p>
+                              </li>
+                              <li value="Morocco" onClick={() => {
+                                setSelectCountry("Morocco");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Morocco</p>
+                              </li>
+                              <li value="Algeria" onClick={() => {
+                                setSelectCountry("Algeria");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Algeria</p>
+                              </li>
+                              <li value="Libya" onClick={() => {
+                                setSelectCountry("Libya");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Libya</p>
+                              </li>
+                              <li value="Egypt" onClick={() => {
+                                setSelectCountry("Egypt");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Egypt</p>
+                              </li>
+                              <li value="South Africa" onClick={() => {
+                                setSelectCountry("South Africa");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>South Africa</p>
+                              </li>
+                              <li value="Tunisia" onClick={() => {
+                                setSelectCountry("Tunisia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Tunisia</p>
+                              </li>
+
+                            </ul>
+                          </div>
+                        )}
+                        {showCountryList && (
+                          <div
+                            style={{
+                              height: "150px",
+                              position: "absolute",
+                              right: "-320px",
+                              backgroundColor: "white",
+                              width: "300px",
+
+                              overflowY: showCountryList ? "scroll" : "hidden",
+                              overflowX: "hidden",
+                            }}
+                          >
                             <ul className="countries_list">
                               <li
                                 onClick={() =>
@@ -813,6 +1227,7 @@ export default function Home() {
                                     "USA - EN",
                                     "/images/countries/usa_flag.png",
                                     "Curant24.com"
+
                                   )
                                 }
                               >
@@ -825,7 +1240,7 @@ export default function Home() {
                               <li
                                 onClick={() =>
                                   changeCountryHandler(
-                                    "Netherlands - NL",
+                                    "dutch",
                                     "/images/netherland_flag.png",
                                     "www.curant.nl"
                                   )
@@ -850,9 +1265,10 @@ export default function Home() {
                                 <p>Morocco - Mr</p>
                               </li>
                             </ul>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
+
                       <div className="change-country-footer">
                         <div>
                           <img src={countryImg} alt="" />
@@ -907,17 +1323,17 @@ export default function Home() {
                                 onChange={(e) =>
                                   e.target.checked
                                     ? searchHandler(
-                                        false,
-                                        "working_hours",
-                                        "like",
-                                        "part%"
-                                      )
+                                      false,
+                                      "working_hours",
+                                      "like",
+                                      "part%"
+                                    )
                                     : searchHandler(
-                                        true,
-                                        "working_hours",
-                                        "like",
-                                        "part%"
-                                      )
+                                      true,
+                                      "working_hours",
+                                      "like",
+                                      "part%"
+                                    )
                                 }
                               />
                               <label htmlFor="part_time_projects">
@@ -934,17 +1350,17 @@ export default function Home() {
                                 onChange={(e) =>
                                   e.target.checked
                                     ? searchHandler(
-                                        false,
-                                        "working_hours",
-                                        "like",
-                                        "full%"
-                                      )
+                                      false,
+                                      "working_hours",
+                                      "like",
+                                      "full%"
+                                    )
                                     : searchHandler(
-                                        true,
-                                        "working_hours",
-                                        "like",
-                                        "full%"
-                                      )
+                                      true,
+                                      "working_hours",
+                                      "like",
+                                      "full%"
+                                    )
                                 }
                               />
                               <label htmlFor="full_time_projects">
@@ -1052,17 +1468,17 @@ export default function Home() {
                                   onChange={(e) =>
                                     e.target.checked
                                       ? searchHandler(
-                                          false,
-                                          "job_duration",
-                                          "like",
-                                          "<1 month"
-                                        )
+                                        false,
+                                        "job_duration",
+                                        "like",
+                                        "<1 month"
+                                      )
                                       : searchHandler(
-                                          true,
-                                          "job_duration",
-                                          "like",
-                                          "<1 month"
-                                        )
+                                        true,
+                                        "job_duration",
+                                        "like",
+                                        "<1 month"
+                                      )
                                   }
                                 />
                               </div>
@@ -1078,17 +1494,17 @@ export default function Home() {
                                   onChange={(e) =>
                                     e.target.checked
                                       ? searchHandler(
-                                          false,
-                                          "job_duration",
-                                          "like",
-                                          "1-3 months"
-                                        )
+                                        false,
+                                        "job_duration",
+                                        "like",
+                                        "1-3 months"
+                                      )
                                       : searchHandler(
-                                          true,
-                                          "job_duration",
-                                          "like",
-                                          "1-3 months"
-                                        )
+                                        true,
+                                        "job_duration",
+                                        "like",
+                                        "1-3 months"
+                                      )
                                   }
                                 />
                               </div>
@@ -1104,17 +1520,17 @@ export default function Home() {
                                   onChange={(e) =>
                                     e.target.checked
                                       ? searchHandler(
-                                          false,
-                                          "job_duration",
-                                          "like",
-                                          "3-6 months"
-                                        )
+                                        false,
+                                        "job_duration",
+                                        "like",
+                                        "3-6 months"
+                                      )
                                       : searchHandler(
-                                          true,
-                                          "job_duration",
-                                          "like",
-                                          "3-6 months"
-                                        )
+                                        true,
+                                        "job_duration",
+                                        "like",
+                                        "3-6 months"
+                                      )
                                   }
                                 />
                               </div>
@@ -1130,17 +1546,17 @@ export default function Home() {
                                   onChange={(e) =>
                                     e.target.checked
                                       ? searchHandler(
-                                          false,
-                                          "job_duration",
-                                          "like",
-                                          ">6 months"
-                                        )
+                                        false,
+                                        "job_duration",
+                                        "like",
+                                        ">6 months"
+                                      )
                                       : searchHandler(
-                                          true,
-                                          "job_duration",
-                                          "like",
-                                          ">6 months"
-                                        )
+                                        true,
+                                        "job_duration",
+                                        "like",
+                                        ">6 months"
+                                      )
                                   }
                                 />
                               </div>
@@ -1179,10 +1595,10 @@ export default function Home() {
                           Show{" "}
                           {research.data &&
                             "(" +
-                              (research.data?.length - 1 > 0
-                                ? research.data?.length - 1
-                                : 0) +
-                              ")"}{" "}
+                            (research.data?.length - 1 > 0
+                              ? research.data?.length - 1
+                              : 0) +
+                            ")"}{" "}
                           results
                         </button>
 
@@ -1348,17 +1764,17 @@ export default function Home() {
                                 onChange={(e) =>
                                   e.target.checked
                                     ? searchHandler(
-                                        false,
-                                        "working_hours",
-                                        "=",
-                                        "parttime"
-                                      )
+                                      false,
+                                      "working_hours",
+                                      "=",
+                                      "parttime"
+                                    )
                                     : searchHandler(
-                                        true,
-                                        "working_hours",
-                                        "=",
-                                        "parttime"
-                                      )
+                                      true,
+                                      "working_hours",
+                                      "=",
+                                      "parttime"
+                                    )
                                 }
                               />
                               <label htmlFor="part_time_freelancer">
@@ -1372,17 +1788,17 @@ export default function Home() {
                                 onChange={(e) =>
                                   e.target.checked
                                     ? searchHandler(
-                                        false,
-                                        "working_hours",
-                                        "=",
-                                        "fulltime"
-                                      )
+                                      false,
+                                      "working_hours",
+                                      "=",
+                                      "fulltime"
+                                    )
                                     : searchHandler(
-                                        true,
-                                        "working_hours",
-                                        "=",
-                                        "fulltime"
-                                      )
+                                      true,
+                                      "working_hours",
+                                      "=",
+                                      "fulltime"
+                                    )
                                 }
                               />
                               <label htmlFor="full_time_freelancer">
@@ -3082,10 +3498,10 @@ export default function Home() {
                             Show{" "}
                             {research.data &&
                               "(" +
-                                (research.data?.length - 1 > 0
-                                  ? research.data?.length - 1
-                                  : 0) +
-                                ")"}{" "}
+                              (research.data?.length - 1 > 0
+                                ? research.data?.length - 1
+                                : 0) +
+                              ")"}{" "}
                             results
                           </button>
                         </Link>

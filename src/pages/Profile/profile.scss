@@ -934,5 +934,11 @@
             }
         }
     }
-    
+    .location{
+        display: flex !important;
+    gap: 5px !important;
+    position: absolute !important;
+    margin-top: 50px !important;
+    margin-left: 90px !important;
+    }
 }

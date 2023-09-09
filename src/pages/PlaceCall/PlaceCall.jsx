@@ -34,7 +34,6 @@ import { IoAddOutline } from "react-icons/io5";
 import LoadingRocket from "../../components/LoadingBox/Loading-rocket";
 
 export default function PlaceCall() {
-  
   const user_info = useSelector((state) => state.user_info);
   const get_client_orga = useSelector((state) => state.get_client_orga);
   const add_assignement = useSelector((state) => state.add_assignement);
@@ -135,8 +134,6 @@ export default function PlaceCall() {
   const langRef = useRef({ lang: [], level: [] });
   const divRef = useRef([]);
   const [J, setJ] = useState(location.state?.data?.at(0)?.fav_lang ? 0 : 1);
-  const [postimg , setPostimg] = useState('img_none');
-  const [rocketgif , setRocketgif] = useState('');
 
   //country select
   const countrySelect = useRef([]);
@@ -297,7 +294,10 @@ export default function PlaceCall() {
     if (set_lang.data) {
       add_assignement.data = null;
       set_lang.data = null;
-      linkRef.current.click();
+      document.getElementById("postimghidden").style.display = "flex";
+      setTimeout(() => {
+        linkRef.current.click();
+      }, 2000);
     }
   }, [add_assignement, set_lang]);
 
@@ -330,10 +330,6 @@ export default function PlaceCall() {
   const removeRequiredCertHandler = (id) => {
     setRequired_cert(required_cert.filter((item, key) => key !== id));
   };
-  const Showimage = () => {
-    document.getElementById("loderhidden").style.display = "none";
-    document.getElementById("postimghidden").style.display = "flex";
-  }
 
   const progressBarHandler = (n = 1) => {
     progressRef.current = [...new Set(progressRef.current)];
@@ -385,8 +381,6 @@ export default function PlaceCall() {
         document.getElementById("loderhidden").style.display = "flex";
 
         setTimeout(() => {
-          setPostimg('img_block');
-        
           if (
             infoRef.current["payements_term"]?.length > 0 &&
             infoRef.current["what_may_be_charged"]?.length > 0 &&
@@ -413,7 +407,6 @@ export default function PlaceCall() {
                   infoRef.current["hourly_wage_to"]?.value?.length > 0)
               ) {
                 save_job();
-                Showimage();
               } else {
                 setError(
                   "Pleae note, you must fill in all fields marked with * "
@@ -423,18 +416,7 @@ export default function PlaceCall() {
           } else {
             setError("Pleae note, you must fill in all fields marked with * ");
           }
-          setTimeout(() => {
-            setRocketgif('rocketgif_none');
-            setPostimg('img_block');
-          }
-          , 2000);
-          setTimeout(() => {
-            Showimage();
-          }
-          , 2000);
-        
-        }, 5000);
-      
+        }, 4000);
       }
     } else {
       setI(i + n);
@@ -3701,19 +3683,20 @@ export default function PlaceCall() {
         </div>
       </div>
       <div
-        className={`loading-rocket big ${rocketgif}`}
+        className="loading-rocket big"
         style={{ display: "none" }}
         id="loderhidden"
       >
-                  <img src="/images/rocket.gif" alt="" />       {" "}
+        <img src="/images/rocket.gif" alt="" />
+        <p class="job_success_message">Congratulations, your assignment has now been placed</p>
       </div>
-      
       <div
-        className={`post_img big ${postimg}`}
+        className="loading-rocket big"
         style={{ display: "none" }}
         id="postimghidden"
       >
-         <img src="/images/assignment_pic_at_end.png" alt="" />
+        <img src="/images/assignment_pic_at_end.png" alt="" />
+        <p class="job_success_message">Congratulations, your assignment has now been placed</p>
       </div>
     </div>
   );

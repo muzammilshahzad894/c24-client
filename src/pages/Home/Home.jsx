@@ -787,6 +787,7 @@ export default function Home() {
                     onClick={() => {
                       setShowChangeCountry(!showChangeCountry);
                       setShowCountryList(false);
+                      ;setShowcountryPopup(false);
                     }}
                     style={{ cursor: "pointer" }}
                   >
@@ -802,25 +803,27 @@ export default function Home() {
                       <div className="change-country-header">
                         <div className="d-flex justify-content-between pr-4 items-center">
                           <h5>Change language</h5>
-                          <p className="cursor-pointer" onClick={() => setShowChangeCountry(false)}><AiOutlineClose /></p>
+                          <p className="cursor-pointer" onClick={() => {setShowChangeCountry(false);setShowcountryPopup(false);setShowCountryList(false);}}><AiOutlineClose /></p>
+                         
                         </div>
                         <p className="text-center font-size">In which country are you looking for an assignment</p>
                         <div>
-                          <input type="submit" className="country-input" value={selectCountry} onClick={() => setShowcountryPopup(!showcountryPopup)} />
+                          <input type="submit" className="country-input" value={selectCountry} onClick={() => {setShowcountryPopup(!showcountryPopup);setShowCountryList(false);}} />
                         </div>
                         <p className="text-align-center  font-size mt-4">Choose your language</p>
                         <div>
-                          <input type="button" className="country-input" value={country} onClick={() => setShowCountryList(!showCountryList)} />
+                          <input type="button" className="country-input" value={country} onClick={() => {setShowCountryList(!showCountryList);setShowcountryPopup(false);}} />
                         </div>
                         {showcountryPopup && (
                           <div
                             style={{
-                              height: "420px",
+                              height: "320px",
                               position: "absolute",
                               right: "-320px",
                               backgroundColor: "white",
+                              top: "0",
                               width: "300px",
-
+                              zIndex: "999",
                               overflowY: showcountryPopup ? "scroll" : "hidden",
                               overflowX: "hidden",
                             }}
@@ -1210,33 +1213,19 @@ export default function Home() {
                         {showCountryList && (
                           <div
                             style={{
-                              height: "150px",
+                              height: "100px",
                               position: "absolute",
-                              right: "-320px",
+                              right: "-304px",
+                              top: "164px",
                               backgroundColor: "white",
                               width: "300px",
-
+                              zIndex: "999",
                               overflowY: showCountryList ? "scroll" : "hidden",
                               overflowX: "hidden",
                             }}
                           >
                             <ul className="countries_list">
-                              <li
-                                onClick={() =>
-                                  changeCountryHandler(
-                                    "USA - EN",
-                                    "/images/countries/usa_flag.png",
-                                    "Curant24.com"
-
-                                  )
-                                }
-                              >
-                                <img
-                                  src="/images/countries/usa_flag.png"
-                                  alt=""
-                                />
-                                <p>USA - EN</p>
-                              </li>
+                              
                               <li
                                 onClick={() =>
                                   changeCountryHandler(
@@ -1252,17 +1241,14 @@ export default function Home() {
                               <li
                                 onClick={() =>
                                   changeCountryHandler(
-                                    "Morocco - Mr",
-                                    "/images/countries/morocco_flag.png",
+                                    "Netherlands - EN",
+                                    "/images/netherland_flag.png",
                                     "www.fr.curant24.com"
                                   )
                                 }
                               >
-                                <img
-                                  src="/images/countries/morocco_flag.png"
-                                  alt=""
-                                />
-                                <p>Morocco - Mr</p>
+                                 <img src="/images/netherland_flag.png" alt="" />
+                                <p>Netherlands - EN</p>
                               </li>
                             </ul>
                           </div>

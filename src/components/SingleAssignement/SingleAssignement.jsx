@@ -864,7 +864,7 @@ export default function SingleAssignement() {
               </div>
             </div>
           </div>
-          <div className="side-panel">
+          {/* <div className="side-panel">
             <div className="row-header">
               <p>Map</p>
             </div>
@@ -884,7 +884,7 @@ export default function SingleAssignement() {
                   />
                 )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div

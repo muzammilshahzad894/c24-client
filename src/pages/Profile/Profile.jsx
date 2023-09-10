@@ -590,6 +590,8 @@ export default function Profile() {
                         {/* here show the location  */}
                         
                     </div>
+                    {
+                        get_profile_ratings.profile_ratings?.user?.city && get_profile_ratings.profile_ratings?.user?.address && (
                     <div className="location">
                             <p>
                                 <ImLocation/>
@@ -601,7 +603,10 @@ export default function Profile() {
                             <p>
                                 {get_profile_ratings.profile_ratings?.user?.address||""}
                             </p>
-                            </div>
+                    </div>
+                        )
+                    }
+                    
                     <div className="info-prf">
                         <div className="row">
                             <div>

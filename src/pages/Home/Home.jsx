@@ -50,6 +50,8 @@ export default function Home() {
   const linkRef = useRef();
   const searchLinkRef = useRef();
   const research = useSelector((state) => state.research);
+
+  const get_personal = useSelector((state) => state.get_personal);
   //slider elt
   var slider = useRef();
 
@@ -135,6 +137,7 @@ export default function Home() {
 
   const dispatch = useDispatch();
   const [user, setUser] = useState(user_info.user);
+  console.log('user is',user);
 
   useEffect(() => {
     setTimeout(() => {
@@ -787,7 +790,7 @@ export default function Home() {
                     onClick={() => {
                       setShowChangeCountry(!showChangeCountry);
                       setShowCountryList(false);
-                      ;setShowcountryPopup(false);
+                      ; setShowcountryPopup(false);
                     }}
                     style={{ cursor: "pointer" }}
                   >
@@ -803,16 +806,16 @@ export default function Home() {
                       <div className="change-country-header">
                         <div className="d-flex justify-content-between pr-4 items-center">
                           <h5>Change language</h5>
-                          <p className="cursor-pointer" onClick={() => {setShowChangeCountry(false);setShowcountryPopup(false);setShowCountryList(false);}}><AiOutlineClose /></p>
-                         
+                          <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose /></p>
+
                         </div>
                         <p className="text-center font-size">In which country are you looking for an assignment</p>
                         <div>
-                          <input type="submit" className="country-input" value={selectCountry} onClick={() => {setShowcountryPopup(!showcountryPopup);setShowCountryList(false);}} />
+                          <input type="submit" className="country-input" value={selectCountry} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
                         </div>
                         <p className="text-align-center  font-size mt-4">Choose your language</p>
                         <div>
-                          <input type="button" className="country-input" value={country} onClick={() => {setShowCountryList(!showCountryList);setShowcountryPopup(false);}} />
+                          <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
                         </div>
                         {showcountryPopup && (
                           <div
@@ -1225,7 +1228,7 @@ export default function Home() {
                             }}
                           >
                             <ul className="countries_list">
-                              
+
                               <li
                                 onClick={() =>
                                   changeCountryHandler(
@@ -1247,7 +1250,7 @@ export default function Home() {
                                   )
                                 }
                               >
-                                 <img src="/images/netherland_flag.png" alt="" />
+                                <img src="/images/netherland_flag.png" alt="" />
                                 <p>Netherlands - EN</p>
                               </li>
                             </ul>
@@ -3496,10 +3499,50 @@ export default function Home() {
                   ))}
               </ul>
             </div>
+            {
+              user.account_type === "freelancer" ? (
+                <></>
+              ) : (
+                <div className="right-section">
+              <div className="right-section-content" >
+                <p style={{ textAlign: "center" }}>
+                  Place a free assignment and <br />
+                  find the right <br /> freelancer
+                </p>
+                {user.email !== undefined ? (
+                <Link to="/dashboard/place-call">
+                  <button>Post your Assignment</button>
+                </Link>
+                ) : (
+                  <Link to="/join">
+                  <button>Post your Assignment</button>
+                </Link>
+                )}
+
+              </div>
+            </div>
+              )
+            }
+            
+            {user.email !== undefined ? (
+               <></>
+              ) : (
+            <div className="right-section">
+                <div className="right-section-content">
+                  <p>
+                    Promote your self as a  <br />
+                    freelauncer and find new  assignment
+                  </p>
+                  <Link to="/join">
+                    <button >Create an account immediately</button>
+                  </Link>
+                </div>
+            </div>
+            )}
             {/* <div className={`loading ${!showLoading ? "hideLoading":""}`}>
                             <div className="loadingBar"></div>
                         </div> */}
-            {showLoading && <LoadingBox />}
+            {/* {showLoading && <LoadingBox />} */}
           </div>
           <div className="numbers">
             <div className="header">

@@ -8,6 +8,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 export default function DashboardBar({ register = false, pdf = false }) {
   const user_info = useSelector((state) => state.user_info);
   const get_personal = useSelector((state) => state.get_personal);
+  // console.log(get_personal);
   const dispatch = useDispatch();
   const logout_account = (e) => {
     sessionStorage.removeItem("user_info");

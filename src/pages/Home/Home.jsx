@@ -790,7 +790,7 @@ export default function Home() {
                     onClick={() => {
                       setShowChangeCountry(!showChangeCountry);
                       setShowCountryList(false);
-                      ; setShowcountryPopup(false);
+                      setShowcountryPopup(false);
                     }}
                     style={{ cursor: "pointer" }}
                   >
@@ -1258,7 +1258,7 @@ export default function Home() {
                         )}
                       </div>
 
-                      <div className="change-country-footer">
+                      {/* <div className="change-country-footer">
                         <div>
                           <img src={countryImg} alt="" />
                           <p>You are on {countrymail}</p>
@@ -1271,7 +1271,7 @@ export default function Home() {
                             Change country/region
                           </Link>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   )}
                 </div>

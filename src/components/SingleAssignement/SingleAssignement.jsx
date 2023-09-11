@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import {
   BsBell,
+  BsCursor,
   BsDownload,
   BsFacebook,
   BsFileEarmarkArrowUp,
@@ -436,11 +437,19 @@ export default function SingleAssignement() {
               ))}
             </p>
           </div>
-          <div className="pdf-image">
-            <a href="#">
+          <div
+              className="pdf-image"
+              style={{
+                cursor: 'pointer', // This sets the cursor to a pointer when hovering
+              }}
+              onClick={() => {
+                printDocument();
+              }}
+            >
+            {/* <a href=""> */}
               {" "}
               <img src="/images/pdf-icon.png" alt="" width={60} />
-            </a>
+            {/* </a> */}
           </div>
         </div>
       </div>

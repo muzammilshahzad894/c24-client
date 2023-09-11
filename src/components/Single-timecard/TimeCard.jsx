@@ -259,6 +259,7 @@ export default function TimeCard({ card }) {
                         setstatus(
                           e.target.value.length > 0 ? e.target.value : ""
                         );
+                        saveData();
                       }}
                     >
                       <option value="">Make a choice</option>

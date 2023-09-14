@@ -517,6 +517,38 @@
                         }
                     }
                 }
+                .left-section{
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    .right-section-content{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        // width: 250px;
+                        p{
+                            font-size: 18px;
+                            margin: 0;
+                            margin-bottom: 10px;
+                            text-align: center;
+                        }
+                        button{
+                            width: 100%;
+                            height: 40px;
+                            background: linear-gradient(to right, #6a917a, #52f177);
+                            border-radius: 20px;
+                            padding: 5px 20px;
+                            color: #fff;
+                            border: 1px solid #28a745;
+                            cursor: pointer;
+                            &:hover{
+                                background-color: #218838;
+                            }
+                        }
+                    }
+                }
             }
             .numbers{
                 margin-left: 5%;
@@ -546,6 +578,14 @@
                     }
                 }
             }
+        }
+        .side-btn-btn{
+            width: 100%;
+            gap: 30px;
+        }
+        .left-section{
+            padding-left: 280px;
+            padding-top: 50px;
         }
         .home-aboutus{
             margin-top: 500px;

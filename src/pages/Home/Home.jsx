@@ -52,7 +52,7 @@ export default function Home() {
   const research = useSelector((state) => state.research);
 
   const get_personal = useSelector((state) => state.get_personal);
-  
+
   const lang = localStorage.getItem('language');
   // console.log('lang is',lang);
   //slider elt
@@ -808,7 +808,7 @@ export default function Home() {
                     <div className="change-country-container">
                       <div className="change-country-header">
                         <div className="d-flex justify-content-between pr-4 items-center">
-                          <h5>Change language</h5>
+                          <h5>Choose Language & Country</h5>
                           <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose /></p>
 
                         </div>
@@ -3502,96 +3502,100 @@ export default function Home() {
                   ))}
               </ul>
             </div>
+            <div className="side-btn-btn">
+
+           
             {
               user.account_type === "freelancer" ? (
                 <></>
               ) : (
                 <div className="right-section">
-              <div className="right-section-content" >
-                {
-                  lang !== "dutch" ? (
-                    <p style={{ textAlign: "center" }}>
-                    Place a free assignment and <br />
-                    find the right <br /> freelancer
-                  </p>
-                  ) : (
-                    <p style={{ textAlign: "center" }}>
-                      Gratis opdracht plaatsen <br />
-                      en vind de juiste freelancer
-                  </p>
-                  
-                  )
+                  <div className="right-section-content" >
+                    {
+                      lang !== "dutch" ? (
+                        <p style={{ textAlign: "center" }}>
+                          Place a free assignment and <br />
+                          find the right <br /> freelancer
+                        </p>
+                      ) : (
+                        <p style={{ textAlign: "center" }}>
+                          Gratis opdracht plaatsen <br />
+                          en vind de juiste freelancer
+                        </p>
 
-                }
-               {
-                  lang !== "dutch" ? (
-                    user.email !== undefined ? (
-                      <Link to="/dashboard/place-call">
-                        <button>POST YOUR ASSIGNMENT</button>
-                      </Link>
-                    ) : (
-                      <Link to="/join">
-                        <button>POST YOUR ASSIGNMENT</button>
-                      </Link>
-                    )
-                  ) : (
-                    user.email !== undefined ? (
-                      <Link to="/dashboard/place-call">
-                        <button>PLAATS JE OPDRACHT</button>
-                      </Link>
-                    ) : (
-                      <Link to="/join">
-                        <button>PLAATS JE OPDRACHT</button>
-                      </Link>
-                    )
-                  )
-                }
+                      )
 
-               
-               
+                    }
+                    {
+                      lang !== "dutch" ? (
+                        user.email !== undefined ? (
+                          <Link to="/dashboard/place-call">
+                            <button>POST YOUR ASSIGNMENT</button>
+                          </Link>
+                        ) : (
+                          <Link to="/join">
+                            <button>POST YOUR ASSIGNMENT</button>
+                          </Link>
+                        )
+                      ) : (
+                        user.email !== undefined ? (
+                          <Link to="/dashboard/place-call">
+                            <button>PLAATS JE OPDRACHT</button>
+                          </Link>
+                        ) : (
+                          <Link to="/join">
+                            <button>PLAATS JE OPDRACHT</button>
+                          </Link>
+                        )
+                      )
+                    }
 
-              </div>
-            </div>
+
+
+
+                  </div>
+                </div>
               )
             }
-            
+
             {user.email !== undefined ? (
-               <></>
-              ) : (
-            <div className="right-section">
+              <></>
+            ) : (
+              <div className="left-section">
                 <div className="right-section-content">
                   {
                     lang !== "dutch" ? (
                       <>
-                      <p>
-                      Promote your self as a  <br />
-                      freelauncer and find new  assignment
-                    </p>
-                      <Link to="/join">
-                      <button >Create AN ACCOUNT IMMEDIATELY</button>
-                    </Link>
-                    </>
+                        <p>
+                          Promote your self as a  <br />
+                          freelauncer and find new  assignment
+                        </p>
+                        <Link to="/join">
+                          <button >Create AN ACCOUNT IMMEDIATELY</button>
+                        </Link>
+                      </>
                     ) : (
                       <>
-                      <p>
-                      Promoot jezelf gratis els freelancer <br />
-                      en vind nieuwe opdrachten
-                    </p>
-                    <Link to="/join">
-                      <button >DIRECT ACCOUNT AANMAKEN</button>
-                    </Link>
-                    </>
+                        <p>
+                          Promoot jezelf gratis els freelancer <br />
+                          en vind nieuwe opdrachten
+                        </p>
+                        <Link to="/join">
+                          <button >DIRECT ACCOUNT AANMAKEN</button>
+                        </Link>
+                      </>
                     )
                   }
-                 
-                
+
+
                 </div>
-            </div>
+              </div>
             )}
             {/* <div className={`loading ${!showLoading ? "hideLoading":""}`}>
                             <div className="loadingBar"></div>
                         </div> */}
             {/* {showLoading && <LoadingBox />} */}
+          </div>
           </div>
           <div className="numbers">
             <div className="header">

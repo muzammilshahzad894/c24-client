@@ -23,6 +23,9 @@ export default function SearchResultHeader({
   const user_info = useSelector((state) => state.user_info);
   const [showChangeCountry, setShowChangeCountry] = useState(false);
   const [showCountryList, setShowCountryList] = useState(false);
+  const [showcountryPopup, setShowcountryPopup] = useState(false);
+  
+  const [selectCountry, setSelectCountry] = useState("Nederland");
   const [freelancer, setFreelancer] = useState(freelancerBool);
   const [searchProjects, setSearchProjects] = useState(!freelancer);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -238,8 +241,18 @@ export default function SearchResultHeader({
     return resultArray;
   }
   const changeCountryHandler = (countryName, countryImage) => {
-    setCountry(countryName);
-    setCountryImg(countryImage);
+    if (countryName === "dutch") {
+      setCountry("Nederland - NL");
+      setCountryImg(countryImage);
+      setShowCountryList(false);
+      localStorage.setItem("language", 'dutch');
+    } else {
+      setCountry(countryName);
+      setCountryImg(countryImage);
+      setShowCountryList(false);
+      localStorage.setItem("language", countryName);
+    }
+    
   };
   const handleCitySearch = (e) => {
     let str = e.target.value?.replace(/\s/g, "");
@@ -694,83 +707,7 @@ export default function SearchResultHeader({
                         />
                         <img src={countryImg} className="flag" alt="" />
                       </div>
-                      {showChangeCountry && (
-                        <div className="change-country-container">
-                          <div className="change-country-header">
-                            <h5>Change language</h5>
-                            <div>
-                              <h5>{country}</h5>
-                              <Link
-                                to=""
-                                onClick={() =>
-                                  setShowCountryList(!showCountryList)
-                                }
-                              >
-                                Change
-                              </Link>
-                            </div>
-                            <div
-                              style={{
-                                height: "120px",
-                                position: "relative",
-                                overflowY: showCountryList
-                                  ? "scroll"
-                                  : "hidden",
-                                overflowX: "hidden",
-                              }}
-                            >
-                              {showCountryList && (
-                                <ul className="countries_list">
-                                  <li
-                                    onClick={() =>
-                                      changeCountryHandler(
-                                        "USA - EN",
-                                        "/images/countries/usa_flag.png"
-                                      )
-                                    }
-                                  >
-                                    <img
-                                      src="/images/countries/usa_flag.png"
-                                      alt=""
-                                    />
-                                    <p>USA - EN</p>
-                                  </li>
-                                  <li
-                                    onClick={() =>
-                                      changeCountryHandler(
-                                        "Netherlands - NL",
-                                        "/images/netherland_flag.png"
-                                      )
-                                    }
-                                  >
-                                    <img
-                                      src="/images/netherland_flag.png"
-                                      alt=""
-                                    />
-                                    <p>Netherlands - NL</p>
-                                  </li>
-                                </ul>
-                              )}
-                            </div>
-                          </div>
-                          <div className="change-country-footer">
-                            <div>
-                              <img src={countryImg} alt="" />
-                              <p>You are on Curant24.com</p>
-                            </div>
-                            <div>
-                              <Link
-                                to=""
-                                onClick={() =>
-                                  setShowCountryList(!showCountryList)
-                                }
-                              >
-                                Change country/region
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                  
                     </div>
                   </div>
                   <ul className="bottom-list">
@@ -1605,12 +1542,498 @@ export default function SearchResultHeader({
                     </div>
                   )}
                 /> */}
-                <select placeholder="Select country" name="country">
+                {/* <select placeholder="Select country" name="country" 
+                 onClick={() => {
+                  setShowChangeCountry(!showChangeCountry);
+                  setShowCountryList(false);
+                }}
+                >
                   <option className="country-option">Select Country</option>
                   {countries?.map((item) => (
                     <option className="country-option" value={item.value}>{item?.value}</option>
                   ))}
-                </select>
+                </select> */}
+              <input type="button" value="Select country" className=""  onClick={() => {
+                          setShowChangeCountry(!showChangeCountry);
+                          setShowCountryList(false);
+                        }} style={{
+                          borderRadius:'5px',
+                        }}/>
+                
+                {showChangeCountry && (
+                    <div className="change-country-container">
+                      <div className="change-country-header">
+                        <div className="d-flex justify-content-between pr-4 items-center">
+                          <h5>Choose Language & Country</h5>
+                          <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose /></p>
+
+                        </div>
+                        <p className="text-center font-size">In which country are you looking for an assignment</p>
+                        <div>
+                          <input type="submit" className="country-input"
+                           value={selectCountry} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                        </div>
+                        <p className="text-align-center  font-size mt-4">Choose your language</p>
+                        <div>
+                          <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                        </div>
+                        {showcountryPopup && (
+                          <div
+                            style={{
+                              height: "320px",
+                              position: "absolute",
+                              right: "-310px",
+                              backgroundColor: "white",
+                              top: "0",
+                              width: "300px",
+                              zIndex: "999",
+                              overflowY: showcountryPopup ? "scroll" : "hidden",
+                              overflowX: "hidden",
+                            }}
+                          >
+                            <ul className="countries_list">
+                              <li value="India" onClick={() => {
+                                setSelectCountry("India");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>India</p>
+                              </li >
+                              <li value="Nederland" onClick={() => {
+                                setSelectCountry("Nederland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Nederland</p>
+                              </li>
+                              <li value="Duitsland" onClick={() => {
+                                setSelectCountry("Duitsland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Duitsland</p>
+                              </li>
+                              <li value="UK" onClick={() => {
+                                setSelectCountry("UK");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>UK</p>
+                              </li>
+                              <li value="België" onClick={() => {
+                                setSelectCountry("België");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>België</p>
+                              </li>
+                              <li value="Portugal" onClick={() => {
+                                setSelectCountry("Portugal");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Portugal</p>
+                              </li>
+                              <li value="Spanje" onClick={() => {
+                                setSelectCountry("Spanje");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Spanje</p>
+                              </li>
+                              <li value="Frankrijk" onClick={() => {
+                                setSelectCountry("Frankrijk");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Frankrijk</p>
+                              </li>
+                              <li value="Italie" onClick={() => {
+                                setSelectCountry("Italie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Italie</p>
+                              </li>
+                              <li value="Oostenrijk" onClick={() => {
+                                setSelectCountry("Oostenrijk");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Oostenrijk</p>
+                              </li>
+                              <li value="Polen" onClick={() => {
+                                setSelectCountry("Polen");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Polen</p>
+                              </li>
+                              <li value="Tsjechië" onClick={() => {
+                                setSelectCountry("Tsjechië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Tsjechië</p>
+                              </li>
+                              <li value="Slovenië" onClick={() => {
+                                setSelectCountry("Slovenië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Ierland</p>
+                              </li>
+                              <li value="Denemarken" onClick={() => {
+                                setSelectCountry("Denemarken");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Denemarken</p>
+                              </li>
+                              <li value="Slowakije" onClick={() => {
+                                setSelectCountry("Slowakije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Slowakije</p>
+                              </li>
+                              <li value="Hongarije" onClick={() => {
+                                setSelectCountry("Hongarije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Hongarije</p>
+                              </li>
+                              <li value="Roemenie" onClick={() => {
+                                setSelectCountry("Roemenie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Roemenie</p>
+                              </li>
+                              <li value="Bulgarije" onClick={() => {
+                                setSelectCountry("Bulgarije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Griekenland</p>
+                              </li>
+                              <li value="Zweden" onClick={() => {
+                                setSelectCountry("Zweden");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Zweden</p>
+                              </li>
+                              <li value="Noorwegen" onClick={() => {
+                                setSelectCountry("Noorwegen");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Noorwegen</p>
+                              </li>
+                              <li value="Finland" onClick={() => {
+
+                                setSelectCountry("Finland");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>Finland</p>
+                              </li>
+                              <li value="Litouwen" onClick={() => {
+                                setSelectCountry("Litouwen");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>Litouwen</p>
+                              </li>
+                              <li value="Letland" onClick={() => {
+                                setSelectCountry("Letland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Letland</p>
+                              </li>
+                              <li value="Estland" onClick={() => {
+                                setSelectCountry("Estland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Estland</p>
+                              </li>
+                              <li value="Zwitserland" onClick={() => {
+                                setSelectCountry("Zwitserland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Zwitserland</p>
+                              </li>
+                              <li value="Luxemburg" onClick={() => {
+                                setSelectCountry("Luxemburg");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Luxemburg</p>
+                              </li>
+                              <li value="Ijsland" onClick={() => {
+                                setSelectCountry("Ijsland");
+                                setShowcountryPopup(false);
+                              }}>
+
+                                <p>Ijsland</p>
+                              </li>
+                              <li value="Kroatie" onClick={() => {
+                                setSelectCountry("Kroatie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Kroatie</p>
+                              </li>
+                              <li value="Servië" onClick={() => {
+                                setSelectCountry("Servië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Servië</p>
+                              </li>
+                              <li value="Macedonië" onClick={() => {
+                                setSelectCountry("Macedonië");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Macedonië</p>
+                              </li>
+                              <li value="Bosnië en Herzegovina" onClick={() => {
+                                setSelectCountry("Bosnië en Herzegovina");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Bosnië en Herzegovina</p>
+                              </li>
+                              <li value="Montenegro" onClick={() => {
+                                setSelectCountry("Montenegro");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Montenegro</p>
+                              </li>
+                              <li value="Kosovo" onClick={() => {
+                                setSelectCountry("Kosovo");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Kosovo</p>
+                              </li>
+                              <li value="Rusland" onClick={() => {
+                                setSelectCountry("Rusland");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Rusland</p>
+                              </li>
+                              <li value="Turkije" onClick={() => {
+                                setSelectCountry("Turkije");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Turkije</p>
+                              </li>
+                              <li value="China" onClick={() => {
+                                setSelectCountry("China");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>China</p>
+                              </li>
+                              <li value="Japan" onClick={() => {
+                                setSelectCountry("Japan");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Japan</p>
+                              </li>
+                              <li value="Pakistan" onClick={() => {
+                                setSelectCountry("Pakistan");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Pakistan</p>
+                              </li>
+                              <li value="Zuid-Korea" onClick={() => {
+                                setSelectCountry("Zuid-Korea");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Zuid-Korea</p>
+                              </li>
+                              <li value="Vietman" onClick={() => {
+                                setSelectCountry("Vietman");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Vietman</p>
+                              </li>
+                              <li value="UAE" onClick={() => {
+                                setSelectCountry("UAE");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>UAE</p>
+                              </li>
+                              <li value="Saudi arabia" onClick={() => {
+                                setSelectCountry("Saudi arabia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Saudi arabia</p>
+                              </li>
+                              <li value="Iran" onClick={() => {
+                                setSelectCountry("Iran");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Irak</p>
+                              </li>
+                              <li value="Quatar" onClick={() => {
+                                setSelectCountry("Quatar");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Quatar</p>
+                              </li>
+                              <li value="Brazilie" onClick={() => {
+                                setSelectCountry("Brazilie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Brazilie</p>
+                              </li>
+                              <li value="Bolivia" onClick={() => {
+                                setSelectCountry("Bolivia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Bolivia </p>
+                              </li>
+                              <li value="Argentinie" onClick={() => {
+                                setSelectCountry("Argentinie");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Argentina</p>
+                              </li>
+                              <li value="Chile" onClick={() => {
+                                setSelectCountry("Chile");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Chile</p>
+                              </li>
+                              <li value="USA" onClick={() => {
+                                setSelectCountry("USA");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>USA</p>
+                              </li>
+                              <li value="Colombia" onClick={() => {
+                                setSelectCountry("Colombia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Colombia</p>
+                              </li>
+                              <li value="Peru" onClick={() => {
+                                setSelectCountry("Peru");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Peru</p>
+                              </li>
+                              <li value="Venezuela" onClick={() => {
+                                setSelectCountry("Venezuela");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Venezuela</p>
+                              </li>
+                              <li value="Paraguay" onClick={() => {
+                                setSelectCountry("Paraguay");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Paraguay</p>
+                              </li>
+                              <li value="Uruguay" onClick={() => {
+                                setSelectCountry("Uruguay");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Uruguay</p>
+                              </li>
+                              <li value="Mexico" onClick={() => {
+                                setSelectCountry("Mexico");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Mexico</p>
+                              </li>
+                              <li value="Australia" onClick={() => {
+                                setSelectCountry("Australia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Australia</p>
+                              </li>
+                              <li value="Morocco" onClick={() => {
+                                setSelectCountry("Morocco");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Morocco</p>
+                              </li>
+                              <li value="Algeria" onClick={() => {
+                                setSelectCountry("Algeria");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Algeria</p>
+                              </li>
+                              <li value="Libya" onClick={() => {
+                                setSelectCountry("Libya");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Libya</p>
+                              </li>
+                              <li value="Egypt" onClick={() => {
+                                setSelectCountry("Egypt");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Egypt</p>
+                              </li>
+                              <li value="South Africa" onClick={() => {
+                                setSelectCountry("South Africa");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>South Africa</p>
+                              </li>
+                              <li value="Tunisia" onClick={() => {
+                                setSelectCountry("Tunisia");
+                                setShowcountryPopup(false);
+                              }}>
+                                <p>Tunisia</p>
+                              </li>
+
+                            </ul>
+                          </div>
+                        )}
+                        {showCountryList && (
+                          <div
+                            style={{
+                              height: "100px",
+                              position: "absolute",
+                              right: "-304px",
+                              top: "164px",
+                              backgroundColor: "white",
+                              width: "300px",
+                              zIndex: "999",
+                              overflowY: showCountryList ? "scroll" : "hidden",
+                              overflowX: "hidden",
+                            }}
+                          >
+                            <ul className="countries_list">
+
+                              <li
+                                onClick={() =>
+                                  changeCountryHandler(
+                                    "dutch",
+                                    "/images/netherland_flag.png",
+                                    "www.curant.nl"
+                                  )
+                                }
+                              >
+                                <img src="/images/netherland_flag.png" alt="" />
+                                <p>Netherlands - NL</p>
+                              </li>
+                              <li
+                                onClick={() =>
+                                  changeCountryHandler(
+                                    "Netherlands - EN",
+                                    "/images/netherland_flag.png",
+                                    "www.fr.curant24.com"
+                                  )
+                                }
+                              >
+                                <img src="/images/netherland_flag.png" alt="" />
+                                <p>Netherlands - EN</p>
+                              </li>
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* <div className="change-country-footer">
+                        <div>
+                          <img src={countryImg} alt="" />
+                          <p>You are on {countrymail}</p>
+                        </div>
+                        <div>
+                          <Link
+                            to=""
+                            onClick={() => setShowCountryList(!showCountryList)}
+                          >
+                            Change country/region
+                          </Link>
+                        </div>
+                      </div> */}
+                    </div>
+                  )}
                 <select
                   name="distance"
                   id=""

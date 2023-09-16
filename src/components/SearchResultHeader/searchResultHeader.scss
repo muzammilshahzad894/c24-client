@@ -493,6 +493,7 @@
                 border-radius: 4px;
                 max-width: 150px;
                 min-width: 120px;
+                background-color: white !important;
             }
             .countries{
                 margin-right: 10px;
@@ -513,8 +514,8 @@
                 }
             }
             svg{
-                font-size: 22px;
-                // color: white;
+                font-size: 40px;
+                color: white;
                 margin-left: 5px;
                 margin-top: 5px;
                 cursor: pointer;

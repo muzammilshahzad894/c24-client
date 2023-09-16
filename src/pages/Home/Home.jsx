@@ -31,6 +31,7 @@ import PopupScherm from "../../components/PopupScherm/PopupScherm";
 import "flag-icon-css/css/flag-icon.min.css";
 import countryList from "../../components/CountryList/countries.json";
 
+
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 export default function Home() {
   const user_info = useSelector((state) => state.user_info);
@@ -46,14 +47,14 @@ export default function Home() {
   const [hourlyRate, setHourlyRate] = useState(50);
   const [sortBy, setSortBy] = useState("");
   const [country, setCountry] = useState("Netherlands - NL");
-  const [selectCountry, setSelectCountry] = useState("Nederland");
+  const [selectCountry, setSelectCountry] = useState({ name: "Nederland", code: "nl" });
+
   const [countryImg, setCountryImg] = useState("/images/netherland_flag.png");
   const [countrymail, setCountryMail] = useState("www.curant.nl");
   const [temp, setTemp] = useState(0);
   const linkRef = useRef();
   const searchLinkRef = useRef();
   const research = useSelector((state) => state.research);
-
   const get_personal = useSelector((state) => state.get_personal);
 
   const lang = localStorage.getItem('language');
@@ -817,11 +818,67 @@ export default function Home() {
                         </div>
                         <p className="text-center font-size">In which country are you looking for an assignment</p>
                         <div>
-                          <input type="submit" className="country-input" value={selectCountry} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                          
+                              <input type="submit" className="country-input" value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                          
+                              <div style={{
+                                position: "absolute",
+                                marginRight: "10px",
+                                height: "40px",
+                                background: 'none',
+                                right: '14px',
+                                justifyContent: 'end',
+                                gap: '12px',
+                                marginTop: '5px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                width: '60px',
+                              }} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }}>
+                                 <img
+                                    src="/images/angle_down.png"
+                                    className=""
+                                    style={{
+                                      cursor: 'pointer'}}
+                                    alt=""
+                                  />
+
+                              <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
+    
+                              </div>
+                            
+                          
                         </div>
                         <p className="text-align-center  font-size mt-4">Choose your language</p>
                         <div>
                           <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                          <div style={{
+                                position: "absolute",
+                                marginRight: "10px",
+                                height: "40px",
+                                background: 'none',
+                                right: '14px',
+                                justifyContent: 'end',
+                                gap: '12px',
+                                marginTop: '5px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                width: '60px',
+                              }} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }}>
+                                 <img
+                                    src="/images/angle_down.png"
+                                    className=""
+                                    alt=""
+                                    style={{
+                                      cursor: 'pointer'
+                                    }}
+                                  />
+
+                                <img src="/images/netherland_flag.png" alt=""  style={{
+                                  height: '14px',
+                                  width: '20px',
+                                }}/>
+    
+                              </div>
                         </div>
                         {showcountryPopup && (
                           <div
@@ -843,9 +900,10 @@ export default function Home() {
                                   key={index}
                                   value={country.value}
                                   onClick={() => {
-                                    setSelectCountry(country.name);
+                                    setSelectCountry({ name: country.name, code: country.code });
                                     setShowcountryPopup(false);
                                   }}
+                                  
                                 >
                                   <span className={`flag-icon flag-icon-${country.code}`}></span>
                                   <p>{country.name}</p>
@@ -3153,7 +3211,7 @@ export default function Home() {
                       lang !== "dutch" ? (
                         <p style={{ textAlign: "center" }}>
                           Place a free assignment and <br />
-                          find the right <br /> freelancer
+                          find the right freelancer
                         </p>
                       ) : (
                         <p style={{ textAlign: "center" }}>
@@ -3171,7 +3229,7 @@ export default function Home() {
                             <button>POST YOUR ASSIGNMENT</button>
                           </Link>
                         ) : (
-                          <Link to="/join">
+                          <Link to="/join" className="links">
                             <button>POST YOUR ASSIGNMENT</button>
                           </Link>
                         )
@@ -3181,7 +3239,7 @@ export default function Home() {
                             <button>PLAATS JE OPDRACHT</button>
                           </Link>
                         ) : (
-                          <Link to="/join">
+                          <Link to="/join" className="links">
                             <button>PLAATS JE OPDRACHT</button>
                           </Link>
                         )
@@ -3208,7 +3266,7 @@ export default function Home() {
                           Promote your self as a  <br />
                           freelauncer and find new  assignment
                         </p>
-                        <Link to="/join">
+                        <Link className="links" to="/join">
                           <button >Create AN ACCOUNT IMMEDIATELY</button>
                         </Link>
                       </>
@@ -3218,7 +3276,7 @@ export default function Home() {
                           Promoot jezelf gratis els freelancer <br />
                           en vind nieuwe opdrachten
                         </p>
-                        <Link to="/join">
+                        <Link to="/join" className="links">
                           <button >DIRECT ACCOUNT AANMAKEN</button>
                         </Link>
                       </>

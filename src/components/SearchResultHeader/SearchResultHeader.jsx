@@ -28,7 +28,7 @@ export default function SearchResultHeader({
   const [showCountryList, setShowCountryList] = useState(false);
   const [showcountryPopup, setShowcountryPopup] = useState(false);
 
-  const [selectCountry, setSelectCountry] = useState("Nederland");
+  const [selectCountry, setSelectCountry] = useState({ name: "Nederland", code: "nl" });
   const [freelancer, setFreelancer] = useState(freelancerBool);
   const [searchProjects, setSearchProjects] = useState(!freelancer);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -1539,10 +1539,14 @@ export default function SearchResultHeader({
                     <option className="country-option" value={item.value}>{item?.value}</option>
                   ))}
                 </select> */}
-                <input type="button" value="Select country" className="" onClick={() => {
-                  setShowChangeCountry(!showChangeCountry);
-                  setShowCountryList(false);
-                }} style={{
+                <input type="button" value="Select Country" className="" 
+                // onClick={() => {
+                //   setShowChangeCountry(!showChangeCountry);
+                //   setShowCountryList(false);
+
+                // }} 
+                onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
+                style={{
                   borderRadius: '5px',
                 }} />
 
@@ -1551,17 +1555,74 @@ export default function SearchResultHeader({
                     <div className="change-country-header">
                       <div className="d-flex justify-content-between pr-4 items-center">
                         <h5>Choose Language & Country</h5>
-                        <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose /></p>
+                        <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose  style={{
+                           color: '#000',
+                           fontSize: '20px',
+                        }}/></p>
 
                       </div>
                       <p className="text-center font-size">In which country are you looking for an assignment</p>
                       <div>
                         <input type="submit" className="country-input"
-                          value={selectCountry} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
-                      </div>
+                          value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                       <div style={{
+                                position: "absolute",
+                                marginRight: "10px",
+                                height: "40px",
+                                background: 'none',
+                                right: '26px',
+                                justifyContent: 'end',
+                                gap: '12px',
+                                marginTop: '5px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                width: '60px',
+                              }} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }}>
+                                 <img
+                                    src="/images/angle_down.png"
+                                    className=""
+                                    style={{
+                                      cursor: 'pointer'}}
+                                    alt=""
+                                  />
+
+                              <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
+    
+                              </div>
+                            
+                          
+                        </div>
                       <p className="text-align-center  font-size mt-4">Choose your language</p>
                       <div>
                         <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                        <div style={{
+                                position: "absolute",
+                                marginRight: "10px",
+                                height: "40px",
+                                background: 'none',
+                                right: '26px',
+                                justifyContent: 'end',
+                                gap: '12px',
+                                marginTop: '5px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                width: '60px',
+                              }} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }}>
+                                 <img
+                                    src="/images/angle_down.png"
+                                    className=""
+                                    alt=""
+                                    style={{
+                                      cursor: 'pointer'
+                                    }}
+                                  />
+
+                                <img src="/images/netherland_flag.png" alt=""  style={{
+                                  height: '14px',
+                                  width: '20px',
+                                }}/>
+    
+                              </div>
                       </div>
                       {showcountryPopup && (
                         <div
@@ -1583,7 +1644,7 @@ export default function SearchResultHeader({
                                 key={index}
                                 value={country.value}
                                 onClick={() => {
-                                  setSelectCountry(country.name);
+                                  setSelectCountry({ name: country.name, code: country.code });
                                   setShowcountryPopup(false);
                                 }}
                               >

@@ -351,6 +351,9 @@
                                 z-index: 999;
                                 justify-content: space-between;
                                 .change-country-header{
+                                    .cursor-pointer{
+                                        cursor: pointer;
+                                    }
                                     .countries_list{
                                         display: flex;
                                         flex-direction: column;

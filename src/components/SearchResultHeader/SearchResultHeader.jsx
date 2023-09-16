@@ -1584,7 +1584,7 @@ export default function SearchResultHeader({
                                 value={country.value}
                                 onClick={() => {
                                   setSelectCountry(country.name);
-                                  setShowcountryPopup(false); // Assuming setShowCountryPopup is used to control visibility
+                                  setShowcountryPopup(false);
                                 }}
                               >
                                 <span className={`flag-icon flag-icon-${country.code}`}></span>

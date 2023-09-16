@@ -1471,7 +1471,7 @@ export default function PlaceCall() {
                         >
                           Select Option
                         </option>
-                        {/* <option
+                        <option
                           value="I am the client / end customer myself"
                           selected={
                             location.state?.data?.at(0)
@@ -1482,7 +1482,7 @@ export default function PlaceCall() {
                           }
                         >
                           I am the client / end customer myself
-                        </option> */}
+                        </option>
                         <option
                           value="Intermediary"
                           selected={
@@ -2301,7 +2301,7 @@ export default function PlaceCall() {
                       >
                         Asking price
                       </option>
-                      <option
+                      {/* <option
                         value="from - to"
                         selected={
                           location.state?.data?.at(0).price_type ===
@@ -2309,7 +2309,7 @@ export default function PlaceCall() {
                         }
                       >
                         Offer
-                      </option>
+                      </option> */}
 
                       <option
                         value="Maximum budget"

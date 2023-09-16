@@ -5,6 +5,9 @@ import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { search_action } from "../../state/Actions/UserAction";
 import { Link, useLocation } from "react-router-dom";
+import "flag-icon-css/css/flag-icon.min.css";
+import countryList from "../CountryList/countries.json";
+
 import {
   AiOutlineClose,
   AiOutlineInfoCircle,
@@ -24,7 +27,7 @@ export default function SearchResultHeader({
   const [showChangeCountry, setShowChangeCountry] = useState(false);
   const [showCountryList, setShowCountryList] = useState(false);
   const [showcountryPopup, setShowcountryPopup] = useState(false);
-  
+
   const [selectCountry, setSelectCountry] = useState("Nederland");
   const [freelancer, setFreelancer] = useState(freelancerBool);
   const [searchProjects, setSearchProjects] = useState(!freelancer);
@@ -130,23 +133,6 @@ export default function SearchResultHeader({
     searchHandler(false,(searchProjects?"job_name":"profession"),"like ","flush")
 },[searchProjects])*/
 
-  const countries = [
-    { value: "nl", label: "netherlands", image: "/images/netherland_flag.png" },
-    { value: "usa", label: "USA", image: "/images/countries/usa_flag.png" },
-    { value: "india", label: "IN", image: "/images/countries/india_flag.png" },
-    {
-      value: "morocco",
-      label: "MA",
-      image: "/images/countries/morocco_flag.png",
-    },
-    {
-      value: "france",
-      label: "FR",
-      image: "/images/countries/france_flag.png",
-    },
-    { value: "england", label: "EN", image: "/images/countries/england.png" },
-  ];
-
   useEffect(() => {
     info.current = data;
   }, [data]);
@@ -227,9 +213,9 @@ export default function SearchResultHeader({
       const a =
         Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
         Math.cos((referenceLat * Math.PI) / 180) *
-          Math.cos((cityLat * Math.PI) / 180) *
-          Math.sin(lngDiff / 2) *
-          Math.sin(lngDiff / 2);
+        Math.cos((cityLat * Math.PI) / 180) *
+        Math.sin(lngDiff / 2) *
+        Math.sin(lngDiff / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       const distance = R * c;
 
@@ -252,7 +238,7 @@ export default function SearchResultHeader({
       setShowCountryList(false);
       localStorage.setItem("language", countryName);
     }
-    
+
   };
   const handleCitySearch = (e) => {
     let str = e.target.value?.replace(/\s/g, "");
@@ -428,20 +414,20 @@ export default function SearchResultHeader({
                       onChange={(e) => {
                         e.target.value.length === 0
                           ? searchHandler(
-                              false,
-                              searchProjects ? "job_name" : "profession",
-                              "like ",
-                              ""
-                            )
+                            false,
+                            searchProjects ? "job_name" : "profession",
+                            "like ",
+                            ""
+                          )
                           : searchHandler(
-                              false,
-                              searchProjects ? "job_name" : "profession",
-                              "like ",
-                              e.target.value +
-                                (e.target.value.length > 0
-                                  ? "%"
-                                  : "") /*,linkRef.current?.click()*/
-                            );
+                            false,
+                            searchProjects ? "job_name" : "profession",
+                            "like ",
+                            e.target.value +
+                            (e.target.value.length > 0
+                              ? "%"
+                              : "") /*,linkRef.current?.click()*/
+                          );
                       }}
                     />
                     <div className="search-button">
@@ -459,7 +445,7 @@ export default function SearchResultHeader({
                             searchProjects ? "industry" : "competency",
                             "like ",
                             e.target.value +
-                              (e.target.value.length > 0 ? "%" : "")
+                            (e.target.value.length > 0 ? "%" : "")
                           )
                         }
                       >
@@ -469,11 +455,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Construction"
-                                )
+                                "Construction"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Construction"
-                                )
+                                "Construction"
+                              )
                           }
                         >
                           Construction
@@ -483,11 +469,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Electrical"
-                                )
+                                "Electrical"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Electrical"
-                                )
+                                "Electrical"
+                              )
                           }
                         >
                           Electrical
@@ -497,11 +483,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Installation"
-                                )
+                                "Installation"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Installation"
-                                )
+                                "Installation"
+                              )
                           }
                         >
                           Installation
@@ -511,11 +497,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Infrastructure"
-                                )
+                                "Infrastructure"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Infrastructure"
-                                )
+                                "Infrastructure"
+                              )
                           }
                         >
                           Infrastructure
@@ -525,11 +511,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Industrial"
-                                )
+                                "Industrial"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Industrial"
-                                )
+                                "Industrial"
+                              )
                           }
                         >
                           Industrial
@@ -539,11 +525,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Health care and well being"
-                                )
+                                "Health care and well being"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Health care and well being"
-                                )
+                                "Health care and well being"
+                              )
                           }
                         >
                           Health care and well being
@@ -553,11 +539,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Trade and services"
-                                )
+                                "Trade and services"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Trade and services"
-                                )
+                                "Trade and services"
+                              )
                           }
                         >
                           Trade and services
@@ -567,11 +553,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "IT"
-                                )
+                                "IT"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "IT"
-                                )
+                                "IT"
+                              )
                           }
                         >
                           IT
@@ -581,11 +567,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Justice, security and public administration"
-                                )
+                                "Justice, security and public administration"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Justice, security and public administration"
-                                )
+                                "Justice, security and public administration"
+                              )
                           }
                         >
                           Justice, security and public administration
@@ -595,11 +581,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Environment and Agriculture"
-                                )
+                                "Environment and Agriculture"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Environment and Agriculture"
-                                )
+                                "Environment and Agriculture"
+                              )
                           }
                         >
                           Environment and Agriculture
@@ -609,11 +595,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Media and communication"
-                                )
+                                "Media and communication"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Media and communication"
-                                )
+                                "Media and communication"
+                              )
                           }
                         >
                           Media and communication
@@ -623,11 +609,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Education, culture and science"
-                                )
+                                "Education, culture and science"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Education, culture and science"
-                                )
+                                "Education, culture and science"
+                              )
                           }
                         >
                           Education, culture and science
@@ -637,11 +623,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Engineering, production and construction"
-                                )
+                                "Engineering, production and construction"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Engineering, production and construction"
-                                )
+                                "Engineering, production and construction"
+                              )
                           }
                         >
                           Engineering, production and construction
@@ -651,11 +637,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Tourism, recreation and catering"
-                                )
+                                "Tourism, recreation and catering"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Tourism, recreation and catering"
-                                )
+                                "Tourism, recreation and catering"
+                              )
                           }
                         >
                           Tourism, recreation and catering
@@ -665,11 +651,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Transport and Logistics"
-                                )
+                                "Transport and Logistics"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Transport and Logistics"
-                                )
+                                "Transport and Logistics"
+                              )
                           }
                         >
                           Transport and Logistics
@@ -679,11 +665,11 @@ export default function SearchResultHeader({
                           selected={
                             !searchProjects
                               ? info.current?.freelancer?.competency?.values.includes(
-                                  "Childcare"
-                                )
+                                "Childcare"
+                              )
                               : info.current?.assignment?.industry?.values.includes(
-                                  "Childcare"
-                                )
+                                "Childcare"
+                              )
                           }
                         >
                           Childcare
@@ -707,7 +693,7 @@ export default function SearchResultHeader({
                         />
                         <img src={countryImg} className="flag" alt="" />
                       </div>
-                  
+
                     </div>
                   </div>
                   <ul className="bottom-list">
@@ -745,17 +731,17 @@ export default function SearchResultHeader({
                                     onChange={(e) =>
                                       e.target.checked
                                         ? searchHandler(
-                                            false,
-                                            "working_hours",
-                                            "like",
-                                            "part%"
-                                          )
+                                          false,
+                                          "working_hours",
+                                          "like",
+                                          "part%"
+                                        )
                                         : searchHandler(
-                                            true,
-                                            "working_hours",
-                                            "like",
-                                            "part%"
-                                          )
+                                          true,
+                                          "working_hours",
+                                          "like",
+                                          "part%"
+                                        )
                                     }
                                   />
                                   <label htmlFor="part_time_projects">
@@ -769,17 +755,17 @@ export default function SearchResultHeader({
                                     onChange={(e) =>
                                       e.target.checked
                                         ? searchHandler(
-                                            false,
-                                            "working_hours",
-                                            "like",
-                                            "full%"
-                                          )
+                                          false,
+                                          "working_hours",
+                                          "like",
+                                          "full%"
+                                        )
                                         : searchHandler(
-                                            true,
-                                            "working_hours",
-                                            "like",
-                                            "full%"
-                                          )
+                                          true,
+                                          "working_hours",
+                                          "like",
+                                          "full%"
+                                        )
                                     }
                                   />
                                   <label htmlFor="full_time_projects">
@@ -856,17 +842,17 @@ export default function SearchResultHeader({
                                       onChange={(e) =>
                                         e.target.checked
                                           ? searchHandler(
-                                              false,
-                                              "job_duration",
-                                              "like",
-                                              "< 1 month"
-                                            )
+                                            false,
+                                            "job_duration",
+                                            "like",
+                                            "< 1 month"
+                                          )
                                           : searchHandler(
-                                              true,
-                                              "job_duration",
-                                              "like",
-                                              "< 1 month"
-                                            )
+                                            true,
+                                            "job_duration",
+                                            "like",
+                                            "< 1 month"
+                                          )
                                       }
                                     />
                                   </div>
@@ -879,17 +865,17 @@ export default function SearchResultHeader({
                                       onChange={(e) =>
                                         e.target.checked
                                           ? searchHandler(
-                                              false,
-                                              "job_duration",
-                                              "like",
-                                              "1-3 months"
-                                            )
+                                            false,
+                                            "job_duration",
+                                            "like",
+                                            "1-3 months"
+                                          )
                                           : searchHandler(
-                                              true,
-                                              "job_duration",
-                                              "like",
-                                              "1-3 months"
-                                            )
+                                            true,
+                                            "job_duration",
+                                            "like",
+                                            "1-3 months"
+                                          )
                                       }
                                     />
                                   </div>
@@ -902,17 +888,17 @@ export default function SearchResultHeader({
                                       onChange={(e) =>
                                         e.target.checked
                                           ? searchHandler(
-                                              false,
-                                              "job_duration",
-                                              "like",
-                                              "3-6 months"
-                                            )
+                                            false,
+                                            "job_duration",
+                                            "like",
+                                            "3-6 months"
+                                          )
                                           : searchHandler(
-                                              true,
-                                              "job_duration",
-                                              "like",
-                                              "3-6 months"
-                                            )
+                                            true,
+                                            "job_duration",
+                                            "like",
+                                            "3-6 months"
+                                          )
                                       }
                                     />
                                   </div>
@@ -925,17 +911,17 @@ export default function SearchResultHeader({
                                       onChange={(e) =>
                                         e.target.checked
                                           ? searchHandler(
-                                              false,
-                                              "job_duration",
-                                              "like",
-                                              "> 6 month"
-                                            )
+                                            false,
+                                            "job_duration",
+                                            "like",
+                                            "> 6 month"
+                                          )
                                           : searchHandler(
-                                              true,
-                                              "job_duration",
-                                              "like",
-                                              "> 6 month"
-                                            )
+                                            true,
+                                            "job_duration",
+                                            "like",
+                                            "> 6 month"
+                                          )
                                       }
                                     />
                                   </div>
@@ -1062,21 +1048,21 @@ export default function SearchResultHeader({
                                 defaultValue={
                                   searchProjects
                                     ? info.current?.assignment?.province?.values
-                                        ?.length > 0
+                                      ?.length > 0
                                       ? info.current?.assignment?.province?.values
-                                          ?.at(0)
-                                          ?.replace("%", "")
+                                        ?.at(0)
+                                        ?.replace("%", "")
                                       : info.current?.assignment?.country?.values?.replace(
-                                          "%",
-                                          ""
-                                        )
-                                    : info.current?.freelancer?.postcode?.values
-                                        ?.length > 0
-                                    ? info.current?.freelancer?.postcode?.values?.replace(
                                         "%",
                                         ""
                                       )
-                                    : info.current?.freelancer?.city?.values
+                                    : info.current?.freelancer?.postcode?.values
+                                      ?.length > 0
+                                      ? info.current?.freelancer?.postcode?.values?.replace(
+                                        "%",
+                                        ""
+                                      )
+                                      : info.current?.freelancer?.city?.values
                                         ?.at(0)
                                         ?.replace("%", "")
                                 }
@@ -1119,9 +1105,9 @@ export default function SearchResultHeader({
                                       target: {
                                         value: searchProjects
                                           ? info.current?.assignment?.province
-                                              ?.values
+                                            ?.values
                                           : info.current?.freelancer?.city
-                                              ?.values,
+                                            ?.values,
                                       },
                                     });
                                   }
@@ -1237,7 +1223,7 @@ export default function SearchResultHeader({
                   (!searchProjects
                     ? "freelancer" + (research.data?.length - 1 > 1 ? "s" : "")
                     : "assignment" +
-                      (research.data?.length - 1 > 1 ? "s" : "")) +
+                    (research.data?.length - 1 > 1 ? "s" : "")) +
                   " found!"}
               </h3>
               <div className="search_methods_inputs">
@@ -1247,29 +1233,29 @@ export default function SearchResultHeader({
                   onChange={(e) => {
                     e.target.value.length === 0
                       ? searchHandler(
-                          false,
-                          searchProjects ? "job_name" : "profession",
-                          "like ",
-                          ""
-                        )
+                        false,
+                        searchProjects ? "job_name" : "profession",
+                        "like ",
+                        ""
+                      )
                       : searchHandler(
-                          false,
-                          searchProjects ? "job_name" : "profession",
-                          "like ",
-                          e.target.value +
-                            (e.target.value.length > 0 ? "%" : "")
-                        );
+                        false,
+                        searchProjects ? "job_name" : "profession",
+                        "like ",
+                        e.target.value +
+                        (e.target.value.length > 0 ? "%" : "")
+                      );
                   }}
                   value={
                     searchProjects
                       ? info.current?.assignment?.job_name?.values?.replace(
-                          "%",
-                          ""
-                        )
+                        "%",
+                        ""
+                      )
                       : info.current?.freelancer?.profession?.values?.replace(
-                          "%",
-                          ""
-                        )
+                        "%",
+                        ""
+                      )
                   }
                 />
                 <select
@@ -1290,11 +1276,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Construction"
-                          )
+                          "Construction"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Construction"
-                          )
+                          "Construction"
+                        )
                     }
                   >
                     Construction
@@ -1304,11 +1290,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Electrical"
-                          )
+                          "Electrical"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Electrical"
-                          )
+                          "Electrical"
+                        )
                     }
                   >
                     Electrical
@@ -1318,11 +1304,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Installation"
-                          )
+                          "Installation"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Installation"
-                          )
+                          "Installation"
+                        )
                     }
                   >
                     Installation
@@ -1332,11 +1318,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Infrastructure"
-                          )
+                          "Infrastructure"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Infrastructure"
-                          )
+                          "Infrastructure"
+                        )
                     }
                   >
                     Infrastructure
@@ -1346,11 +1332,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Industrial"
-                          )
+                          "Industrial"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Industrial"
-                          )
+                          "Industrial"
+                        )
                     }
                   >
                     Industrial
@@ -1360,11 +1346,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Health care and well being"
-                          )
+                          "Health care and well being"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Health care and well being"
-                          )
+                          "Health care and well being"
+                        )
                     }
                   >
                     Health care and well being
@@ -1374,11 +1360,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Trade and services"
-                          )
+                          "Trade and services"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Trade and services"
-                          )
+                          "Trade and services"
+                        )
                     }
                   >
                     Trade and services
@@ -1388,11 +1374,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "IT"
-                          )
+                          "IT"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "IT"
-                          )
+                          "IT"
+                        )
                     }
                   >
                     IT
@@ -1402,11 +1388,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Justice, security and public administration"
-                          )
+                          "Justice, security and public administration"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Justice, security and public administration"
-                          )
+                          "Justice, security and public administration"
+                        )
                     }
                   >
                     Justice, security and public administration
@@ -1416,11 +1402,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Environment and Agriculture"
-                          )
+                          "Environment and Agriculture"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Environment and Agriculture"
-                          )
+                          "Environment and Agriculture"
+                        )
                     }
                   >
                     Environment and Agriculture
@@ -1430,11 +1416,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Media and communication"
-                          )
+                          "Media and communication"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Media and communication"
-                          )
+                          "Media and communication"
+                        )
                     }
                   >
                     Media and communication
@@ -1444,11 +1430,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Education, culture and science"
-                          )
+                          "Education, culture and science"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Education, culture and science"
-                          )
+                          "Education, culture and science"
+                        )
                     }
                   >
                     Education, culture and science
@@ -1458,11 +1444,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Engineering, production and construction"
-                          )
+                          "Engineering, production and construction"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Engineering, production and construction"
-                          )
+                          "Engineering, production and construction"
+                        )
                     }
                   >
                     Engineering, production and construction
@@ -1472,11 +1458,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Tourism, recreation and catering"
-                          )
+                          "Tourism, recreation and catering"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Tourism, recreation and catering"
-                          )
+                          "Tourism, recreation and catering"
+                        )
                     }
                   >
                     Tourism, recreation and catering
@@ -1486,11 +1472,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Transport and Logistics"
-                          )
+                          "Transport and Logistics"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Transport and Logistics"
-                          )
+                          "Transport and Logistics"
+                        )
                     }
                   >
                     Transport and Logistics
@@ -1500,11 +1486,11 @@ export default function SearchResultHeader({
                     selected={
                       !searchProjects
                         ? info.current?.freelancer?.competency?.values.includes(
-                            "Childcare"
-                          )
+                          "Childcare"
+                        )
                         : info.current?.assignment?.industry?.values.includes(
-                            "Childcare"
-                          )
+                          "Childcare"
+                        )
                     }
                   >
                     Childcare
@@ -1518,14 +1504,14 @@ export default function SearchResultHeader({
                   defaultValue={
                     searchProjects
                       ? info.current?.assignment?.province?.values
-                          ?.at(0)
-                          ?.replace("%", "")
+                        ?.at(0)
+                        ?.replace("%", "")
                       : info.current?.freelancer?.postcode?.values?.length > 0
-                      ? info.current?.freelancer?.postcode?.values?.replace(
+                        ? info.current?.freelancer?.postcode?.values?.replace(
                           "%",
                           ""
                         )
-                      : info.current?.freelancer?.city?.values
+                        : info.current?.freelancer?.city?.values
                           ?.at(0)
                           ?.replace("%", "") || ""
                   }
@@ -1553,472 +1539,107 @@ export default function SearchResultHeader({
                     <option className="country-option" value={item.value}>{item?.value}</option>
                   ))}
                 </select> */}
-              <input type="button" value="Select country" className=""  onClick={() => {
-                          setShowChangeCountry(!showChangeCountry);
-                          setShowCountryList(false);
-                        }} style={{
-                          borderRadius:'5px',
-                        }}/>
-                
+                <input type="button" value="Select country" className="" onClick={() => {
+                  setShowChangeCountry(!showChangeCountry);
+                  setShowCountryList(false);
+                }} style={{
+                  borderRadius: '5px',
+                }} />
+
                 {showChangeCountry && (
-                    <div className="change-country-container">
-                      <div className="change-country-header">
-                        <div className="d-flex justify-content-between pr-4 items-center">
-                          <h5>Choose Language & Country</h5>
-                          <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose /></p>
+                  <div className="change-country-container">
+                    <div className="change-country-header">
+                      <div className="d-flex justify-content-between pr-4 items-center">
+                        <h5>Choose Language & Country</h5>
+                        <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose /></p>
 
-                        </div>
-                        <p className="text-center font-size">In which country are you looking for an assignment</p>
-                        <div>
-                          <input type="submit" className="country-input"
-                           value={selectCountry} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
-                        </div>
-                        <p className="text-align-center  font-size mt-4">Choose your language</p>
-                        <div>
-                          <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
-                        </div>
-                        {showcountryPopup && (
-                          <div
-                            style={{
-                              height: "320px",
-                              position: "absolute",
-                              right: "-310px",
-                              backgroundColor: "white",
-                              top: "0",
-                              width: "300px",
-                              zIndex: "999",
-                              overflowY: showcountryPopup ? "scroll" : "hidden",
-                              overflowX: "hidden",
-                            }}
-                          >
-                            <ul className="countries_list">
-                              <li value="India" onClick={() => {
-                                setSelectCountry("India");
-                                setShowcountryPopup(false);
-                              }}>
-
-                                <p>India</p>
-                              </li >
-                              <li value="Nederland" onClick={() => {
-                                setSelectCountry("Nederland");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Nederland</p>
-                              </li>
-                              <li value="Duitsland" onClick={() => {
-                                setSelectCountry("Duitsland");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Duitsland</p>
-                              </li>
-                              <li value="UK" onClick={() => {
-                                setSelectCountry("UK");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>UK</p>
-                              </li>
-                              <li value="België" onClick={() => {
-                                setSelectCountry("België");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>België</p>
-                              </li>
-                              <li value="Portugal" onClick={() => {
-                                setSelectCountry("Portugal");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Portugal</p>
-                              </li>
-                              <li value="Spanje" onClick={() => {
-                                setSelectCountry("Spanje");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Spanje</p>
-                              </li>
-                              <li value="Frankrijk" onClick={() => {
-                                setSelectCountry("Frankrijk");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Frankrijk</p>
-                              </li>
-                              <li value="Italie" onClick={() => {
-                                setSelectCountry("Italie");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Italie</p>
-                              </li>
-                              <li value="Oostenrijk" onClick={() => {
-                                setSelectCountry("Oostenrijk");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Oostenrijk</p>
-                              </li>
-                              <li value="Polen" onClick={() => {
-                                setSelectCountry("Polen");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Polen</p>
-                              </li>
-                              <li value="Tsjechië" onClick={() => {
-                                setSelectCountry("Tsjechië");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Tsjechië</p>
-                              </li>
-                              <li value="Slovenië" onClick={() => {
-                                setSelectCountry("Slovenië");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Ierland</p>
-                              </li>
-                              <li value="Denemarken" onClick={() => {
-                                setSelectCountry("Denemarken");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Denemarken</p>
-                              </li>
-                              <li value="Slowakije" onClick={() => {
-                                setSelectCountry("Slowakije");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Slowakije</p>
-                              </li>
-                              <li value="Hongarije" onClick={() => {
-                                setSelectCountry("Hongarije");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Hongarije</p>
-                              </li>
-                              <li value="Roemenie" onClick={() => {
-                                setSelectCountry("Roemenie");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Roemenie</p>
-                              </li>
-                              <li value="Bulgarije" onClick={() => {
-                                setSelectCountry("Bulgarije");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Griekenland</p>
-                              </li>
-                              <li value="Zweden" onClick={() => {
-                                setSelectCountry("Zweden");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Zweden</p>
-                              </li>
-                              <li value="Noorwegen" onClick={() => {
-                                setSelectCountry("Noorwegen");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Noorwegen</p>
-                              </li>
-                              <li value="Finland" onClick={() => {
-
-                                setSelectCountry("Finland");
-                                setShowcountryPopup(false);
-                              }}>
-
-                                <p>Finland</p>
-                              </li>
-                              <li value="Litouwen" onClick={() => {
-                                setSelectCountry("Litouwen");
-                                setShowcountryPopup(false);
-                              }}>
-
-                                <p>Litouwen</p>
-                              </li>
-                              <li value="Letland" onClick={() => {
-                                setSelectCountry("Letland");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Letland</p>
-                              </li>
-                              <li value="Estland" onClick={() => {
-                                setSelectCountry("Estland");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Estland</p>
-                              </li>
-                              <li value="Zwitserland" onClick={() => {
-                                setSelectCountry("Zwitserland");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Zwitserland</p>
-                              </li>
-                              <li value="Luxemburg" onClick={() => {
-                                setSelectCountry("Luxemburg");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Luxemburg</p>
-                              </li>
-                              <li value="Ijsland" onClick={() => {
-                                setSelectCountry("Ijsland");
-                                setShowcountryPopup(false);
-                              }}>
-
-                                <p>Ijsland</p>
-                              </li>
-                              <li value="Kroatie" onClick={() => {
-                                setSelectCountry("Kroatie");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Kroatie</p>
-                              </li>
-                              <li value="Servië" onClick={() => {
-                                setSelectCountry("Servië");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Servië</p>
-                              </li>
-                              <li value="Macedonië" onClick={() => {
-                                setSelectCountry("Macedonië");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Macedonië</p>
-                              </li>
-                              <li value="Bosnië en Herzegovina" onClick={() => {
-                                setSelectCountry("Bosnië en Herzegovina");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Bosnië en Herzegovina</p>
-                              </li>
-                              <li value="Montenegro" onClick={() => {
-                                setSelectCountry("Montenegro");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Montenegro</p>
-                              </li>
-                              <li value="Kosovo" onClick={() => {
-                                setSelectCountry("Kosovo");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Kosovo</p>
-                              </li>
-                              <li value="Rusland" onClick={() => {
-                                setSelectCountry("Rusland");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Rusland</p>
-                              </li>
-                              <li value="Turkije" onClick={() => {
-                                setSelectCountry("Turkije");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Turkije</p>
-                              </li>
-                              <li value="China" onClick={() => {
-                                setSelectCountry("China");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>China</p>
-                              </li>
-                              <li value="Japan" onClick={() => {
-                                setSelectCountry("Japan");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Japan</p>
-                              </li>
-                              <li value="Pakistan" onClick={() => {
-                                setSelectCountry("Pakistan");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Pakistan</p>
-                              </li>
-                              <li value="Zuid-Korea" onClick={() => {
-                                setSelectCountry("Zuid-Korea");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Zuid-Korea</p>
-                              </li>
-                              <li value="Vietman" onClick={() => {
-                                setSelectCountry("Vietman");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Vietman</p>
-                              </li>
-                              <li value="UAE" onClick={() => {
-                                setSelectCountry("UAE");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>UAE</p>
-                              </li>
-                              <li value="Saudi arabia" onClick={() => {
-                                setSelectCountry("Saudi arabia");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Saudi arabia</p>
-                              </li>
-                              <li value="Iran" onClick={() => {
-                                setSelectCountry("Iran");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Irak</p>
-                              </li>
-                              <li value="Quatar" onClick={() => {
-                                setSelectCountry("Quatar");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Quatar</p>
-                              </li>
-                              <li value="Brazilie" onClick={() => {
-                                setSelectCountry("Brazilie");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Brazilie</p>
-                              </li>
-                              <li value="Bolivia" onClick={() => {
-                                setSelectCountry("Bolivia");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Bolivia </p>
-                              </li>
-                              <li value="Argentinie" onClick={() => {
-                                setSelectCountry("Argentinie");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Argentina</p>
-                              </li>
-                              <li value="Chile" onClick={() => {
-                                setSelectCountry("Chile");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Chile</p>
-                              </li>
-                              <li value="USA" onClick={() => {
-                                setSelectCountry("USA");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>USA</p>
-                              </li>
-                              <li value="Colombia" onClick={() => {
-                                setSelectCountry("Colombia");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Colombia</p>
-                              </li>
-                              <li value="Peru" onClick={() => {
-                                setSelectCountry("Peru");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Peru</p>
-                              </li>
-                              <li value="Venezuela" onClick={() => {
-                                setSelectCountry("Venezuela");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Venezuela</p>
-                              </li>
-                              <li value="Paraguay" onClick={() => {
-                                setSelectCountry("Paraguay");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Paraguay</p>
-                              </li>
-                              <li value="Uruguay" onClick={() => {
-                                setSelectCountry("Uruguay");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Uruguay</p>
-                              </li>
-                              <li value="Mexico" onClick={() => {
-                                setSelectCountry("Mexico");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Mexico</p>
-                              </li>
-                              <li value="Australia" onClick={() => {
-                                setSelectCountry("Australia");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Australia</p>
-                              </li>
-                              <li value="Morocco" onClick={() => {
-                                setSelectCountry("Morocco");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Morocco</p>
-                              </li>
-                              <li value="Algeria" onClick={() => {
-                                setSelectCountry("Algeria");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Algeria</p>
-                              </li>
-                              <li value="Libya" onClick={() => {
-                                setSelectCountry("Libya");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Libya</p>
-                              </li>
-                              <li value="Egypt" onClick={() => {
-                                setSelectCountry("Egypt");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Egypt</p>
-                              </li>
-                              <li value="South Africa" onClick={() => {
-                                setSelectCountry("South Africa");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>South Africa</p>
-                              </li>
-                              <li value="Tunisia" onClick={() => {
-                                setSelectCountry("Tunisia");
-                                setShowcountryPopup(false);
-                              }}>
-                                <p>Tunisia</p>
-                              </li>
-
-                            </ul>
-                          </div>
-                        )}
-                        {showCountryList && (
-                          <div
-                            style={{
-                              height: "100px",
-                              position: "absolute",
-                              right: "-304px",
-                              top: "164px",
-                              backgroundColor: "white",
-                              width: "300px",
-                              zIndex: "999",
-                              overflowY: showCountryList ? "scroll" : "hidden",
-                              overflowX: "hidden",
-                            }}
-                          >
-                            <ul className="countries_list">
-
-                              <li
-                                onClick={() =>
-                                  changeCountryHandler(
-                                    "dutch",
-                                    "/images/netherland_flag.png",
-                                    "www.curant.nl"
-                                  )
-                                }
-                              >
-                                <img src="/images/netherland_flag.png" alt="" />
-                                <p>Netherlands - NL</p>
-                              </li>
-                              <li
-                                onClick={() =>
-                                  changeCountryHandler(
-                                    "Netherlands - EN",
-                                    "/images/netherland_flag.png",
-                                    "www.fr.curant24.com"
-                                  )
-                                }
-                              >
-                                <img src="/images/netherland_flag.png" alt="" />
-                                <p>Netherlands - EN</p>
-                              </li>
-                            </ul>
-                          </div>
-                        )}
                       </div>
+                      <p className="text-center font-size">In which country are you looking for an assignment</p>
+                      <div>
+                        <input type="submit" className="country-input"
+                          value={selectCountry} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                      </div>
+                      <p className="text-align-center  font-size mt-4">Choose your language</p>
+                      <div>
+                        <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                      </div>
+                      {showcountryPopup && (
+                        <div
+                          style={{
+                            height: "320px",
+                            position: "absolute",
+                            right: "-310px",
+                            backgroundColor: "white",
+                            top: "0",
+                            width: "300px",
+                            zIndex: "999",
+                            overflowY: showcountryPopup ? "scroll" : "hidden",
+                            overflowX: "hidden",
+                          }}
+                        >
+                          <ul className="countries_list">
+                            {countryList.map((country, index) => (
+                              <li
+                                key={index}
+                                value={country.value}
+                                onClick={() => {
+                                  setSelectCountry(country.name);
+                                  setShowcountryPopup(false); // Assuming setShowCountryPopup is used to control visibility
+                                }}
+                              >
+                                <span className={`flag-icon flag-icon-${country.code}`}></span>
+                                <p>{country.name}</p>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {showCountryList && (
+                        <div
+                          style={{
+                            height: "100px",
+                            position: "absolute",
+                            right: "-304px",
+                            top: "164px",
+                            backgroundColor: "white",
+                            width: "300px",
+                            zIndex: "999",
+                            overflowY: showCountryList ? "scroll" : "hidden",
+                            overflowX: "hidden",
+                          }}
+                        >
+                          <ul className="countries_list">
 
-                      {/* <div className="change-country-footer">
+                            <li
+                              onClick={() =>
+                                changeCountryHandler(
+                                  "dutch",
+                                  "/images/netherland_flag.png",
+                                  "www.curant.nl"
+                                )
+                              }
+                            >
+                              <img src="/images/netherland_flag.png" alt="" />
+                              <p>Netherlands - NL</p>
+                            </li>
+                            <li
+                              onClick={() =>
+                                changeCountryHandler(
+                                  "Netherlands - EN",
+                                  "/images/netherland_flag.png",
+                                  "www.fr.curant24.com"
+                                )
+                              }
+                            >
+                              <img src="/images/netherland_flag.png" alt="" />
+                              <p>Netherlands - EN</p>
+                            </li>
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* <div className="change-country-footer">
                         <div>
                           <img src={countryImg} alt="" />
                           <p>You are on {countrymail}</p>
@@ -2032,8 +1653,8 @@ export default function SearchResultHeader({
                           </Link>
                         </div>
                       </div> */}
-                    </div>
-                  )}
+                  </div>
+                )}
                 <select
                   name="distance"
                   id=""
@@ -2059,11 +1680,11 @@ export default function SearchResultHeader({
                         target: {
                           value: searchProjects
                             ? info.current?.assignment?.province?.values
-                                ?.at(0)
-                                ?.replace("%", "")
+                              ?.at(0)
+                              ?.replace("%", "")
                             : info.current?.freelancer?.city?.values
-                                ?.at(0)
-                                ?.replace("%", ""),
+                              ?.at(0)
+                              ?.replace("%", ""),
                         },
                       });
                     }
@@ -2218,9 +1839,8 @@ export default function SearchResultHeader({
                   Seek
                 </button>
                 <AiOutlineInfoCircle
-                  title={`Choose the location and \n maximum radius where you \n want to search the ${
-                    !freelancer ? "assignments" : "freelancers"
-                  }`}
+                  title={`Choose the location and \n maximum radius where you \n want to search the ${!freelancer ? "assignments" : "freelancers"
+                    }`}
                 />
               </div>
             </div>

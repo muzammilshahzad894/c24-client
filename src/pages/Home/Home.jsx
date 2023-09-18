@@ -210,17 +210,20 @@ export default function Home() {
 
   //change country handler
   const changeCountryHandler = (countryName, countryImage, countryEmail) => {
+   
     if (countryName === "dutch") {
-      setCountry("Nederland - NL");
+      console.log('heere');
+      setCountry("Netherland - NL");
       setCountryImg(countryImage);
       setCountryMail(countryEmail);
-      setShowCountryList(false);
+      // setShowCountryList(false);
       localStorage.setItem("language", 'dutch');
     } else {
       setCountry(countryName);
       setCountryImg(countryImage);
       setCountryMail(countryEmail);
-      setShowCountryList(false);
+      // setShowCountryList(false);
+      console.log('here')
       localStorage.setItem("language", countryName);
     }
 
@@ -915,32 +918,112 @@ export default function Home() {
                         {showCountryList && (
                           <div
                             style={{
-                              height: "100px",
+                              height: "165px",
                               position: "absolute",
-                              right: "-304px",
+                              right: "-354px",
                               top: "164px",
                               backgroundColor: "white",
-                              width: "300px",
+                              width: "350px",
                               zIndex: "999",
-                              overflowY: showCountryList ? "scroll" : "hidden",
-                              overflowX: "hidden",
                             }}
                           >
-                            <ul className="countries_list">
+                            <ul className="countries_list" style={{
+                              paddingLeft: '10px',
+                              border: 'none',
+                            }}>
 
-                              <li
-                                onClick={() =>
-                                  changeCountryHandler(
-                                    "dutch",
-                                    "/images/netherland_flag.png",
-                                    "www.curant.nl"
-                                  )
-                                }
-                              >
-                                <img src="/images/netherland_flag.png" alt="" />
-                                <p>Netherlands - NL</p>
-                              </li>
-                              <li
+                                <h4>
+                                  {lang === "dutch" ? "Taalinstellingen" : "Language Settings"}
+                                  </h4>
+                             
+                                <p>
+                                  {lang === "dutch" ? "Selecteer je voorkeurstaal" : "Select the language you prefer"}
+                                  
+                                  </p>
+                                <div style={{
+                                  display: 'flex',
+                                  gap : '10px',
+                                  justifyContent: 'start',
+                                  alignItems: 'center',
+                                  marginBottom: '10px',
+                                  
+                                }} 
+                               
+                                 >
+                                  <input type="radio" name="language" id="" style={{
+                                    height: '20px',
+                                    width: '20px',
+                                    cursor: 'pointer',
+                                  }} 
+                                  onClick={() =>
+                                    changeCountryHandler(
+                                      "dutch",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }/>
+                                  <label htmlFor="" style={{
+                                    fontSize: '14px',
+                                    fontWeight: '500',
+                                    color: '#000',
+                                    marginBottom: '0',
+                                    cursor: 'pointer',
+                                  }}  onClick={() =>
+                                    changeCountryHandler(
+                                      "dutch",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }>
+                                    Netherland - NL
+                                    </label>
+                                </div>
+                                <div style={{
+                                  border: '1px solid #f1f1f1',
+                                  width: '80%',
+                                }}>
+
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  gap : '10px',
+                                  justifyContent: 'start',
+                                  alignItems: 'center',
+                                  marginBottom: '10px',
+                                  cursor: 'pointer',
+                                }}
+                               
+                                >
+                                  <input type="radio" name="language" id="" style={{
+                                    height: '20px',
+                                    width: '20px',
+                                    cursor: 'pointer',
+
+                                  }} 
+                                  onClick={() =>
+                                    changeCountryHandler(
+                                      "Netherland - EN",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }/>
+                                  <label htmlFor="" style={{
+                                    fontSize: '14px',
+                                    fontWeight: '500',
+                                    color: '#000',
+                                    marginBottom: '0',
+                                    cursor: 'pointer',
+                                  }}
+                                  onClick={() =>
+                                    changeCountryHandler(
+                                      "Netherlands - EN",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }>English - En</label>
+                                </div>
+                                
+                              {/* <li
                                 onClick={() =>
                                   changeCountryHandler(
                                     "Netherlands - EN",
@@ -951,7 +1034,7 @@ export default function Home() {
                               >
                                 <img src="/images/netherland_flag.png" alt="" />
                                 <p>Netherlands - EN</p>
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         )}
@@ -3230,17 +3313,17 @@ export default function Home() {
                           </Link>
                         ) : (
                           <Link to="/join" className="links">
-                            <button>POST YOUR ASSIGNMENT</button>
+                            <button> Post your assignment</button>
                           </Link>
                         )
                       ) : (
                         user.email !== undefined ? (
                           <Link to="/dashboard/place-call">
-                            <button>PLAATS JE OPDRACHT</button>
+                            <button>Plaats je opdracht</button>
                           </Link>
                         ) : (
                           <Link to="/join" className="links">
-                            <button>PLAATS JE OPDRACHT</button>
+                            <button>Plaats je opdracht</button>
                           </Link>
                         )
                       )
@@ -3267,7 +3350,7 @@ export default function Home() {
                           freelauncer and find new  assignment
                         </p>
                         <Link className="links" to="/join">
-                          <button >Create AN ACCOUNT IMMEDIATELY</button>
+                          <button >Create an account immediately</button>
                         </Link>
                       </>
                     ) : (
@@ -3277,7 +3360,7 @@ export default function Home() {
                           en vind nieuwe opdrachten
                         </p>
                         <Link to="/join" className="links">
-                          <button >DIRECT ACCOUNT AANMAKEN</button>
+                          <button >Direct account aanmaken </button>
                         </Link>
                       </>
                     )

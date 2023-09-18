@@ -226,16 +226,18 @@ export default function SearchResultHeader({
 
     return resultArray;
   }
+  
+  const lang = localStorage.getItem('language');
   const changeCountryHandler = (countryName, countryImage) => {
     if (countryName === "dutch") {
-      setCountry("Nederland - NL");
+      setCountry("Netherland - NL");
       setCountryImg(countryImage);
-      setShowCountryList(false);
+      // setShowCountryList(false);
       localStorage.setItem("language", 'dutch');
     } else {
       setCountry(countryName);
       setCountryImg(countryImage);
-      setShowCountryList(false);
+      // setShowCountryList(false);
       localStorage.setItem("language", countryName);
     }
 
@@ -1539,90 +1541,108 @@ export default function SearchResultHeader({
                     <option className="country-option" value={item.value}>{item?.value}</option>
                   ))}
                 </select> */}
-                <input type="button" value="Select Country" className="" 
-                // onClick={() => {
-                //   setShowChangeCountry(!showChangeCountry);
-                //   setShowCountryList(false);
+                <div style={{
+                  width:'100%',
+                }}>
+                  <input type="button" value="Select Country" className=""
+                    onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
+                    style={{
+                      borderRadius: '5px',
+                      textAlign: 'left',
+                      height: '50px',
 
-                // }} 
-                onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
-                style={{
-                  borderRadius: '5px',
-                }} />
+                    }} />
+                  <img
+                    src="/images/angle_down.png"
+                    className=""
+                    onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
+                   
+                    style={{
+                      cursor: 'pointer',
+                      position: 'absolute',
+                      marginTop: '20px',
+                      marginLeft: '-28px',
+                   
+                    }}
+                    alt=""
+                  />
+                </div>
+
 
                 {showChangeCountry && (
                   <div className="change-country-container">
                     <div className="change-country-header">
                       <div className="d-flex justify-content-between pr-4 items-center">
                         <h5>Choose Language & Country</h5>
-                        <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose  style={{
-                           color: '#000',
-                           fontSize: '20px',
-                        }}/></p>
+                        <p className="cursor-pointer" onClick={() => { setShowChangeCountry(false); setShowcountryPopup(false); setShowCountryList(false); }}><AiOutlineClose style={{
+                          color: '#000',
+                          fontSize: '20px',
+                        }} /></p>
 
                       </div>
                       <p className="text-center font-size">In which country are you looking for an assignment</p>
                       <div>
                         <input type="submit" className="country-input"
                           value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
-                       <div style={{
-                                position: "absolute",
-                                marginRight: "10px",
-                                height: "40px",
-                                background: 'none',
-                                right: '26px',
-                                justifyContent: 'end',
-                                gap: '12px',
-                                marginTop: '5px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: '60px',
-                              }} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }}>
-                                 <img
-                                    src="/images/angle_down.png"
-                                    className=""
-                                    style={{
-                                      cursor: 'pointer'}}
-                                    alt=""
-                                  />
+                        <div style={{
+                          position: "absolute",
+                          marginRight: "10px",
+                          height: "40px",
+                          background: 'none',
+                          right: '26px',
+                          justifyContent: 'end',
+                          gap: '12px',
+                          marginTop: '5px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          width: '60px',
+                        }} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }}>
+                          <img
+                            src="/images/angle_down.png"
+                            className=""
+                            style={{
+                              cursor: 'pointer'
+                            }}
+                            alt=""
+                          />
 
-                              <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
-    
-                              </div>
-                            
-                          
+                          <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
+
                         </div>
+
+
+                      </div>
                       <p className="text-align-center  font-size mt-4">Choose your language</p>
                       <div>
                         <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
                         <div style={{
-                                position: "absolute",
-                                marginRight: "10px",
-                                height: "40px",
-                                background: 'none',
-                                right: '26px',
-                                justifyContent: 'end',
-                                gap: '12px',
-                                marginTop: '5px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: '60px',
-                              }} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }}>
-                                 <img
-                                    src="/images/angle_down.png"
-                                    className=""
-                                    alt=""
-                                    style={{
-                                      cursor: 'pointer'
-                                    }}
-                                  />
+                          position: "absolute",
+                          marginRight: "10px",
+                          height: "40px",
+                          background: 'none',
+                          right: '26px',
+                          justifyContent: 'end',
+                          gap: '12px',
+                          marginTop: '5px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          width: '60px',
+                        }} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }}>
+                          <img
+                            src="/images/angle_down.png"
+                            className=""
+                            alt=""
+                            style={{
+                              cursor: 'pointer'
+                            }}
+                          />
 
-                                <img src="/images/netherland_flag.png" alt=""  style={{
-                                  height: '14px',
-                                  width: '20px',
-                                }}/>
-    
-                              </div>
+                          <img src="/images/netherland_flag.png" alt="" style={{
+                            height: '14px',
+                            width: '20px',
+                          }} />
+
+                        </div>
                       </div>
                       {showcountryPopup && (
                         <div
@@ -1655,49 +1675,122 @@ export default function SearchResultHeader({
                           </ul>
                         </div>
                       )}
-                      {showCountryList && (
-                        <div
-                          style={{
-                            height: "100px",
-                            position: "absolute",
-                            right: "-304px",
-                            top: "164px",
-                            backgroundColor: "white",
-                            width: "300px",
-                            zIndex: "999",
-                            overflowY: showCountryList ? "scroll" : "hidden",
-                            overflowX: "hidden",
-                          }}
-                        >
-                          <ul className="countries_list">
+                   
+                       {showCountryList && (
+                          <div
+                            style={{
+                              height: "165px",
+                              position: "absolute",
+                              right: "-354px",
+                              top: "164px",
+                              backgroundColor: "white",
+                              width: "350px",
+                              zIndex: "999",
+                              boxShadow: "0px 0px 10px 0px #ccc",
+                            }}
+                          >
+                            <ul className="countries_list" style={{
+                              paddingLeft: '10px',
+                              border: 'none',
+                            }}>
 
-                            <li
-                              onClick={() =>
-                                changeCountryHandler(
-                                  "dutch",
-                                  "/images/netherland_flag.png",
-                                  "www.curant.nl"
-                                )
-                              }
-                            >
-                              <img src="/images/netherland_flag.png" alt="" />
-                              <p>Netherlands - NL</p>
-                            </li>
-                            <li
-                              onClick={() =>
-                                changeCountryHandler(
-                                  "Netherlands - EN",
-                                  "/images/netherland_flag.png",
-                                  "www.fr.curant24.com"
-                                )
-                              }
-                            >
-                              <img src="/images/netherland_flag.png" alt="" />
-                              <p>Netherlands - EN</p>
-                            </li>
-                          </ul>
-                        </div>
-                      )}
+                                <h4>
+                                  {lang === "dutch" ? "Taalinstellingen" : "Language Settings"}
+                                  </h4>
+                             
+                                <p>
+                                  {lang === "dutch" ? "Selecteer je voorkeurstaal" : "Select the language you prefer"}
+                                  
+                                  </p>
+                                <div className="main_div" style={{
+                               
+                                  
+                                }} 
+                               
+                                 >
+                                  <input type="radio" name="language" id="" className="input_radio" style={{
+                                    height: '20px',
+                                    width: '20px',
+                                    cursor: 'pointer',
+                                  }} 
+                                  onClick={() =>
+                                    changeCountryHandler(
+                                      "dutch",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }/>
+                                  <label htmlFor="" style={{
+                                    fontSize: '14px',
+                                    fontWeight: '500',
+                                    color: '#000',
+                                    marginBottom: '0',
+                                    cursor: 'pointer',
+                                  }}  onClick={() =>
+                                    changeCountryHandler(
+                                      "dutch",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }>
+                                    Netherland - NL
+                                    </label>
+                                </div>
+                                <div style={{
+                                  border: '1px solid #f1f1f1',
+                                  width: '80%',
+                                }}>
+
+                                </div>
+                                <div className="main_div" style={{
+                                
+                                }}
+                               
+                                >
+                                  <input type="radio" name="language" className="input_radio" id="" style={{
+                                    height: '20px',
+                                    width: '20px',
+                                    cursor: 'pointer',
+
+                                  }} 
+                                  onClick={() =>
+                                    changeCountryHandler(
+                                      "Netherlands - EN",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }/>
+                                  <label htmlFor="" style={{
+                                    fontSize: '14px',
+                                    fontWeight: '500',
+                                    color: '#000',
+                                    marginBottom: '0',
+                                    cursor: 'pointer',
+                                  }}
+                                  onClick={() =>
+                                    changeCountryHandler(
+                                      "Netherlands - EN",
+                                      "/images/netherland_flag.png",
+                                      "www.fr.curant24.com"
+                                    )
+                                  }>English - En</label>
+                                </div>
+                                
+                              {/* <li
+                                onClick={() =>
+                                  changeCountryHandler(
+                                    "Netherlands - EN",
+                                    "/images/netherland_flag.png",
+                                    "www.fr.curant24.com"
+                                  )
+                                }
+                              >
+                                <img src="/images/netherland_flag.png" alt="" />
+                                <p>Netherlands - EN</p>
+                              </li> */}
+                            </ul>
+                          </div>
+                        )}
                     </div>
 
                     {/* <div className="change-country-footer">

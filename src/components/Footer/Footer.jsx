@@ -130,13 +130,15 @@ export default function Footer() {
                 </div> */}
                 <select
                   name="Country"
+                  onChange={(e) => {
+                    //set the local storage language 
+                    localStorage.setItem("language", e.target.value);
+                    window.location.reload();
+
+                  }}
                 >
                   <option value="">select language</option>
-                  <option value="Dutch-English">Dutch-English</option>
-                  <option value="German-English">German-English</option>
-                  <option value="English-Portuguese">English-Portuguese</option>
-                  <option value="English-Spanisch">English-Spanisch</option>
-                  <option value="English-French">English-French</option>
+                  <option value="dutch">Netherlands - NL</option>
                   <option value="English">English</option>
                 </select>
                 <div className="country">

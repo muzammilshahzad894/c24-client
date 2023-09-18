@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirect XMLHttpRequests (XHR) to the 'api' folder
+RewriteCond %{HTTP:Accept} application/json
+RewriteRule ^(.*)$ /api/$1 [L]
+
+# Handle other routes (e.g., for your React app)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.html [L]

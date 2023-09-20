@@ -33,6 +33,7 @@ export default function SearchResultHeader({
   const [searchProjects, setSearchProjects] = useState(!freelancer);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const linkRef = useRef();
+  const [chooseCountryname, setChooseCountryname] = useState("Select country");
   const [sortBy, setSortBy] = useState("");
   const [country, setCountry] = useState("Netherlands - NL");
   const [countryImg, setCountryImg] = useState("/images/netherland_flag.png");
@@ -1544,7 +1545,7 @@ export default function SearchResultHeader({
                 <div style={{
                   width:'100%',
                 }}>
-                  <input type="button" value="Select Country" className=""
+                  <input type="button" value={chooseCountryname} className=""
                     onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
                     style={{
                       borderRadius: '5px',
@@ -1666,6 +1667,7 @@ export default function SearchResultHeader({
                                 onClick={() => {
                                   setSelectCountry({ name: country.name, code: country.code });
                                   setShowcountryPopup(false);
+                                  setChooseCountryname(country.name);
                                 }}
                               >
                                 <span className={`flag-icon flag-icon-${country.code}`}></span>

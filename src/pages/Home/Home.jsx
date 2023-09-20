@@ -809,7 +809,12 @@ export default function Home() {
                       className="angleDown"
                       alt=""
                     />
-                    <img src={countryImg} className="flag" alt="" />
+                    
+                    <span className={`flag-icon flag-icon-${selectCountry.code}`}
+                    style={{
+                      marginRight: '10px',
+                    }}
+                    ></span>
                   </div>
                   {showChangeCountry && (
                     <div className="change-country-container">

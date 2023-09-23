@@ -36,6 +36,7 @@ export default function SearchResultHeader({
   const [chooseCountryname, setChooseCountryname] = useState("Select country");
   const [sortBy, setSortBy] = useState("");
   const [country, setCountry] = useState("Netherlands - NL");
+  const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem('language') ? localStorage.getItem('language') : null);
   const [countryImg, setCountryImg] = useState("/images/netherland_flag.png");
   const research = useSelector((state) => state.research);
   const searchLinkRef = useRef();
@@ -232,11 +233,13 @@ export default function SearchResultHeader({
   const changeCountryHandler = (countryName, countryImage) => {
     if (countryName === "dutch") {
       setCountry("Netherland - NL");
+      setSelectedLanguage('dutch');
       setCountryImg(countryImage);
       // setShowCountryList(false);
       localStorage.setItem("language", 'dutch');
     } else {
       setCountry(countryName);
+      setSelectedLanguage('Netherland - EN');
       setCountryImg(countryImage);
       // setShowCountryList(false);
       localStorage.setItem("language", countryName);
@@ -1583,8 +1586,7 @@ export default function SearchResultHeader({
                       </div>
                       <p className="text-center font-size">In which country are you looking for an assignment</p>
                       <div>
-                        <input type="submit" className="country-input"
-                          value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                        <input type="submit" className="country-input" value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
                         <div style={{
                           position: "absolute",
                           marginRight: "10px",
@@ -1615,7 +1617,7 @@ export default function SearchResultHeader({
                       </div>
                       <p className="text-align-center  font-size mt-4">Choose your language</p>
                       <div>
-                        <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                        <input type="button" className="country-input" value={selectedLanguage === 'dutch' ? 'Netherland - NL' : 'Netherland - EN'} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
                         <div style={{
                           position: "absolute",
                           marginRight: "10px",
@@ -1710,19 +1712,21 @@ export default function SearchResultHeader({
                                 }} 
                                
                                  >
-                                  <input type="radio" name="language" id="" className="input_radio" style={{
-                                    height: '20px',
-                                    width: '20px',
-                                    cursor: 'pointer',
-                                  }} 
-                                  onClick={() =>
-                                    changeCountryHandler(
-                                      "dutch",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
-                                    )
-                                  }/>
-                                  <label htmlFor="" style={{
+                                  <input type="radio" name="language" id="dutch_language" className="input_radio" style={{
+                                      height: '20px',
+                                      width: '20px',
+                                      cursor: 'pointer',
+                                    }} 
+                                    onClick={() =>
+                                      changeCountryHandler(
+                                        "dutch",
+                                        "/images/netherland_flag.png",
+                                        "www.fr.curant24.com"
+                                      )
+                                    }
+                                    checked={selectedLanguage === 'dutch' ? true : false}
+                                  />
+                                  <label htmlFor="dutch_language" style={{
                                     fontSize: '14px',
                                     fontWeight: '500',
                                     color: '#000',
@@ -1747,22 +1751,22 @@ export default function SearchResultHeader({
                                 <div className="main_div" style={{
                                 
                                 }}
-                               
                                 >
-                                  <input type="radio" name="language" className="input_radio" id="" style={{
+                                  <input type="radio" name="language" className="input_radio" id="english_language" style={{
                                     height: '20px',
                                     width: '20px',
                                     cursor: 'pointer',
-
-                                  }} 
-                                  onClick={() =>
-                                    changeCountryHandler(
-                                      "Netherlands - EN",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
-                                    )
-                                  }/>
-                                  <label htmlFor="" style={{
+                                    }} 
+                                    onClick={() =>
+                                      changeCountryHandler(
+                                        "Netherlands - EN",
+                                        "/images/netherland_flag.png",
+                                        "www.fr.curant24.com"
+                                      )
+                                    }
+                                    checked={selectedLanguage === 'Netherland - EN' ? true : false}
+                                  />
+                                  <label htmlFor="english_language" style={{
                                     fontSize: '14px',
                                     fontWeight: '500',
                                     color: '#000',

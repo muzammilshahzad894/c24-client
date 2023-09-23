@@ -236,11 +236,11 @@ export default function Register() {
     if (inputRef.current.length > 0) {
       inputRef.current.map(
         (item) =>
-          (item.checked =
-            userRegister.current.checked_comp.indexOf(parseInt(item.value)) ===
+        (item.checked =
+          userRegister.current.checked_comp.indexOf(parseInt(item.value)) ===
             -1
-              ? false
-              : true)
+            ? false
+            : true)
       );
     }
   });
@@ -555,10 +555,10 @@ export default function Register() {
                         /> */}
                         <select
                           name="Country"
-                          // ref={(ref) =>
-                          //   ref !== null &&
-                          //   (userRegister.current[ref.name] = ref)
-                          // }
+                        // ref={(ref) =>
+                        //   ref !== null &&
+                        //   (userRegister.current[ref.name] = ref)
+                        // }
                         >
                           <option value="">select Country</option>
                           <option value="Nederland">Nederland</option>
@@ -623,7 +623,7 @@ export default function Register() {
                           <option value="Egypt">Egypt</option>
                           <option value="South Africa">South Africa</option>
                           <option value="Tunisia">Tunisia</option>
-                         
+
                         </select>
                       </div>
                     </div>
@@ -752,8 +752,8 @@ export default function Register() {
                       name="terms"
                       id=""
                       onChange={() =>
-                        (userRegister.current.agreeTerms =
-                          !userRegister.current.agreeTerms)
+                      (userRegister.current.agreeTerms =
+                        !userRegister.current.agreeTerms)
                       }
                     />
                     <p>

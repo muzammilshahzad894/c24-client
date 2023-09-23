@@ -357,7 +357,6 @@ export default function SearchResult() {
 
       }
   }
-  console.log(freelancer)
   return (
     <div className='search_results_container'>
       <Header Child={<SearchResultHeader changeData={(newData)=>data.current=newData}  data={data.current} changeType={(fr)=>{setFreelancer(fr)}} freelancerBool={freelancer} switchSearch={freelancer}/>}/>

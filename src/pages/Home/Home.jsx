@@ -47,6 +47,7 @@ export default function Home() {
   const [hourlyRate, setHourlyRate] = useState(50);
   const [sortBy, setSortBy] = useState("");
   const [country, setCountry] = useState("Netherlands - NL");
+  const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem('language') ? localStorage.getItem('language') : null);
   const [selectCountry, setSelectCountry] = useState({ name: "Nederland", code: "nl" });
 
   const [countryImg, setCountryImg] = useState("/images/netherland_flag.png");
@@ -210,20 +211,19 @@ export default function Home() {
 
   //change country handler
   const changeCountryHandler = (countryName, countryImage, countryEmail) => {
-   
     if (countryName === "dutch") {
-      console.log('heere');
       setCountry("Netherland - NL");
+      setSelectedLanguage('dutch');
       setCountryImg(countryImage);
       setCountryMail(countryEmail);
       // setShowCountryList(false);
       localStorage.setItem("language", 'dutch');
     } else {
       setCountry(countryName);
+      setSelectedLanguage('Netherland - EN');
       setCountryImg(countryImage);
       setCountryMail(countryEmail);
       // setShowCountryList(false);
-      console.log('here')
       localStorage.setItem("language", countryName);
     }
 
@@ -809,11 +809,11 @@ export default function Home() {
                       className="angleDown"
                       alt=""
                     />
-                    
+
                     <span className={`flag-icon flag-icon-${selectCountry.code}`}
-                    style={{
-                      marginRight: '10px',
-                    }}
+                      style={{
+                        marginRight: '10px',
+                      }}
                     ></span>
                   </div>
                   {showChangeCountry && (
@@ -826,67 +826,65 @@ export default function Home() {
                         </div>
                         <p className="text-center font-size">In which country are you looking for an assignment</p>
                         <div>
-                          
-                              <input type="submit" className="country-input" value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
-                          
-                              <div style={{
-                                position: "absolute",
-                                marginRight: "10px",
-                                height: "40px",
-                                background: 'none',
-                                right: '14px',
-                                justifyContent: 'end',
-                                gap: '12px',
-                                marginTop: '5px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: '60px',
-                              }} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }}>
-                                 <img
-                                    src="/images/angle_down.png"
-                                    className=""
-                                    style={{
-                                      cursor: 'pointer'}}
-                                    alt=""
-                                  />
+                          <input type="submit" className="country-input" value={selectCountry.name} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }} />
+                          <div style={{
+                            position: "absolute",
+                            marginRight: "10px",
+                            height: "40px",
+                            background: 'none',
+                            right: '14px',
+                            justifyContent: 'end',
+                            gap: '12px',
+                            marginTop: '5px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            width: '60px',
+                          }} onClick={() => { setShowcountryPopup(!showcountryPopup); setShowCountryList(false); }}>
+                            <img
+                              src="/images/angle_down.png"
+                              className=""
+                              style={{
+                                cursor: 'pointer'
+                              }}
+                              alt=""
+                            />
 
-                              <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
-    
-                              </div>
-                            
-                          
+                            <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
+
+                          </div>
+
+
                         </div>
                         <p className="text-align-center  font-size mt-4">Choose your language</p>
                         <div>
-                          <input type="button" className="country-input" value={country} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                          <input type="submit" className="country-input" value={selectedLanguage === 'dutch' ? 'Netherland - NL' : 'Netherland - EN'} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
                           <div style={{
-                                position: "absolute",
-                                marginRight: "10px",
-                                height: "40px",
-                                background: 'none',
-                                right: '14px',
-                                justifyContent: 'end',
-                                gap: '12px',
-                                marginTop: '5px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                width: '60px',
-                              }} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }}>
-                                 <img
-                                    src="/images/angle_down.png"
-                                    className=""
-                                    alt=""
-                                    style={{
-                                      cursor: 'pointer'
-                                    }}
-                                  />
+                            position: "absolute",
+                            marginRight: "10px",
+                            height: "40px",
+                            background: 'none',
+                            right: '14px',
+                            justifyContent: 'end',
+                            gap: '12px',
+                            marginTop: '5px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            width: '60px',
+                          }} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }}>
+                            <img
+                              src="/images/angle_down.png"
+                              className=""
+                              alt=""
+                              style={{
+                                cursor: 'pointer'
+                              }}
+                            />
+                            <img src="/images/netherland_flag.png" alt="" style={{
+                              height: '14px',
+                              width: '20px',
+                            }} />
 
-                                <img src="/images/netherland_flag.png" alt=""  style={{
-                                  height: '14px',
-                                  width: '20px',
-                                }}/>
-    
-                              </div>
+                          </div>
                         </div>
                         {showcountryPopup && (
                           <div
@@ -911,7 +909,7 @@ export default function Home() {
                                     setSelectCountry({ name: country.name, code: country.code });
                                     setShowcountryPopup(false);
                                   }}
-                                  
+
                                 >
                                   <span className={`flag-icon flag-icon-${country.code}`}></span>
                                   <p>{country.name}</p>
@@ -937,88 +935,90 @@ export default function Home() {
                               border: 'none',
                             }}>
 
-                                <h4>
-                                  {lang === "dutch" ? "Taalinstellingen" : "Language Settings"}
-                                  </h4>
-                             
-                                <p>
-                                  {lang === "dutch" ? "Selecteer je voorkeurstaal" : "Select the language you prefer"}
-                                  
-                                  </p>
-                                <div style={{
-                                  display: 'flex',
-                                  gap : '10px',
-                                  justifyContent: 'start',
-                                  alignItems: 'center',
-                                  marginBottom: '10px',
-                                  
-                                }} 
-                               
-                                 >
-                                  <input type="radio" name="language" id="" style={{
-                                    height: '20px',
-                                    width: '20px',
-                                    cursor: 'pointer',
-                                  }} 
+                              <h4>
+                                {lang === "dutch" ? "Taalinstellingen" : "Language Settings"}
+                              </h4>
+
+                              <p>
+                                {lang === "dutch" ? "Selecteer je voorkeurstaal" : "Select the language you prefer"}
+
+                              </p>
+                              <div style={{
+                                display: 'flex',
+                                gap: '10px',
+                                justifyContent: 'start',
+                                alignItems: 'center',
+                                marginBottom: '10px',
+
+                              }}
+
+                              >
+                                <input type="radio" name="language" id="dutch_language" style={{
+                                  height: '20px',
+                                  width: '20px',
+                                  cursor: 'pointer',                      
+                                }}
                                   onClick={() =>
                                     changeCountryHandler(
                                       "dutch",
                                       "/images/netherland_flag.png",
                                       "www.fr.curant24.com"
                                     )
-                                  }/>
-                                  <label htmlFor="" style={{
-                                    fontSize: '14px',
-                                    fontWeight: '500',
-                                    color: '#000',
-                                    marginBottom: '0',
-                                    cursor: 'pointer',
-                                  }}  onClick={() =>
-                                    changeCountryHandler(
-                                      "dutch",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
-                                    )
-                                  }>
-                                    Netherland - NL
-                                    </label>
-                                </div>
-                                <div style={{
-                                  border: '1px solid #f1f1f1',
-                                  width: '80%',
-                                }}>
+                                  }
+                                  checked={selectedLanguage === 'dutch' ? true : false}
+                                />
+                                <label htmlFor="dutch_language" style={{
+                                  fontSize: '14px',
+                                  fontWeight: '500',
+                                  color: '#000',
+                                  marginBottom: '0',
+                                  cursor: 'pointer',
+                                }} onClick={() =>
+                                  changeCountryHandler(
+                                    "dutch",
+                                    "/images/netherland_flag.png",
+                                    "www.fr.curant24.com"
+                                  )
+                                }>
+                                  Netherland - NL
+                                </label>
+                              </div>
+                              <div style={{
+                                border: '1px solid #f1f1f1',
+                                width: '80%',
+                              }}>
 
-                                </div>
-                                <div style={{
-                                  display: 'flex',
-                                  gap : '10px',
-                                  justifyContent: 'start',
-                                  alignItems: 'center',
-                                  marginBottom: '10px',
+                              </div>
+                              <div style={{
+                                display: 'flex',
+                                gap: '10px',
+                                justifyContent: 'start',
+                                alignItems: 'center',
+                                marginBottom: '10px',
+                                cursor: 'pointer',
+                              }}
+                              >
+                                <input type="radio" name="language" id="english_language" style={{
+                                  height: '20px',
+                                  width: '20px',
                                   cursor: 'pointer',
                                 }}
-                               
-                                >
-                                  <input type="radio" name="language" id="" style={{
-                                    height: '20px',
-                                    width: '20px',
-                                    cursor: 'pointer',
-
-                                  }} 
                                   onClick={() =>
                                     changeCountryHandler(
                                       "Netherland - EN",
                                       "/images/netherland_flag.png",
                                       "www.fr.curant24.com"
                                     )
-                                  }/>
-                                  <label htmlFor="" style={{
-                                    fontSize: '14px',
-                                    fontWeight: '500',
-                                    color: '#000',
-                                    marginBottom: '0',
-                                    cursor: 'pointer',
-                                  }}
+                                  } 
+                                  checked={selectedLanguage === 'Netherland - EN' ? true : false}
+                                />
+                                <label htmlFor="english_language" style={{
+                                  fontSize: '14px',
+                                  fontWeight: '500',
+                                  color: '#000',
+                                  marginBottom: '0',
+                                  cursor: 'pointer',
+                                }}
                                   onClick={() =>
                                     changeCountryHandler(
                                       "Netherlands - EN",
@@ -1026,8 +1026,8 @@ export default function Home() {
                                       "www.fr.curant24.com"
                                     )
                                   }>English - En</label>
-                                </div>
-                                
+                              </div>
+
                               {/* <li
                                 onClick={() =>
                                   changeCountryHandler(
@@ -3288,98 +3288,98 @@ export default function Home() {
             </div>
             <div className="side-btn-btn">
 
-           
-            {
-              user.account_type === "freelancer" ? (
+
+              {
+                user.account_type === "freelancer" ? (
+                  <></>
+                ) : (
+                  <div className="right-section">
+                    <div className="right-section-content" >
+                      {
+                        lang !== "dutch" ? (
+                          <p style={{ textAlign: "center" }}>
+                            Place a free assignment and <br />
+                            find the right freelancer
+                          </p>
+                        ) : (
+                          <p style={{ textAlign: "center" }}>
+                            Gratis opdracht plaatsen <br />
+                            en vind de juiste freelancer
+                          </p>
+
+                        )
+
+                      }
+                      {
+                        lang !== "dutch" ? (
+                          user.email !== undefined ? (
+                            <Link to="/dashboard/place-call">
+                              <button>POST YOUR ASSIGNMENT</button>
+                            </Link>
+                          ) : (
+                            <Link to="/join" className="links">
+                              <button> Post your assignment</button>
+                            </Link>
+                          )
+                        ) : (
+                          user.email !== undefined ? (
+                            <Link to="/dashboard/place-call">
+                              <button>Plaats je opdracht</button>
+                            </Link>
+                          ) : (
+                            <Link to="/join" className="links">
+                              <button>Plaats je opdracht</button>
+                            </Link>
+                          )
+                        )
+                      }
+
+
+
+
+                    </div>
+                  </div>
+                )
+              }
+
+              {user.email !== undefined ? (
                 <></>
               ) : (
-                <div className="right-section">
-                  <div className="right-section-content" >
+                <div className="left-section">
+                  <div className="right-section-content">
                     {
                       lang !== "dutch" ? (
-                        <p style={{ textAlign: "center" }}>
-                          Place a free assignment and <br />
-                          find the right freelancer
-                        </p>
+                        <>
+                          <p>
+                            Promote your self as a  <br />
+                            freelauncer and find new  assignment
+                          </p>
+                          <Link className="links" to="/join">
+                            <button >Create an account immediately</button>
+                          </Link>
+                        </>
                       ) : (
-                        <p style={{ textAlign: "center" }}>
-                          Gratis opdracht plaatsen <br />
-                          en vind de juiste freelancer
-                        </p>
-
-                      )
-
-                    }
-                    {
-                      lang !== "dutch" ? (
-                        user.email !== undefined ? (
-                          <Link to="/dashboard/place-call">
-                            <button>POST YOUR ASSIGNMENT</button>
-                          </Link>
-                        ) : (
+                        <>
+                          <p>
+                            Promoot jezelf gratis els freelancer <br />
+                            en vind nieuwe opdrachten
+                          </p>
                           <Link to="/join" className="links">
-                            <button> Post your assignment</button>
+                            <button >Direct account aanmaken </button>
                           </Link>
-                        )
-                      ) : (
-                        user.email !== undefined ? (
-                          <Link to="/dashboard/place-call">
-                            <button>Plaats je opdracht</button>
-                          </Link>
-                        ) : (
-                          <Link to="/join" className="links">
-                            <button>Plaats je opdracht</button>
-                          </Link>
-                        )
+                        </>
                       )
                     }
-
-
 
 
                   </div>
                 </div>
-              )
-            }
-
-            {user.email !== undefined ? (
-              <></>
-            ) : (
-              <div className="left-section">
-                <div className="right-section-content">
-                  {
-                    lang !== "dutch" ? (
-                      <>
-                        <p>
-                          Promote your self as a  <br />
-                          freelauncer and find new  assignment
-                        </p>
-                        <Link className="links" to="/join">
-                          <button >Create an account immediately</button>
-                        </Link>
-                      </>
-                    ) : (
-                      <>
-                        <p>
-                          Promoot jezelf gratis els freelancer <br />
-                          en vind nieuwe opdrachten
-                        </p>
-                        <Link to="/join" className="links">
-                          <button >Direct account aanmaken </button>
-                        </Link>
-                      </>
-                    )
-                  }
-
-
-                </div>
-              </div>
-            )}
-            {/* <div className={`loading ${!showLoading ? "hideLoading":""}`}>
+              )}
+              {/* <div className={`loading ${!showLoading ? "hideLoading":""}`}>
                             <div className="loadingBar"></div>
                         </div> */}
-            {/* {showLoading && <LoadingBox />} */}
-          </div>
+              {/* {showLoading && <LoadingBox />} */}
+            </div>
           </div>
           <div className="numbers">
             <div className="header">

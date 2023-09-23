@@ -46,6 +46,7 @@ export default function Home() {
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [hourlyRate, setHourlyRate] = useState(50);
   const [sortBy, setSortBy] = useState("");
+  const [chooseLanguage , setChooseLanguage] = useState('');
   const [country, setCountry] = useState("Netherlands - NL");
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem('language') ? localStorage.getItem('language') : null);
   const [selectCountry, setSelectCountry] = useState({ name: "Nederland", code: "nl" });
@@ -58,7 +59,7 @@ export default function Home() {
   const research = useSelector((state) => state.research);
   const get_personal = useSelector((state) => state.get_personal);
 
-  const lang = localStorage.getItem('language');
+ 
   // console.log('lang is',lang);
   //slider elt
   var slider = useRef();
@@ -147,9 +148,26 @@ export default function Home() {
   const [user, setUser] = useState(user_info.user);
   // console.log('user is',user);
 
+  const lang = localStorage.getItem('language');
+const countryName = localStorage.getItem('country');
+const countryCode = localStorage.getItem('countryCode');
+
   useEffect(() => {
     setTimeout(() => {
+      console.log(lang)
       setShowLoading(false);
+      if (lang === ''){
+        setChooseLanguage('Netherland - EN')
+      }
+      else{
+        setChooseLanguage(lang);
+      }
+      if (countryName === null && countryCode === null) {
+        setSelectCountry({ name: "Nederland", code: "nl" });
+      }
+      else {
+        setSelectCountry({ name: countryName, code: countryCode });
+      }
     }, 3200);
   }, []);
 
@@ -185,6 +203,7 @@ export default function Home() {
   //trigger search event once hourly wage has changed
   useEffect(() => {
     searchHandler(false, "hourly_rate", "<=", hourlyRate);
+    
   }, [hourlyRate]);
 
   if (searchParams.get("email") && user_info.user && user_info.user.email) {
@@ -210,24 +229,25 @@ export default function Home() {
   }
 
   //change country handler
-  const changeCountryHandler = (countryName, countryImage, countryEmail) => {
-    if (countryName === "dutch") {
+  const changeCountryHandler = () => {
+    if (chooseLanguage === "dutch") {
       setCountry("Netherland - NL");
       setSelectedLanguage('dutch');
-      setCountryImg(countryImage);
-      setCountryMail(countryEmail);
-      // setShowCountryList(false);
+      setShowCountryList(false);
+      
       localStorage.setItem("language", 'dutch');
     } else {
-      setCountry(countryName);
+      setCountry(chooseLanguage);
       setSelectedLanguage('Netherland - EN');
-      setCountryImg(countryImage);
-      setCountryMail(countryEmail);
-      // setShowCountryList(false);
-      localStorage.setItem("language", countryName);
+      localStorage.setItem("language", chooseLanguage);
+      setShowCountryList(false);
+      
     }
 
   };
+  // const changeCountryHandler = () => {
+
+  // }
   //getting cities within the radius
   function getCitiesWithinRadius(referenceLat, referenceLng, radius) {
     const R = 6371; // Earth's mean radius in km
@@ -908,6 +928,8 @@ export default function Home() {
                                   onClick={() => {
                                     setSelectCountry({ name: country.name, code: country.code });
                                     setShowcountryPopup(false);
+                                  localStorage.setItem('country', country.name);
+                                  localStorage.setItem('countryCode', country.code);
                                   }}
 
                                 >
@@ -953,19 +975,17 @@ export default function Home() {
                               }}
 
                               >
-                                <input type="radio" name="language" id="dutch_language" style={{
+                                <input type="radio" name="dutch_language" id="dutch_language" style={{
                                   height: '20px',
                                   width: '20px',
                                   cursor: 'pointer',                      
                                 }}
                                   onClick={() =>
-                                    changeCountryHandler(
+                                    setChooseLanguage(
                                       "dutch",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
                                     )
                                   }
-                                  checked={selectedLanguage === 'dutch' ? true : false}
+                                  checked={chooseLanguage === 'dutch' ? true : false}
                                 />
                                 <label htmlFor="dutch_language" style={{
                                   fontSize: '14px',
@@ -974,10 +994,8 @@ export default function Home() {
                                   marginBottom: '0',
                                   cursor: 'pointer',
                                 }} onClick={() =>
-                                  changeCountryHandler(
+                                  setChooseLanguage(
                                     "dutch",
-                                    "/images/netherland_flag.png",
-                                    "www.fr.curant24.com"
                                   )
                                 }>
                                   Netherland - NL
@@ -998,19 +1016,17 @@ export default function Home() {
                                 cursor: 'pointer',
                               }}
                               >
-                                <input type="radio" name="language" id="english_language" style={{
+                                <input type="radio" name="english_language" id="english_language" style={{
                                   height: '20px',
                                   width: '20px',
                                   cursor: 'pointer',
                                 }}
                                   onClick={() =>
-                                    changeCountryHandler(
+                                    setChooseLanguage(
                                       "Netherland - EN",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
                                     )
                                   } 
-                                  checked={selectedLanguage === 'Netherland - EN' ? true : false}
+                                  checked={chooseLanguage === 'Netherland - EN' ? true : false}
                                 />
                                 <label htmlFor="english_language" style={{
                                   fontSize: '14px',
@@ -1020,13 +1036,60 @@ export default function Home() {
                                   cursor: 'pointer',
                                 }}
                                   onClick={() =>
-                                    changeCountryHandler(
+                                    setChooseLanguage(
                                       "Netherlands - EN",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
                                     )
                                   }>English - En</label>
                               </div>
+                              <p  style={{
+                                border:'1px solid gray',
+                                width:'103%',
+                                marginLeft:'-10px',
+                                marginTop:'20px',
+                                }}>
+                                  </p>
+                                  <div 
+                                  style={{
+                                    display:'flex',
+                                    justifyContent:'start',
+                                    alignItems:'center',
+                                    gap:'10px',
+                                    paddingBottom:'10px',
+                                  }}
+                                  >
+                                    <button 
+                                    style={{
+                                       backgroundColor: '#fff',
+                                       padding: '5px 10px',
+                                       borderRadius: '10px',
+                                        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
+                                        border:'1px solid #e5ea06',
+
+                                    }}
+                                    onClick={() => {
+                                      setShowCountryList(false);
+                                    }}
+                                    >
+                                      Cancel
+                                    </button>
+                                    <button 
+                                    style={{
+                                      backgroundColor: '#e5ea06',
+                                      padding: '5px 10px',
+                                      borderRadius: '10px',
+                                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                      color: '#000',
+                                      border:'1px solid #e5ea06',
+                                    }}
+                                    onClick={() => {
+                                      changeCountryHandler()
+                                    }
+                                    }
+                                    >
+                                      Save changes
+                                    </button>
+
+                                  </div>
 
                               {/* <li
                                 onClick={() =>

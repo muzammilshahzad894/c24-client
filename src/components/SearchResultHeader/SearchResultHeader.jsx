@@ -32,6 +32,7 @@ export default function SearchResultHeader({
   const [freelancer, setFreelancer] = useState(freelancerBool);
   const [searchProjects, setSearchProjects] = useState(!freelancer);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const [chooseLanguage , setChooseLanguage] = useState('');
   const linkRef = useRef();
   const [chooseCountryname, setChooseCountryname] = useState("Select country");
   const [sortBy, setSortBy] = useState("");
@@ -135,8 +136,24 @@ export default function SearchResultHeader({
     searchHandler(false,(searchProjects?"job_name":"profession"),"like ","flush")
 },[searchProjects])*/
 
+const countryName = localStorage.getItem('country');
+const countryCode = localStorage.getItem('countryCode');
   useEffect(() => {
     info.current = data;
+    if (lang === ''){
+      setChooseLanguage('Netherland - EN')
+    }
+    else{
+      setChooseLanguage(lang);
+    }
+    if (countryName === null && countryCode === null) {
+      setSelectCountry({ name: "Nederland", code: "nl" });
+      setChooseCountryname("Select country");
+    }
+    else {
+      setSelectCountry({ name: countryName, code: countryCode });
+      setChooseCountryname(countryName);
+    }
   }, [data]);
 
   useEffect(() => {
@@ -230,19 +247,19 @@ export default function SearchResultHeader({
   }
   
   const lang = localStorage.getItem('language');
-  const changeCountryHandler = (countryName, countryImage) => {
-    if (countryName === "dutch") {
+  const changeCountryHandler = () => {
+    if (chooseLanguage === "dutch") {
       setCountry("Netherland - NL");
       setSelectedLanguage('dutch');
-      setCountryImg(countryImage);
-      // setShowCountryList(false);
+      setCountryImg("/images/netherland_flag.png");
+      setShowCountryList(false);
       localStorage.setItem("language", 'dutch');
     } else {
-      setCountry(countryName);
+      setCountry(chooseLanguage);
       setSelectedLanguage('Netherland - EN');
-      setCountryImg(countryImage);
-      // setShowCountryList(false);
-      localStorage.setItem("language", countryName);
+      setCountryImg("/images/netherland_flag.png");
+      setShowCountryList(false);
+      localStorage.setItem("language", chooseLanguage);
     }
 
   };
@@ -1670,6 +1687,9 @@ export default function SearchResultHeader({
                                   setSelectCountry({ name: country.name, code: country.code });
                                   setShowcountryPopup(false);
                                   setChooseCountryname(country.name);
+                                  //set the country in local storage 
+                                  localStorage.setItem('country', country.name);
+                                  localStorage.setItem('countryCode', country.code);
                                 }}
                               >
                                 <span className={`flag-icon flag-icon-${country.code}`}></span>
@@ -1683,7 +1703,7 @@ export default function SearchResultHeader({
                        {showCountryList && (
                           <div
                             style={{
-                              height: "165px",
+                              height: "255px",
                               position: "absolute",
                               right: "-354px",
                               top: "164px",
@@ -1718,13 +1738,12 @@ export default function SearchResultHeader({
                                       cursor: 'pointer',
                                     }} 
                                     onClick={() =>
-                                      changeCountryHandler(
+                                      setChooseLanguage(
                                         "dutch",
-                                        "/images/netherland_flag.png",
-                                        "www.fr.curant24.com"
+                                       
                                       )
                                     }
-                                    checked={selectedLanguage === 'dutch' ? true : false}
+                                    checked={chooseLanguage === 'dutch' ? true : false}
                                   />
                                   <label htmlFor="dutch_language" style={{
                                     fontSize: '14px',
@@ -1733,10 +1752,8 @@ export default function SearchResultHeader({
                                     marginBottom: '0',
                                     cursor: 'pointer',
                                   }}  onClick={() =>
-                                    changeCountryHandler(
+                                    setChooseLanguage(
                                       "dutch",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
                                     )
                                   }>
                                     Netherland - NL
@@ -1758,13 +1775,11 @@ export default function SearchResultHeader({
                                     cursor: 'pointer',
                                     }} 
                                     onClick={() =>
-                                      changeCountryHandler(
-                                        "Netherlands - EN",
-                                        "/images/netherland_flag.png",
-                                        "www.fr.curant24.com"
+                                      setChooseLanguage(
+                                        "Netherland - EN",
                                       )
                                     }
-                                    checked={selectedLanguage === 'Netherland - EN' ? true : false}
+                                    checked={chooseLanguage === 'Netherland - EN' ? true : false}
                                   />
                                   <label htmlFor="english_language" style={{
                                     fontSize: '14px',
@@ -1774,13 +1789,64 @@ export default function SearchResultHeader({
                                     cursor: 'pointer',
                                   }}
                                   onClick={() =>
-                                    changeCountryHandler(
-                                      "Netherlands - EN",
-                                      "/images/netherland_flag.png",
-                                      "www.fr.curant24.com"
+                                    setChooseLanguage(
+                                      "Netherland - EN",
                                     )
                                   }>English - En</label>
                                 </div>
+                                <p  style={{
+                                border:'1px solid gray',
+                                width:'103%',
+                                marginLeft:'-10px',
+                                marginTop:'20px',
+                                }}>
+                                  </p>
+                                  <div 
+                                  style={{
+                                    display:'flex',
+                                    justifyContent:'start',
+                                    alignItems:'center',
+                                    gap:'10px',
+                                    paddingBottom:'10px',
+                                  }}
+                                  >
+                                    <button 
+                                    style={{
+                                       backgroundColor: '#fff',
+                                       borderRadius: '10px',
+                                        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
+                                        border:'1px solid white',
+                                        color: 'black',
+                                        height:'40px',
+                                        width:'80px',
+
+
+                                    }}
+                                    onClick={() => {
+                                      setShowCountryList(false);
+                                    }}
+                                    >
+                                      Cancel
+                                    </button>
+                                    <button 
+                                    style={{
+                                      backgroundColor: '#e5ea06',
+                                      padding: '5px 10px',
+                                      borderRadius: '10px',
+                                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                      color: '#000',
+                                      border:'1px solid #e5ea06',
+                                      height:'40px',
+                                    }}
+                                    onClick={() => {
+                                      changeCountryHandler()
+                                    }
+                                    }
+                                    >
+                                      Save changes
+                                    </button>
+
+                                  </div>
                                 
                               {/* <li
                                 onClick={() =>

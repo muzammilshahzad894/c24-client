@@ -40,6 +40,7 @@ export default function SearchResultHeader({
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem('language') ? localStorage.getItem('language') : null);
   const [countryImg, setCountryImg] = useState("/images/netherland_flag.png");
   const research = useSelector((state) => state.research);
+ 
   const searchLinkRef = useRef();
   const [nv, setNv] = useState(research.data ? false : true);
   const location = useLocation();
@@ -263,7 +264,87 @@ export default function SearchResultHeader({
     }
 
   };
-  const handleCitySearch = (e) => {
+
+  //filter according to country 
+  // const filterCountryHandler = (e) => {
+  //   setSelectCountry(e);
+  //   setChooseCountryname(e.name);
+  //   console.log(e.name);
+  //   localStorage.setItem('country', e.name);
+  //   localStorage.setItem('countryCode', e.code);
+  //   setCountryImg("/images/" + e.code + "_flag.png");
+  //   setShowChangeCountry(false);
+  //   setShowCountryList(false);
+  //   if (searchProjects) {
+  //     if (info.current?.assignment?.province) {
+  //       info.current.assignment.province.values = [];
+  //     }
+  //   } else {
+  //     if (info.current.freelancer?.city) {
+  //       info.current.freelancer.city.values = [];
+  //     }
+  //   }
+  //   if (searchProjects || !freelancer) {
+  //     //set the search to country since the postal code is linked to the country and by typing
+  //     //the postal code on .nl website we only target those on the netherlands
+  //     if (/\d/g.test(e.name)) {
+  //       searchHandler(false, "country", "like", "%" + e.name + "%");
+  //     } else {
+  //       if (info.current?.assignment?.country) {
+  //         info.current.assignment.country.values = "";
+  //       }
+  //       searchHandler(false, "province", "like", "%" + e.name + "%");
+  //     }
+  //   } else {
+  //     //searchHandler(false,"city","like",e.target.value+(e.target.value.length>0?"%":""))
+  //     //searchHandler(false,"place","like",e.target.value+(e.target.value.length>0?"%":""))
+  //     if (/\d/.test(e.name)) {
+  //       searchHandler(false, "postcode", "like", e.name + "%");
+  //       if (info.current.freelancer?.city) {
+  //         info.current.freelancer.city.values = [];
+  //       }
+  //     } else {
+  //       if (info.current.freelancer?.postcode) {
+  //         info.current.freelancer.postcode.values = "";
+  //       }
+  //       searchHandler(false, "city", "like", "%" + e.name + "%");
+  //     }
+  //   }
+  // };
+  const filterCountryHandler = (e) => {
+    setSelectCountry(e);
+    setChooseCountryname(e.name);
+    localStorage.setItem('country', e.name);
+    localStorage.setItem('countryCode', e.code);
+    setCountryImg("/images/" + e.code + "_flag.png");
+    setShowChangeCountry(false);
+    setShowCountryList(false);
+  
+    // Use a regular expression to match the word inside the brackets
+    const match = e.name.match(/\(([^)]+)\)/);
+  
+    // If there's a match, extract the word inside the brackets; otherwise, use the original name
+    const englishName = match ? match[1] : e.name;
+    console.log(englishName);
+    
+    if (searchProjects) {
+      if (info.current?.assignment?.province) {
+        info.current.assignment.province.values = [];
+      }
+    } else {
+      if (info.current.freelancer?.city) {
+        info.current.freelancer.city.values = [];
+      }
+    }
+  
+    // Update the searchHandler call to filter by the extracted word
+    searchHandler(false, "country", "like", "%" + englishName + "%");
+  };
+  
+  
+
+  const handleCitySearch = (e ) => {
+    // console.log(e);
     let str = e.target.value?.replace(/\s/g, "");
     let resultArr = [str + "%"];
 
@@ -305,7 +386,7 @@ export default function SearchResultHeader({
         if (info.current?.assignment?.province) {
           info.current.assignment.province.values = [];
         }
-        searchHandler(false, "country", "like", "%" + str + "%");
+      searchHandler  (false, "country", "like", "%" + str + "%");
       } else {
         if (info.current?.assignment?.country) {
           info.current.assignment.country.values = "";
@@ -1523,7 +1604,7 @@ export default function SearchResultHeader({
                   type="text"
                   placeholder={
                     searchProjects ? "city " : "city or postal code"
-                  } /*defaultValue={data?(data.city?.values.length>=0?data.city?.values.replace(/%/g,""):data.place?.values.replace(/%/g,"")):""}*/
+                  } 
                   defaultValue={
                     searchProjects
                       ? info.current?.assignment?.province?.values
@@ -1681,6 +1762,7 @@ export default function SearchResultHeader({
                                   setChooseCountryname(country.name);
                                   localStorage.setItem('country', country.name);
                                   localStorage.setItem('countryCode', country.code);
+                                  filterCountryHandler(country); 
                                 }}
                               >
                                 <span className={`flag-icon flag-icon-${country.code}`}></span>

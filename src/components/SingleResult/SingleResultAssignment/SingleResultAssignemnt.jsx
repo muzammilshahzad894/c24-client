@@ -15,6 +15,7 @@ import { MdEmail } from 'react-icons/md';
 
 export default function SingleResultAssignemnt({data,sideBySide}) {
     const get_liked = useSelector(state=>state.get_liked);
+    // console.log('get_liked',get_liked)
     const user_info = useSelector(state=>state.user_info);
     const [showShare, setShowShare] = useState(false)
     const dispatch = useDispatch();

@@ -251,7 +251,6 @@ export default function TimeCard({ card }) {
                       onChange={(e) => {
                         const selectedValue = e.target.value;
                         localStorage.setItem("selectedValue", selectedValue);
-                        console.log(e.target.value);
 
                         e.target.value === "Approved"
                           ? setShowAddAttention(false)

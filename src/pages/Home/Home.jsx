@@ -46,7 +46,7 @@ export default function Home() {
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [hourlyRate, setHourlyRate] = useState(50);
   const [sortBy, setSortBy] = useState("");
-  const [chooseLanguage , setChooseLanguage] = useState('');
+  const [chooseLanguage, setChooseLanguage] = useState('');
   const [country, setCountry] = useState("Netherlands - NL");
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem('language') ? localStorage.getItem('language') : null);
   const [selectCountry, setSelectCountry] = useState({ name: "Nederland", code: "nl" });
@@ -59,7 +59,7 @@ export default function Home() {
   const research = useSelector((state) => state.research);
   const get_personal = useSelector((state) => state.get_personal);
 
- 
+
   // console.log('lang is',lang);
   //slider elt
   var slider = useRef();
@@ -149,17 +149,17 @@ export default function Home() {
   // console.log('user is',user);
 
   const lang = localStorage.getItem('language');
-const countryName = localStorage.getItem('country');
-const countryCode = localStorage.getItem('countryCode');
+  const countryName = localStorage.getItem('country');
+  const countryCode = localStorage.getItem('countryCode');
 
   useEffect(() => {
     setTimeout(() => {
       console.log(lang)
       setShowLoading(false);
-      if (lang === ''){
+      if (lang === '') {
         setChooseLanguage('Netherland - EN')
       }
-      else{
+      else {
         setChooseLanguage(lang);
       }
       if (countryName === null && countryCode === null) {
@@ -203,7 +203,7 @@ const countryCode = localStorage.getItem('countryCode');
   //trigger search event once hourly wage has changed
   useEffect(() => {
     searchHandler(false, "hourly_rate", "<=", hourlyRate);
-    
+
   }, [hourlyRate]);
 
   if (searchParams.get("email") && user_info.user && user_info.user.email) {
@@ -234,14 +234,14 @@ const countryCode = localStorage.getItem('countryCode');
       setCountry("Netherland - NL");
       setSelectedLanguage('dutch');
       setShowCountryList(false);
-      
+
       localStorage.setItem("language", 'dutch');
     } else {
       setCountry(chooseLanguage);
       setSelectedLanguage('Netherland - EN');
       localStorage.setItem("language", chooseLanguage);
       setShowCountryList(false);
-      
+
     }
 
   };
@@ -928,8 +928,8 @@ const countryCode = localStorage.getItem('countryCode');
                                   onClick={() => {
                                     setSelectCountry({ name: country.name, code: country.code });
                                     setShowcountryPopup(false);
-                                  localStorage.setItem('country', country.name);
-                                  localStorage.setItem('countryCode', country.code);
+                                    localStorage.setItem('country', country.name);
+                                    localStorage.setItem('countryCode', country.code);
                                   }}
 
                                 >
@@ -978,7 +978,7 @@ const countryCode = localStorage.getItem('countryCode');
                                 <input type="radio" name="dutch_language" id="dutch_language" style={{
                                   height: '20px',
                                   width: '20px',
-                                  cursor: 'pointer',                      
+                                  cursor: 'pointer',
                                 }}
                                   onClick={() =>
                                     setChooseLanguage(
@@ -1025,7 +1025,7 @@ const countryCode = localStorage.getItem('countryCode');
                                     setChooseLanguage(
                                       "Netherland - EN",
                                     )
-                                  } 
+                                  }
                                   checked={chooseLanguage === 'Netherland - EN' ? true : false}
                                 />
                                 <label htmlFor="english_language" style={{
@@ -1041,55 +1041,55 @@ const countryCode = localStorage.getItem('countryCode');
                                     )
                                   }>English - En</label>
                               </div>
-                              <p  style={{
-                                border:'1px solid gray',
-                                width:'103%',
-                                marginLeft:'-10px',
-                                marginTop:'20px',
-                                }}>
-                                  </p>
-                                  <div 
+                              <p style={{
+                                border: '1px solid gray',
+                                width: '103%',
+                                marginLeft: '-10px',
+                                marginTop: '20px',
+                              }}>
+                              </p>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'start',
+                                  alignItems: 'center',
+                                  gap: '10px',
+                                  paddingBottom: '10px',
+                                }}
+                              >
+                                <button
                                   style={{
-                                    display:'flex',
-                                    justifyContent:'start',
-                                    alignItems:'center',
-                                    gap:'10px',
-                                    paddingBottom:'10px',
+                                    backgroundColor: '#fff',
+                                    padding: '5px 10px',
+                                    borderRadius: '10px',
+                                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                    border: '1px solid rgb(218 211 211)',
+                                    color: '#000'
                                   }}
-                                  >
-                                    <button 
-                                    style={{
-                                       backgroundColor: '#fff',
-                                       padding: '5px 10px',
-                                       borderRadius: '10px',
-                                        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
-                                        border:'1px solid #e5ea06',
+                                  onClick={() => {
+                                    setShowCountryList(false);
+                                  }}
+                                >
+                                  Cancel
+                                </button>
+                                <button
+                                  style={{
+                                    backgroundColor: '#fdd80f',
+                                    padding: '5px 10px',
+                                    borderRadius: '10px',
+                                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                    color: '#000',
+                                    border: '1px solid #fdd80f',
+                                  }}
+                                  onClick={() => {
+                                    changeCountryHandler()
+                                  }
+                                  }
+                                >
+                                  Save changes
+                                </button>
 
-                                    }}
-                                    onClick={() => {
-                                      setShowCountryList(false);
-                                    }}
-                                    >
-                                      Cancel
-                                    </button>
-                                    <button 
-                                    style={{
-                                      backgroundColor: '#e5ea06',
-                                      padding: '5px 10px',
-                                      borderRadius: '10px',
-                                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                                      color: '#000',
-                                      border:'1px solid #e5ea06',
-                                    }}
-                                    onClick={() => {
-                                      changeCountryHandler()
-                                    }
-                                    }
-                                    >
-                                      Save changes
-                                    </button>
-
-                                  </div>
+                              </div>
 
                               {/* <li
                                 onClick={() =>

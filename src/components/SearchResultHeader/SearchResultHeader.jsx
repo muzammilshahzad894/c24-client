@@ -32,7 +32,7 @@ export default function SearchResultHeader({
   const [freelancer, setFreelancer] = useState(freelancerBool);
   const [searchProjects, setSearchProjects] = useState(!freelancer);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
-  const [chooseLanguage , setChooseLanguage] = useState('');
+  const [chooseLanguage, setChooseLanguage] = useState('');
   const linkRef = useRef();
   const [chooseCountryname, setChooseCountryname] = useState("Select country");
   const [sortBy, setSortBy] = useState("");
@@ -136,14 +136,14 @@ export default function SearchResultHeader({
     searchHandler(false,(searchProjects?"job_name":"profession"),"like ","flush")
 },[searchProjects])*/
 
-const countryName = localStorage.getItem('country');
-const countryCode = localStorage.getItem('countryCode');
+  const countryName = localStorage.getItem('country');
+  const countryCode = localStorage.getItem('countryCode');
   useEffect(() => {
     info.current = data;
-    if (lang === ''){
+    if (lang === '') {
       setChooseLanguage('Netherland - EN')
     }
-    else{
+    else {
       setChooseLanguage(lang);
     }
     if (countryName === null && countryCode === null) {
@@ -245,7 +245,7 @@ const countryCode = localStorage.getItem('countryCode');
 
     return resultArray;
   }
-  
+
   const lang = localStorage.getItem('language');
   const changeCountryHandler = () => {
     if (chooseLanguage === "dutch") {
@@ -1563,7 +1563,7 @@ const countryCode = localStorage.getItem('countryCode');
                   ))}
                 </select> */}
                 <div style={{
-                  width:'100%',
+                  width: '100%',
                 }}>
                   <input type="button" value={chooseCountryname} className=""
                     onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
@@ -1577,13 +1577,13 @@ const countryCode = localStorage.getItem('countryCode');
                     src="/images/angle_down.png"
                     className=""
                     onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
-                   
+
                     style={{
                       cursor: 'pointer',
                       position: 'absolute',
                       marginTop: '20px',
                       marginLeft: '-28px',
-                   
+
                     }}
                     alt=""
                   />
@@ -1699,156 +1699,154 @@ const countryCode = localStorage.getItem('countryCode');
                           </ul>
                         </div>
                       )}
-                   
-                       {showCountryList && (
-                          <div
-                            style={{
-                              height: "255px",
-                              position: "absolute",
-                              right: "-354px",
-                              top: "164px",
-                              backgroundColor: "white",
-                              width: "350px",
-                              zIndex: "999",
-                              boxShadow: "0px 0px 10px 0px #ccc",
+
+                      {showCountryList && (
+                        <div
+                          style={{
+                            height: "241px",
+                            position: "absolute",
+                            right: "-354px",
+                            top: "164px",
+                            backgroundColor: "white",
+                            width: "350px",
+                            zIndex: "999",
+                            boxShadow: "0px 0px 10px 0px #ccc",
+                          }}
+                        >
+                          <ul className="countries_list" style={{
+                            paddingLeft: '10px',
+                            border: 'none',
+                          }}>
+
+                            <h4>
+                              {lang === "dutch" ? "Taalinstellingen" : "Language Settings"}
+                            </h4>
+
+                            <p>
+                              {lang === "dutch" ? "Selecteer je voorkeurstaal" : "Select the language you prefer"}
+
+                            </p>
+                            <div className="main_div" style={{
+
+
                             }}
-                          >
-                            <ul className="countries_list" style={{
-                              paddingLeft: '10px',
-                              border: 'none',
+
+                            >
+                              <input type="radio" name="language" id="dutch_language" className="input_radio" style={{
+                                height: '20px',
+                                width: '20px',
+                                cursor: 'pointer',
+                              }}
+                                onClick={() =>
+                                  setChooseLanguage(
+                                    "dutch",
+
+                                  )
+                                }
+                                checked={chooseLanguage === 'dutch' ? true : false}
+                              />
+                              <label htmlFor="dutch_language" style={{
+                                fontSize: '14px',
+                                fontWeight: '500',
+                                color: '#000',
+                                marginBottom: '0',
+                                cursor: 'pointer',
+                              }} onClick={() =>
+                                setChooseLanguage(
+                                  "dutch",
+                                )
+                              }>
+                                Netherland - NL
+                              </label>
+                            </div>
+                            <div style={{
+                              border: '1px solid #f1f1f1',
+                              width: '80%',
                             }}>
 
-                                <h4>
-                                  {lang === "dutch" ? "Taalinstellingen" : "Language Settings"}
-                                  </h4>
-                             
-                                <p>
-                                  {lang === "dutch" ? "Selecteer je voorkeurstaal" : "Select the language you prefer"}
-                                  
-                                  </p>
-                                <div className="main_div" style={{
-                               
-                                  
-                                }} 
-                               
-                                 >
-                                  <input type="radio" name="language" id="dutch_language" className="input_radio" style={{
-                                      height: '20px',
-                                      width: '20px',
-                                      cursor: 'pointer',
-                                    }} 
-                                    onClick={() =>
-                                      setChooseLanguage(
-                                        "dutch",
-                                       
-                                      )
-                                    }
-                                    checked={chooseLanguage === 'dutch' ? true : false}
-                                  />
-                                  <label htmlFor="dutch_language" style={{
-                                    fontSize: '14px',
-                                    fontWeight: '500',
-                                    color: '#000',
-                                    marginBottom: '0',
-                                    cursor: 'pointer',
-                                  }}  onClick={() =>
-                                    setChooseLanguage(
-                                      "dutch",
-                                    )
-                                  }>
-                                    Netherland - NL
-                                    </label>
-                                </div>
-                                <div style={{
-                                  border: '1px solid #f1f1f1',
-                                  width: '80%',
-                                }}>
+                            </div>
+                            <div className="main_div" style={{
 
-                                </div>
-                                <div className="main_div" style={{
-                                
+                            }}
+                            >
+                              <input type="radio" name="language" className="input_radio" id="english_language" style={{
+                                height: '20px',
+                                width: '20px',
+                                cursor: 'pointer',
+                              }}
+                                onClick={() =>
+                                  setChooseLanguage(
+                                    "Netherland - EN",
+                                  )
+                                }
+                                checked={chooseLanguage === 'Netherland - EN' ? true : false}
+                              />
+                              <label htmlFor="english_language" style={{
+                                fontSize: '14px',
+                                fontWeight: '500',
+                                color: '#000',
+                                marginBottom: '0',
+                                cursor: 'pointer',
+                              }}
+                                onClick={() =>
+                                  setChooseLanguage(
+                                    "Netherland - EN",
+                                  )
+                                }>English - En</label>
+                            </div>
+                            <p style={{
+                              border: '1px solid gray',
+                              width: '103%',
+                              marginLeft: '-10px',
+                              marginTop: '20px',
+                            }}>
+                            </p>
+                            <div
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'start',
+                                alignItems: 'center',
+                                gap: '10px',
+                                paddingBottom: '10px',
+                              }}
+                            >
+                              <button
+                                style={{
+                                  backgroundColor: '#fff',
+                                  borderRadius: '10px',
+                                  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                  border: '1px solid rgb(218 211 211)',
+                                  color: '#000',
+                                  height: '40px',
+                                  width: '80px',
                                 }}
-                                >
-                                  <input type="radio" name="language" className="input_radio" id="english_language" style={{
-                                    height: '20px',
-                                    width: '20px',
-                                    cursor: 'pointer',
-                                    }} 
-                                    onClick={() =>
-                                      setChooseLanguage(
-                                        "Netherland - EN",
-                                      )
-                                    }
-                                    checked={chooseLanguage === 'Netherland - EN' ? true : false}
-                                  />
-                                  <label htmlFor="english_language" style={{
-                                    fontSize: '14px',
-                                    fontWeight: '500',
-                                    color: '#000',
-                                    marginBottom: '0',
-                                    cursor: 'pointer',
-                                  }}
-                                  onClick={() =>
-                                    setChooseLanguage(
-                                      "Netherland - EN",
-                                    )
-                                  }>English - En</label>
-                                </div>
-                                <p  style={{
-                                border:'1px solid gray',
-                                width:'103%',
-                                marginLeft:'-10px',
-                                marginTop:'20px',
-                                }}>
-                                  </p>
-                                  <div 
-                                  style={{
-                                    display:'flex',
-                                    justifyContent:'start',
-                                    alignItems:'center',
-                                    gap:'10px',
-                                    paddingBottom:'10px',
-                                  }}
-                                  >
-                                    <button 
-                                    style={{
-                                       backgroundColor: '#fff',
-                                       borderRadius: '10px',
-                                        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
-                                        border:'1px solid white',
-                                        color: 'black',
-                                        height:'40px',
-                                        width:'80px',
+                                onClick={() => {
+                                  setShowCountryList(false);
+                                }}
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                style={{
+                                  backgroundColor: '#fdd80f',
+                                  padding: '5px 10px',
+                                  borderRadius: '10px',
+                                  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                                  color: '#000',
+                                  border: '1px solid #fdd80f',
+                                  height: '40px',
+                                }}
+                                onClick={() => {
+                                  changeCountryHandler()
+                                }
+                                }
+                              >
+                                Save changes
+                              </button>
 
+                            </div>
 
-                                    }}
-                                    onClick={() => {
-                                      setShowCountryList(false);
-                                    }}
-                                    >
-                                      Cancel
-                                    </button>
-                                    <button 
-                                    style={{
-                                      backgroundColor: '#e5ea06',
-                                      padding: '5px 10px',
-                                      borderRadius: '10px',
-                                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                                      color: '#000',
-                                      border:'1px solid #e5ea06',
-                                      height:'40px',
-                                    }}
-                                    onClick={() => {
-                                      changeCountryHandler()
-                                    }
-                                    }
-                                    >
-                                      Save changes
-                                    </button>
-
-                                  </div>
-                                
-                              {/* <li
+                            {/* <li
                                 onClick={() =>
                                   changeCountryHandler(
                                     "Netherlands - EN",
@@ -1860,9 +1858,9 @@ const countryCode = localStorage.getItem('countryCode');
                                 <img src="/images/netherland_flag.png" alt="" />
                                 <p>Netherlands - EN</p>
                               </li> */}
-                            </ul>
-                          </div>
-                        )}
+                          </ul>
+                        </div>
+                      )}
                     </div>
 
                     {/* <div className="change-country-footer">

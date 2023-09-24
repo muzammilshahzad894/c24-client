@@ -1571,24 +1571,21 @@ export default function SearchResultHeader({
                       borderRadius: '5px',
                       textAlign: 'left',
                       height: '50px',
-
-                    }} />
+                    }}
+                  />
                   <img
                     src="/images/angle_down.png"
                     className=""
                     onClick={() => { setShowChangeCountry(!showChangeCountry); setShowcountryPopup(false); setShowCountryList(false); }}
-
                     style={{
                       cursor: 'pointer',
                       position: 'absolute',
                       marginTop: '20px',
                       marginLeft: '-28px',
-
                     }}
                     alt=""
                   />
                 </div>
-
 
                 {showChangeCountry && (
                   <div className="change-country-container">
@@ -1625,12 +1622,8 @@ export default function SearchResultHeader({
                             }}
                             alt=""
                           />
-
                           <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
-
                         </div>
-
-
                       </div>
                       <p className="text-align-center  font-size mt-4">Choose your language</p>
                       <div>
@@ -1656,7 +1649,6 @@ export default function SearchResultHeader({
                               cursor: 'pointer'
                             }}
                           />
-
                           <img src="/images/netherland_flag.png" alt="" style={{
                             height: '14px',
                             width: '20px',
@@ -1687,7 +1679,6 @@ export default function SearchResultHeader({
                                   setSelectCountry({ name: country.name, code: country.code });
                                   setShowcountryPopup(false);
                                   setChooseCountryname(country.name);
-                                  //set the country in local storage 
                                   localStorage.setItem('country', country.name);
                                   localStorage.setItem('countryCode', country.code);
                                 }}

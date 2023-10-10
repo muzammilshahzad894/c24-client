@@ -35,6 +35,7 @@ import countryList from "../../components/CountryList/countries.json";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 export default function Home() {
   const user_info = useSelector((state) => state.user_info);
+  
   const [searchProjects, setSearchProjects] = useState(
     !(user_info.user?.account_type === "client")
   );
@@ -146,7 +147,7 @@ export default function Home() {
 
   const dispatch = useDispatch();
   const [user, setUser] = useState(user_info.user);
-  // console.log('user is',user);
+  console.log('user is',user);
 
   const lang = localStorage.getItem('language');
   const countryName = localStorage.getItem('country');
@@ -154,7 +155,6 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(lang)
       setShowLoading(false);
       if (lang === '') {
         setChooseLanguage('Netherland - EN')
@@ -3353,7 +3353,7 @@ export default function Home() {
 
 
               {
-                user.account_type === "freelancer" ? (
+                user_info.user?.account_type === "freelancer" ? (
                   <></>
                 ) : (
                   <div className="right-section">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { IoLogoYoutube } from "react-icons/io";
 import { BsInstagram, BsLinkedin } from "react-icons/bs";
@@ -6,6 +6,12 @@ import "./footer.scss";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const [language ,setLanguage]= useState("");
+  const lang = localStorage.getItem('language');
+  useEffect(() => {
+  setLanguage(lang);
+  }, []);
+  console.log(lang);
   return (
     <div className="footer">
       <div className="left-footer">
@@ -133,13 +139,15 @@ export default function Footer() {
                   onChange={(e) => {
                     //set the local storage language 
                     localStorage.setItem("language", e.target.value);
-                    window.location.reload();
 
                   }}
                 >
                   <option value="">select language</option>
-                  <option value="dutch">Netherlands - NL</option>
-                  <option value="English">English</option>
+                  <option value="dutch" selected={language === "dutch" ? true : false}>Netherlands - NL</option>
+                   
+                  <option value="English" selected={language !== "dutch" ? true : false}>
+                    English</option>
+
                 </select>
                 <div className="country">
                   <div style={{ cursor: "pointer" }}>

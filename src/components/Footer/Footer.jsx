@@ -137,8 +137,8 @@ export default function Footer() {
                 <select
                   name="Country"
                   onChange={(e) => {
-                    //set the local storage language 
                     localStorage.setItem("language", e.target.value);
+                    window.location.reload();
 
                   }}
                 >

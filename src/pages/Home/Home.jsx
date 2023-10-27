@@ -47,7 +47,7 @@ export default function Home() {
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [hourlyRate, setHourlyRate] = useState(50);
   const [sortBy, setSortBy] = useState("");
-  const [chooseLanguage, setChooseLanguage] = useState('');
+  const [chooseLanguage, setChooseLanguage] = useState('english');
   const [country, setCountry] = useState("Netherlands - NL");
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.getItem('language') ? localStorage.getItem('language') : null);
   const [selectCountry, setSelectCountry] = useState({ name: "Nederland", code: "nl" });
@@ -147,9 +147,8 @@ export default function Home() {
 
   const dispatch = useDispatch();
   const [user, setUser] = useState(user_info.user);
-  console.log('user is',user);
 
-  const lang = localStorage.getItem('language');
+  const lang = localStorage.getItem('language') ? localStorage.getItem('language') : 'english';
   const countryName = localStorage.getItem('country');
   const countryCode = localStorage.getItem('countryCode');
 
@@ -157,7 +156,7 @@ export default function Home() {
     setTimeout(() => {
       setShowLoading(false);
       if (lang === '') {
-        setChooseLanguage('Netherland - EN')
+        setChooseLanguage('english')
       }
       else {
         setChooseLanguage(lang);
@@ -229,19 +228,21 @@ export default function Home() {
   }
 
   //change country handler
-  const changeCountryHandler = () => {
-    if (chooseLanguage === "dutch") {
+  const changeCountryHandler = (langParam) => {
+    if (langParam === "dutch") {
       setCountry("Netherland - NL");
       setSelectedLanguage('dutch');
+      setChooseLanguage('dutch');
       setShowCountryList(false);
 
       localStorage.setItem("language", 'dutch');
     } else {
-      setCountry(chooseLanguage);
-      setSelectedLanguage('Netherland - EN');
-      localStorage.setItem("language", chooseLanguage);
+      setCountry(langParam);
+      setSelectedLanguage('english');
+      setChooseLanguage('english');
       setShowCountryList(false);
 
+      localStorage.setItem("language", langParam);
     }
 
   };
@@ -877,7 +878,7 @@ export default function Home() {
                         </div>
                         <p className="text-align-center  font-size mt-4">Choose your language</p>
                         <div>
-                          <input type="submit" className="country-input" value={selectedLanguage === 'dutch' ? 'Netherland - NL' : 'Netherland - EN'} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
+                          <input type="submit" className="country-input" value={selectedLanguage === 'dutch' ? 'Netherlands - NL' : 'English - EN'} onClick={() => { setShowCountryList(!showCountryList); setShowcountryPopup(false); }} />
                           <div style={{
                             position: "absolute",
                             marginRight: "10px",
@@ -899,7 +900,7 @@ export default function Home() {
                                 cursor: 'pointer'
                               }}
                             />
-                            <img src="/images/netherland_flag.png" alt="" style={{
+                            <img src={selectedLanguage === 'dutch' ? '/images/netherland_flag.png' : '/images/countries/usa_flag.png'} alt="" style={{
                               height: '14px',
                               width: '20px',
                             }} />
@@ -931,7 +932,6 @@ export default function Home() {
                                     localStorage.setItem('country', country.name);
                                     localStorage.setItem('countryCode', country.code);
                                   }}
-
                                 >
                                   <span className={`flag-icon flag-icon-${country.code}`}></span>
                                   <p>{country.name}</p>
@@ -998,7 +998,7 @@ export default function Home() {
                                     "dutch",
                                   )
                                 }>
-                                  Netherland - NL
+                                  Netherlands - NL
                                 </label>
                               </div>
                               <div style={{
@@ -1023,10 +1023,10 @@ export default function Home() {
                                 }}
                                   onClick={() =>
                                     setChooseLanguage(
-                                      "Netherland - EN",
+                                      "english",
                                     )
                                   }
-                                  checked={chooseLanguage === 'Netherland - EN' ? true : false}
+                                  checked={chooseLanguage === 'english' ? true : false}
                                 />
                                 <label htmlFor="english_language" style={{
                                   fontSize: '14px',
@@ -1037,9 +1037,9 @@ export default function Home() {
                                 }}
                                   onClick={() =>
                                     setChooseLanguage(
-                                      "Netherlands - EN",
+                                      "english",
                                     )
-                                  }>English - En</label>
+                                  }>English - EN</label>
                               </div>
                               <p style={{
                                 border: '1px solid gray',
@@ -1082,7 +1082,7 @@ export default function Home() {
                                     border: '1px solid #fdd80f',
                                   }}
                                   onClick={() => {
-                                    changeCountryHandler()
+                                    changeCountryHandler(chooseLanguage)
                                   }
                                   }
                                 >
@@ -3849,7 +3849,7 @@ export default function Home() {
                     © 2021 Curant24
                     </p>
                 </div> */}
-        <Footer />
+        <Footer selectedLanguage={selectedLanguage} changeCountryHandler={changeCountryHandler} />
       </div>
     </div>
   );

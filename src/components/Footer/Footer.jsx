@@ -5,13 +5,13 @@ import { BsInstagram, BsLinkedin } from "react-icons/bs";
 import "./footer.scss";
 import { Link } from "react-router-dom";
 
-export default function Footer() {
-  const [language ,setLanguage]= useState("");
-  const lang = localStorage.getItem('language');
+export default function Footer({ selectedLanguage, changeCountryHandler }) {
+  const [language, setLanguage]= useState("");
+  const lang = selectedLanguage ? selectedLanguage : localStorage.getItem('language') ? localStorage.getItem('language') : 'dutch';
+
   useEffect(() => {
   setLanguage(lang);
-  }, []);
-  console.log(lang);
+  }, [selectedLanguage]);
   return (
     <div className="footer">
       <div className="left-footer">
@@ -21,7 +21,6 @@ export default function Footer() {
           </div>
           <div className="footer-logo-info">
             <span>info@curant24.com</span>
-            <span>070-3841101</span>
           </div>
           <div className="footer-logo-social">
             <AiFillFacebook />
@@ -31,7 +30,7 @@ export default function Footer() {
           </div>
           <div className="footer-logo-rights">
             <span>
-              © 2022 Curant24, Terms - General - Privacy - Coockiestament
+              © {new Date().getFullYear()} Curant24, Terms - General - Privacy - Coockiestament
             </span>
           </div>
         </div>
@@ -97,7 +96,7 @@ export default function Footer() {
             <div className="language-change-box">
               <div className="input-label">
                 {/* <p className="loc-p">Choose your location</p> */}
-                {/* <p className="lag-p">Choose your language</p> */}
+                <p className="lag-p">Choose your language</p>
               </div>
               <div className="contentInput">
                 {/* <select
@@ -124,8 +123,8 @@ export default function Footer() {
                   <option value="Estland">Estland</option>
                   <option value="Zwitserland">Zwitserland</option>
                   <option value="Finland">Finland</option>
-                </select> */}
-                {/* <div className="country">
+                </select>
+                <div className="country">
                   <div style={{ cursor: "pointer" }}>
                     <img
                       src="/images/netherland_flag.png"
@@ -138,21 +137,20 @@ export default function Footer() {
                   name="Country"
                   onChange={(e) => {
                     localStorage.setItem("language", e.target.value);
-                    window.location.reload();
-
+                    setLanguage(e.target.value);
+                    changeCountryHandler(e.target.value);
                   }}
                 >
-                  <option value="">select language</option>
+                  <option value="" disabled>Select language</option>
                   <option value="dutch" selected={language === "dutch" ? true : false}>Netherlands - NL</option>
                    
-                  <option value="English" selected={language !== "dutch" ? true : false}>
-                    English</option>
-
+                  <option value="english" selected={language !== "dutch" ? true : false}>
+                    English - EN</option>
                 </select>
                 <div className="country">
                   <div style={{ cursor: "pointer" }}>
                     <img
-                      src="/images/netherland_flag.png"
+                      src={language === 'dutch' ? '/images/netherland_flag.png' : '/images/countries/usa_flag.png'}
                       className="flag"
                       alt
                     />

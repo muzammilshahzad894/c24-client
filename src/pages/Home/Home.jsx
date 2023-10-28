@@ -3415,7 +3415,7 @@ export default function Home() {
                         <>
                           <p>
                             Promote your self as a  <br />
-                            freelauncer and find new  assignment
+                            freelancer and find new  assignments
                           </p>
                           <Link className="links" to="/join">
                             <button >Create an account immediately</button>
@@ -3424,7 +3424,7 @@ export default function Home() {
                       ) : (
                         <>
                           <p>
-                            Promoot jezelf gratis els freelancer <br />
+                            Promoot jezelf gratis als freelancer <br />
                             en vind nieuwe opdrachten
                           </p>
                           <Link to="/join" className="links">

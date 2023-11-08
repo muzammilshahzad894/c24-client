@@ -12,6 +12,15 @@ export default function Footer({ selectedLanguage, changeCountryHandler }) {
   useEffect(() => {
   setLanguage(lang);
   }, [selectedLanguage]);
+
+  const changeLanguage = (langParam) => {
+    if (langParam === "dutch") {
+      localStorage.setItem("language", 'dutch');
+    } else {
+      localStorage.setItem("language", langParam);
+    }
+
+  };
   return (
     <div className="footer">
       <div className="left-footer">
@@ -138,7 +147,7 @@ export default function Footer({ selectedLanguage, changeCountryHandler }) {
                   onChange={(e) => {
                     localStorage.setItem("language", e.target.value);
                     setLanguage(e.target.value);
-                    changeCountryHandler(e.target.value);
+                    changeCountryHandler ? changeCountryHandler(e.target.value) : changeLanguage(e.target.value);
                   }}
                 >
                   <option value="" disabled>Select language</option>

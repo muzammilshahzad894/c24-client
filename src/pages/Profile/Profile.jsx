@@ -120,6 +120,7 @@ export default function Profile() {
         let info = new FormData();
         info.set("data",JSON.stringify({file:name}))
         dispatch(delete_user_file(info,user_info.user.token))
+        window.location.reload();
     }
 
 
@@ -232,6 +233,7 @@ export default function Profile() {
         info.set("second_picture",croppedImage);
         info.set("data",JSON.stringify({file:"second_picture"}))
         dispatch(update_user_file(info,user_info.user.token))
+        window.location.reload();
     }
     //like/save assignement 
     useEffect(()=>{
@@ -579,9 +581,12 @@ export default function Profile() {
                             <input type="file" name="picture" id="" accept='image/*' style={{display:'none'}} ref={ref=>ref!==null&&(inputRef.current[ref.name] = ref)} onChange={(e)=>hanldeFileSelect(e)} />
                             {
                                 user_info.user?.id===get_profile_ratings.profile_ratings?.user?.id&&(
-                                    <div className="modify-profile-image"  onClick={()=>inputRef.current["picture"].click()}>
-                                        <p>
+                                    <div className="modify-profile-image">
+                                        <p onClick={()=>inputRef.current["picture"].click()}>
                                             Modify <BsPen/>
+                                        </p>
+                                        <p onClick={()=>deleteFiles("picture")}>
+                                            Delete <BsTrash/>
                                         </p>
                                     </div>
                                 )

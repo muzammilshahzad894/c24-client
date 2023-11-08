@@ -68,8 +68,7 @@ function ImageCropper(props) {
     
         resolve(croppedImageUrl);
       }, "image/jpeg");
-    });
-    
+    });    
 }
 
   return (

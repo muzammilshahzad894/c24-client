@@ -284,6 +284,7 @@ import {
 export const registerAction = (user) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST });
   try {
+    console.log(user);
     const { data } = await axios.get("/api/auth/register", {
       params: {
         ...user,

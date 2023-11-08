@@ -8,7 +8,7 @@ const EnglishLanguage = () => {
                 <p>Siergaard 163, 2285 JG Rijswijk, Nederland</p>
                 <a href="/">www.curant24.com</a>
                 <br />
-                <a href="mailto:info@currant24.com">info@currant24.com</a>
+                <a href="mailto:info@curant24.com">info@curant24.com</a>
                 <h2>Personal data that we process</h2>
                 <p>Curant24 processes your personal data because you use our services and/or because
                     you provide this data to us yourself. Below you will find an overview of the personal data that

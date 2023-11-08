@@ -8,7 +8,7 @@ const DutchLanguage = () => {
             <p>Siergaard 163, 2285 JG Rijswijk</p>
             <a href="/">www.curant24.com</a>
             <br />
-            <a href="mailto:info@currant24.com">info@currant24.com</a>
+            <a href="mailto:info@curant24.com">info@curant24.com</a>
             <h2>Persoonsgegevens die wij verwerken</h2>
             <p>Curant24 verwerkt je persoonsgegevens doordat je gebruik maakt van onze diensten
                 en/of omdat je deze gegevens zelf aan ons verstrekt. Hieronder vind je een overzicht van de

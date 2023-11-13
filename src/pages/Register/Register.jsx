@@ -554,11 +554,11 @@ export default function Register() {
                           }
                         /> */}
                         <select
-                          name="Country"
-                        // ref={(ref) =>
-                        //   ref !== null &&
-                        //   (userRegister.current[ref.name] = ref)
-                        // }
+                          name="country"
+                          ref={(ref) =>
+                            ref !== null &&
+                            (userRegister.current[ref.name] = ref)
+                          }
                         >
                           <option value="">select Country</option>
                           <option value="Nederland">Nederland</option>

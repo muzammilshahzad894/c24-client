@@ -1166,7 +1166,7 @@ export default function SearchResult() {
                             :searchHandler(false,"job_name","like ",data.current?.assignment?.job_name?.values)
                           }
                         >
-                          <option value={"EUR"}>select a currency</option>
+                          <option value="all">Select Currency</option>
                           <option selected={data.current?.freelancer?.currency?.values==="AFN"} value="AFN">Afghan Afghani</option>
                           <option selected={data.current?.freelancer?.currency?.values==="ALL"} value="ALL">Albanian Lek</option>
                           <option selected={data.current?.freelancer?.currency?.values==="DZD"} value="DZD">Algerian Dinar</option>

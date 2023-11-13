@@ -252,7 +252,7 @@ export default function SingleResultFreelancer({ data, sideBySide }) {
                         marginLeft: "5px",
                       }}
                     >
-                      {data.city}
+                      {data.city}, {data.country}
                     </p>
                   </div>
                   <div>

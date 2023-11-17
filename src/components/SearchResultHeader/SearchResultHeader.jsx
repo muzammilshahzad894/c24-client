@@ -83,6 +83,10 @@ export default function SearchResultHeader({
         operation: "",
         values: "",
       },
+      country: {
+        operation: "",
+        values: "",
+      },
     },
     assignment: {
       job_name: {
@@ -336,7 +340,7 @@ export default function SearchResultHeader({
         info.current.freelancer.city.values = [];
       }
     }
-  
+ 
     // Update the searchHandler call to filter by the extracted word
     searchHandler(false, "country", "like", "%" + englishName + "%");
   };

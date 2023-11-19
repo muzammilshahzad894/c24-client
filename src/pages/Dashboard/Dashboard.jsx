@@ -226,8 +226,8 @@ export default function Dashboard() {
                   <br />
                   As soon as your account is complete, we will immediatly get to
                   work for you. <br /> <br />
-                  If you have not entered an hourly rate. Your profile is not visible in the search results. <br />
-                  Enter your hourly rate directly in the company details. By clicking on the link below. <br /><br />
+                  <b>If you have not entered an hourly rate. Your profile is not visible in the search results. <br />
+                  Enter your hourly rate directly in the company details. By clicking on the link below.</b> <br /><br />
                   Thank you.
                   <br />
                   <br />

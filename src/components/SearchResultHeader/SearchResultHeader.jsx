@@ -342,7 +342,7 @@ export default function SearchResultHeader({
     }
  
     // Update the searchHandler call to filter by the extracted word
-    searchHandler(false, "country", "like", "%" + englishName + "%");
+    searchHandler(false, "country", "like", "%" + e.value + "%");
   };
   
   

@@ -97,10 +97,14 @@ export default function Home() {
         values: 0,
       },
       currency: {
-        operation: "like ",
-        values: "EUR",
+        operation: "",
+        values: "",
       },
       competency: {
+        operation: "",
+        values: "",
+      },
+      country: {
         operation: "",
         values: "",
       },

@@ -280,6 +280,21 @@ export default function Home() {
 
     return resultArray;
   }
+
+  const filterCountryHandler = (e) => {
+    if(e.value === 'all'){
+      data.current.assignment.country.values = '%';
+      data.current.freelancer.country.values = '%';
+      // update in the session storage
+      sessionStorage.setItem("searchData", JSON.stringify(data.current));
+    }else{
+      data.current.assignment.country.values = "%" + e.value + "%";
+      data.current.freelancer.country.values = "%" + e.value + "%";
+      // update in the session storage
+      sessionStorage.setItem("searchData", JSON.stringify(data.current));
+    }
+  };
+
   const handleCitySearch = (e) => {
     let str = e.target.value?.replace(/\s/g, "");
     let resultArr = [str + "%"];
@@ -834,12 +849,12 @@ export default function Home() {
                       className="angleDown"
                       alt=""
                     />
-
-                    <span className={`flag-icon flag-icon-${selectCountry.code}`}
-                      style={{
-                        marginRight: '10px',
-                      }}
-                    ></span>
+                    {selectCountry.code === 'globe' ? <img src="/images/globe.png" alt="" style={{
+                      height: '20px',
+                      width: '20px',
+                      marginRight: '10px',
+                      }} /> : <span className={`flag-icon flag-icon-${selectCountry.code}`} style={{marginRight: '10px'}}></span>
+                    }
                   </div>
                   {showChangeCountry && (
                     <div className="change-country-container">
@@ -873,9 +888,10 @@ export default function Home() {
                               }}
                               alt=""
                             />
-
-                            <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
-
+                            {selectCountry.code === 'globe' ? <img src="/images/globe.png" alt="" style={{
+                              height: '20px',
+                              width: '20px',
+                            }} /> : <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>}
                           </div>
 
 
@@ -926,6 +942,22 @@ export default function Home() {
                             }}
                           >
                             <ul className="countries_list">
+                              <li
+                                value="No preference"
+                                onClick={() => {
+                                  setSelectCountry({ name: "No preference", code: "globe" });
+                                  setShowcountryPopup(false);
+                                  localStorage.setItem('country', "No preference");
+                                  localStorage.setItem('countryCode', "globe");
+                                  filterCountryHandler({ name: "No preference", code: "globe", value: "all" });
+                                }}
+                              >
+                                <img src="/images/globe.png" alt="" style={{
+                                  height: '20px',
+                                  width: '20px',
+                                }} />
+                                <p>No preference</p>
+                              </li>
                               {countryList.map((country, index) => (
                                 <li
                                   key={index}
@@ -935,6 +967,7 @@ export default function Home() {
                                     setShowcountryPopup(false);
                                     localStorage.setItem('country', country.name);
                                     localStorage.setItem('countryCode', country.code);
+                                    filterCountryHandler(country);
                                   }}
                                 >
                                   <span className={`flag-icon flag-icon-${country.code}`}></span>

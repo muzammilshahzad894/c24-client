@@ -320,7 +320,7 @@ export default function SearchResultHeader({
     setChooseCountryname(e.name);
     localStorage.setItem('country', e.name);
     localStorage.setItem('countryCode', e.code);
-    setCountryImg("/images/" + e.code + "_flag.png");
+    e.value === 'all' ? setCountryImg("/images/global.png") : setCountryImg("/images/" + e.code + "_flag.png");
     setShowChangeCountry(false);
     setShowCountryList(false);
   
@@ -341,8 +341,15 @@ export default function SearchResultHeader({
       }
     }
  
-    // Update the searchHandler call to filter by the extracted word
-    searchHandler(false, "country", "like", "%" + e.value + "%");
+    if(e.value === 'all'){
+      searchHandler(false, "country", "like", "%");
+      info.current.assignment.country.values = "%";
+      info.current.freelancer.country.values = "%";
+    }else{
+      searchHandler(false, "country", "like", "%" + e.value + "%");
+      info.current.assignment.country.values = "%" + e.value + "%";
+      info.current.freelancer.country.values = "%" + e.value + "%";
+    }
   };
   
   
@@ -1707,7 +1714,10 @@ export default function SearchResultHeader({
                             }}
                             alt=""
                           />
-                          <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>
+                          {selectCountry.code === 'globe' ? <img src="/images/globe.png" alt="" style={{
+                            height: '20px',
+                            width: '20px',
+                          }} /> : <span className={`flag-icon flag-icon-${selectCountry.code}`}></span>}
                         </div>
                       </div>
                       <p className="text-align-center  font-size mt-4">Choose your language</p>
@@ -1756,6 +1766,23 @@ export default function SearchResultHeader({
                           }}
                         >
                           <ul className="countries_list">
+                            <li
+                              value="No preference"
+                              onClick={() => {
+                                setSelectCountry({ name: "No preference", code: "globe" });
+                                setShowcountryPopup(false);
+                                setChooseCountryname("No preference");
+                                localStorage.setItem('country', "No preference");
+                                localStorage.setItem('countryCode', "globe");
+                                filterCountryHandler({ name: "No preference", code: "globe", value: "all" });
+                              }}
+                            >
+                              <img src="/images/globe.png" alt="" style={{
+                                height: '20px',
+                                width: '20px',
+                              }} />
+                              <p>No preference</p>
+                            </li>
                             {countryList.map((country, index) => (
                               <li
                                 key={index}

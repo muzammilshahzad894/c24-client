@@ -285,12 +285,14 @@ export default function Home() {
     if(e.value === 'all'){
       data.current.assignment.country.values = '%';
       data.current.freelancer.country.values = '%';
-      // update in the session storage
+      data.current.assignment.country.operation = 'like';
+      data.current.freelancer.country.operation = 'like';
       sessionStorage.setItem("searchData", JSON.stringify(data.current));
     }else{
       data.current.assignment.country.values = "%" + e.value + "%";
       data.current.freelancer.country.values = "%" + e.value + "%";
-      // update in the session storage
+      data.current.assignment.country.operation = 'like';
+      data.current.freelancer.country.operation = 'like';
       sessionStorage.setItem("searchData", JSON.stringify(data.current));
     }
   };

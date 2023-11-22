@@ -345,10 +345,14 @@ export default function SearchResultHeader({
       searchHandler(false, "country", "like", "%");
       info.current.assignment.country.values = "%";
       info.current.freelancer.country.values = "%";
+      info.current.assignment.country.operation = "like";
+      info.current.freelancer.country.operation = "like";
     }else{
       searchHandler(false, "country", "like", "%" + e.value + "%");
       info.current.assignment.country.values = "%" + e.value + "%";
       info.current.freelancer.country.values = "%" + e.value + "%";
+      info.current.assignment.country.operation = "like";
+      info.current.freelancer.country.operation = "like";
     }
   };
   

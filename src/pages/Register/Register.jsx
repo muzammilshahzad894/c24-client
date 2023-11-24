@@ -127,95 +127,96 @@ export default function Register() {
       if (userRegister.current.email.includes("@")) {
         if (userRegister.current.first_name.length > 0) {
           if (userRegister.current.last_name.length > 0) {
-            if (typeof userRegister.current.country === "string" && userRegister.current.country.length > 0) {
+            if (
+              (userRegister.current.address &&
+                userRegister.current.address.length > 0) ||
+              user === "client"
+            ) {
               if (
-                (userRegister.current.address &&
-                  userRegister.current.address.length > 0) ||
+                (userRegister.current.postcode &&
+                  userRegister.current.postcode.length > 0) ||
                 user === "client"
               ) {
                 if (
-                  (userRegister.current.postcode &&
-                    userRegister.current.postcode.length > 0) ||
+                  (userRegister.current.city &&
+                    userRegister.current.city.length > 0) ||
                   user === "client"
                 ) {
-                  if (
-                    (userRegister.current.city &&
-                      userRegister.current.city.length > 0) ||
-                    user === "client"
-                  ) {
-                    if (!/[a-z]/gi.test(userRegister.current.phone_no)) {
-                      if (userRegister.current.agreeTerms) {
-                        if (validPassword) {
-                          /*if(verifyEmail){*/
+                  if (!/[a-z]/gi.test(userRegister.current.phone_no)) {
+                    if (userRegister.current.agreeTerms) {
+                      if (validPassword) {
+                        /*if(verifyEmail){*/
 
+                        if (
+                          userRegister.current.password ===
+                          userRegister.current.confirm_password
+                        ) {
                           if (
-                            userRegister.current.password ===
-                            userRegister.current.confirm_password
+                            userRegister.current.picture ||
+                            user === "client"
                           ) {
                             if (
-                              userRegister.current.picture ||
-                              user === "client"
+                              (userRegister.current.orga_name === undefined &&
+                                user === "freelancer") ||
+                              (userRegister.current.orga_name.length > 0 &&
+                                user === "client")
                             ) {
-                              if (
-                                (userRegister.current.orga_name === undefined &&
-                                  user === "freelancer") ||
-                                (userRegister.current.orga_name.length > 0 &&
-                                  user === "client")
-                              ) {
-                                dispatch(
-                                  registerAction({
-                                    email: userRegister.current.email.trim(),
-                                    password: userRegister.current.password,
-                                    type: user,
-                                    orga_name: userRegister.current.orga_name,
-                                    phone_no: userRegister.current.phone_no,
-                                    user_name: userRegister.current.user_name,
-                                    first_name: userRegister.current.first_name,
-                                    last_name: userRegister.current.last_name,
-                                  })
-                                );
-                                console.log("creating user");
-                                userRegister.current.sent = true;
-                              } else {
-                                setError("Please add organasation name");
-                              }
+                              dispatch(
+                                registerAction({
+                                  email: userRegister.current.email.trim(),
+                                  password: userRegister.current.password,
+                                  type: user,
+                                  orga_name: userRegister.current.orga_name,
+                                  phone_no: userRegister.current.phone_no,
+                                  user_name: userRegister.current.user_name,
+                                  first_name: userRegister.current.first_name,
+                                  last_name: userRegister.current.last_name,
+                                })
+                              );
+                              console.log("creating user");
+                              userRegister.current.sent = true;
                             } else {
-                              setError("Please add a picture");
+                              setError("Please add organasation name");
                             }
                           } else {
-                            setError("password is not identical");
+                            setError("Please add a picture");
                           }
-                          /*}else{
-                                                          setError("Verify your email please.")
-                                                      }*/
                         } else {
-                          setError("Please enter a valid password");
+                          setError("password is not identical");
                         }
+                        /*}else{
+                                                        setError("Verify your email please.")
+                                                    }*/
                       } else {
-                        setError(
-                          "You must agree to term and conditions before going any further "
-                        );
+                        setError("Please enter a valid password");
                       }
                     } else {
-                      setError("Please add your phone number");
+                      setError(
+                        "You must agree to term and conditions before going any further "
+                      );
                     }
                   } else {
-                    setError("Please add your city");
+                    setError("Please add your phone number");
                   }
                 } else {
-                  setError("Please Enter your postcode");
+                  setError("Please add your city");
                 }
               } else {
-                setError("Please Enter your address");
+                setError("Please Enter your postcode");
               }
             } else {
-              setError("Please Select your country");
+              setError("Please Enter your address");
             }
           } else {
             setError("Please Enter your last name");
           }
         } else {
           setError("Please Enter your first name");
+        }
+        if (user === "freelancer") {
+          if (!(typeof userRegister.current.country === "string") || (userRegister.current.country.length <= 0)){
+            setError("Please Select your country");
+          }
         }
       } else {
         setError("email must contain @");

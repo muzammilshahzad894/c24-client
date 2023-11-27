@@ -808,7 +808,9 @@ export default function SingleAssignement() {
                   <p>
                     <b>Opening Price</b>
                   </p>
-                  <p>{assignement.opening_price}</p>
+                  <p>
+                    {assignement.opening_price + " " + (assignement.currency || "€")}
+                  </p>
                 </div>
               </div>
             )}

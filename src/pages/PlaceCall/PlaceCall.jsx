@@ -269,9 +269,9 @@ export default function PlaceCall() {
     console.log(arr);
     console.log(arr);
     setCities(arr);
-    if (infoRef.current["place"]) {
-      infoRef.current["place"].value = "";
-    }
+    // if (infoRef.current["place"]) {
+    //   infoRef.current["place"].value = "";
+    // }
   }, [country, provinceSelect]);
 
   useEffect(() => {
@@ -357,6 +357,7 @@ export default function PlaceCall() {
           setI(i + n);
           j = i + n;
         } else {
+          console.log('first else is running');
           setError("Pleae note, you must fill in all fields marked with * ");
         }
       } else if (i === 2) {
@@ -2311,7 +2312,7 @@ export default function PlaceCall() {
                         Offer
                       </option> */}
 
-                      <option
+                      {/* <option
                         value="Maximum budget"
                         selected={
                           location.state?.data?.at(0).price_type ===
@@ -2319,7 +2320,7 @@ export default function PlaceCall() {
                         }
                       >
                         Maximum budget
-                      </option>
+                      </option> */}
                     </select>
                   </div>
                   <div>

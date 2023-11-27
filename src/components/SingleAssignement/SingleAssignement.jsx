@@ -794,7 +794,11 @@ export default function SingleAssignement() {
                   <p>
                     <b>Price Per Piece</b>
                   </p>
-                  <p>{assignement.price_per_piece}</p>
+                  <p>
+                      {assignement.price_per_piece +
+                        " " +
+                        (assignement.currency || "€")}
+                    </p>
                 </div>
               </div>
             ) : (

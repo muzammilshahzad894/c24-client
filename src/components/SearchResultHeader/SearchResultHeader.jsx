@@ -348,9 +348,9 @@ export default function SearchResultHeader({
       info.current.assignment.country.operation = "like";
       info.current.freelancer.country.operation = "like";
     }else{
-      searchHandler(false, "country", "like", "%" + e.value + "%");
-      info.current.assignment.country.values = "%" + e.value + "%";
-      info.current.freelancer.country.values = "%" + e.value + "%";
+      searchHandler(false, "country", "like", "%" + (searchProjects ? englishName : e.value) + "%");
+      info.current.assignment.country.values = "%" + (searchProjects ? englishName : e.value) + "%";
+      info.current.freelancer.country.values = "%" + (searchProjects ? englishName : e.value) + "%";
       info.current.assignment.country.operation = "like";
       info.current.freelancer.country.operation = "like";
     }

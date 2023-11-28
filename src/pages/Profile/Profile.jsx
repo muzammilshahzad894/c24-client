@@ -606,7 +606,7 @@ export default function Profile() {
                                 </span>
                             </p>
                             <p>
-                                {get_profile_ratings.profile_ratings?.user?.address||""}
+                                {get_profile_ratings.profile_ratings?.user?.country||""}
                             </p>
                     </div>
                         )
